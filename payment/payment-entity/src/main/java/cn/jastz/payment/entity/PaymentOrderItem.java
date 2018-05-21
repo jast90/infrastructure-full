@@ -1,8 +1,9 @@
 package cn.jastz.payment.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
-public class OrderItem {
+public class PaymentOrderItem {
     private Integer itemId;
 
     private Integer orderId;
@@ -13,7 +14,7 @@ public class OrderItem {
 
     private Integer quantity;
 
-    private Long payAmount;
+    private BigDecimal payAmount;
 
     private Date createdTime;
 
@@ -59,11 +60,11 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
-    public Long getPayAmount() {
+    public BigDecimal getPayAmount() {
         return payAmount;
     }
 
-    public void setPayAmount(Long payAmount) {
+    public void setPayAmount(BigDecimal payAmount) {
         this.payAmount = payAmount;
     }
 

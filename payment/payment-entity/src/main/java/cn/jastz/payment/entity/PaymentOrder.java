@@ -1,17 +1,18 @@
 package cn.jastz.payment.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
-public class Order {
+public class PaymentOrder {
     private Integer orderId;
 
     private String orderNo;
 
-    private Long totalAmount;
+    private BigDecimal totalAmount;
 
-    private Long payAmount;
+    private BigDecimal payAmount;
 
-    private String status;
+    private String orderStatus;
 
     private String paymentType;
 
@@ -37,28 +38,28 @@ public class Order {
         this.orderNo = orderNo == null ? null : orderNo.trim();
     }
 
-    public Long getTotalAmount() {
+    public BigDecimal getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(Long totalAmount) {
+    public void setTotalAmount(BigDecimal totalAmount) {
         this.totalAmount = totalAmount;
     }
 
-    public Long getPayAmount() {
+    public BigDecimal getPayAmount() {
         return payAmount;
     }
 
-    public void setPayAmount(Long payAmount) {
+    public void setPayAmount(BigDecimal payAmount) {
         this.payAmount = payAmount;
     }
 
-    public String getStatus() {
-        return status;
+    public String getOrderStatus() {
+        return orderStatus;
     }
 
-    public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus == null ? null : orderStatus.trim();
     }
 
     public String getPaymentType() {

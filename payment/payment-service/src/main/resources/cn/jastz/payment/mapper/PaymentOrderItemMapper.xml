@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.jastz.payment.mapper.OrderItemMapper" >
-  <resultMap id="BaseResultMap" type="cn.jastz.payment.entity.OrderItem" >
+<mapper namespace="cn.jastz.payment.mapper.PaymentOrderItemMapper" >
+  <resultMap id="BaseResultMap" type="cn.jastz.payment.entity.PaymentOrderItem" >
     <id column="item_id" property="itemId" jdbcType="INTEGER" />
     <result column="order_id" property="orderId" jdbcType="INTEGER" />
     <result column="product_id" property="productId" jdbcType="INTEGER" />
@@ -12,19 +12,19 @@
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from order_item
+    delete from payment_order_item
     where item_id = #{itemId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.jastz.payment.entity.OrderItem" >
-    insert into order_item (item_id, order_id, product_id, 
+  <insert id="insert" parameterType="cn.jastz.payment.entity.PaymentOrderItem" >
+    insert into payment_order_item (item_id, order_id, product_id, 
       product_name, quantity, pay_amount, 
       created_time, update_time)
     values (#{itemId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, 
       #{productName,jdbcType=VARCHAR}, #{quantity,jdbcType=INTEGER}, #{payAmount,jdbcType=DECIMAL}, 
       #{createdTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="cn.jastz.payment.entity.OrderItem" >
-    update order_item
+  <update id="updateByPrimaryKey" parameterType="cn.jastz.payment.entity.PaymentOrderItem" >
+    update payment_order_item
     set order_id = #{orderId,jdbcType=INTEGER},
       product_id = #{productId,jdbcType=INTEGER},
       product_name = #{productName,jdbcType=VARCHAR},
@@ -37,12 +37,12 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select item_id, order_id, product_id, product_name, quantity, pay_amount, created_time, 
     update_time
-    from order_item
+    from payment_order_item
     where item_id = #{itemId,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
     select item_id, order_id, product_id, product_name, quantity, pay_amount, created_time, 
     update_time
-    from order_item
+    from payment_order_item
   </select>
 </mapper>
