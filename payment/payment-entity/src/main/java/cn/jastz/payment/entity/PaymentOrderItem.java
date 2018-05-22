@@ -20,6 +20,17 @@ public class PaymentOrderItem {
 
     private Date updateTime;
 
+    public PaymentOrderItem() {
+    }
+
+    public PaymentOrderItem(Integer orderId, Integer productId, String productName, Integer quantity, BigDecimal payAmount) {
+        this.orderId = orderId;
+        this.productId = productId;
+        this.productName = productName;
+        this.quantity = quantity;
+        this.payAmount = payAmount;
+    }
+
     public Integer getItemId() {
         return itemId;
     }

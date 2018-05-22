@@ -22,6 +22,17 @@ public class PaymentOrder {
 
     private Date updatedTime;
 
+    public PaymentOrder() {
+    }
+
+    public PaymentOrder(String orderNo, BigDecimal totalAmount, BigDecimal payAmount, String orderStatus, Integer accountId) {
+        this.orderNo = orderNo;
+        this.totalAmount = totalAmount;
+        this.payAmount = payAmount;
+        this.orderStatus = orderStatus;
+        this.accountId = accountId;
+    }
+
     public Integer getOrderId() {
         return orderId;
     }
