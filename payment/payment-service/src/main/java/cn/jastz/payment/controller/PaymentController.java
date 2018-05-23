@@ -45,7 +45,7 @@ public class PaymentController {
         }
         response.setContentType("image/png");
         try {
-            QRCodeUtil.writeToStream(codeUrl, 64, response.getOutputStream());
+            QRCodeUtil.writeToStream(codeUrl, 512, response.getOutputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
