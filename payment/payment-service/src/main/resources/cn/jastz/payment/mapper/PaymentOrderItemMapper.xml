@@ -17,11 +17,10 @@
   </delete>
   <insert id="insert" parameterType="cn.jastz.payment.entity.PaymentOrderItem" >
     insert into payment_order_item (item_id, order_id, product_id, 
-      product_name, quantity, pay_amount, 
-      created_time, update_time)
+      product_name, quantity, pay_amount, update_time)
     values (#{itemId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, 
-      #{productName,jdbcType=VARCHAR}, #{quantity,jdbcType=INTEGER}, #{payAmount,jdbcType=DECIMAL}, 
-      #{createdTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+      #{productName,jdbcType=VARCHAR}, #{quantity,jdbcType=INTEGER}, #{payAmount,jdbcType=DECIMAL},
+       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.jastz.payment.entity.PaymentOrderItem" >
     update payment_order_item

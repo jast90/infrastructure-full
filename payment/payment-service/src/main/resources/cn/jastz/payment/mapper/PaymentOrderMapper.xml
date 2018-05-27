@@ -20,11 +20,11 @@
             keyProperty="orderId" keyColumn="order_id">
     insert into payment_order (order_id, order_no, total_amount, 
       pay_amount, order_status, payment_type, 
-      account_id, created_time, updated_time
+      account_id, updated_time
       )
     values (#{orderId,jdbcType=INTEGER}, #{orderNo,jdbcType=VARCHAR}, #{totalAmount,jdbcType=DECIMAL}, 
       #{payAmount,jdbcType=DECIMAL}, #{orderStatus,jdbcType=CHAR}, #{paymentType,jdbcType=CHAR}, 
-      #{accountId,jdbcType=INTEGER}, #{createdTime,jdbcType=TIMESTAMP}, #{updatedTime,jdbcType=TIMESTAMP}
+      #{accountId,jdbcType=INTEGER}, #{updatedTime,jdbcType=TIMESTAMP}
       )
   </insert>
     <update id="updateByPrimaryKey" parameterType="cn.jastz.payment.entity.PaymentOrder">

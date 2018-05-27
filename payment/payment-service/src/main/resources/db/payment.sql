@@ -13,7 +13,7 @@ create table payment_order
   account_id   int                                                                        not null
   comment '下单账户',
   created_time timestamp default CURRENT_TIMESTAMP                                        not null,
-  updated_time timestamp default CURRENT_TIMESTAMP                                        not null,
+  updated_time timestamp default CURRENT_TIMESTAMP                                        null,
   constraint p_order_order_no_uindex
   unique (order_no)
 )
@@ -29,7 +29,7 @@ create table payment_order_item
   quantity     int                                 null,
   pay_amount   decimal(10, 2)                      not null,
   created_time timestamp default CURRENT_TIMESTAMP not null,
-  update_time  timestamp default CURRENT_TIMESTAMP not null
+  update_time  timestamp default CURRENT_TIMESTAMP null
 )
   comment '明细'
   engine = InnoDB;
