@@ -1,3 +1,5 @@
+create database payment;
+use payment;
 create table payment_order
 (
   order_id     int auto_increment

@@ -5,7 +5,9 @@
 <generatorConfiguration>
 
     <classPathEntry
-            location="C:Users\lenovo\.m2\repository\mysql\mysql-connector-java\5.1.46\mysql-connector-java-5.1.46.jar"/>
+            location="/Users/zhangzhiwen/Desktop/mysql-connector-java-5.1.46.jar"/>
+<!--<classPathEntry-->
+            <!--location="C:Users\lenovo\.m2\repository\mysql\mysql-connector-java\5.1.46\mysql-connector-java-5.1.46.jar"/>-->
 
     <context id="context" targetRuntime="MyBatis3Simple">
         <commentGenerator>
@@ -14,29 +16,31 @@
         </commentGenerator>
 
         <jdbcConnection userId="root" password="123456" driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/payment"/>
+                        connectionURL="jdbc:mysql://localhost:3306/account"/>
 
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="cn.jastz.payment.entity"
-                            targetProject="E:\jast\infrastructure\payment\payment-entity\src\main\java\">
+        <javaModelGenerator targetPackage="cn.jastz.account.entity"
+                            targetProject="/Users/zhangzhiwen/IdeaProjects/infrastructure/account/account-service/src/main/java">
+                            <!--targetProject="E:\jast\infrastructure\payment\payment-entity\src\main\java\">-->
             <property name="enableSubPackages" value="false"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="cn.jastz.payment.mapper"
-                         targetProject="E:\jast\infrastructure\payment\payment-service\src\main\resources">
+        <sqlMapGenerator targetPackage="cn.jastz.account.mapper"
+                         targetProject="/Users/zhangzhiwen/IdeaProjects/infrastructure/account/account-service/src/main/resources">
+                         <!--targetProject="E:\jast\infrastructure\payment\payment-service\src\main\resources">-->
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator targetPackage="cn.jastz.payment.mapper" type="XMLMAPPER"
-                             targetProject="E:\jast\infrastructure\payment\payment-service\src\main\java">
+        <javaClientGenerator targetPackage="cn.jastz.account.mapper" type="XMLMAPPER"
+                             targetProject="/Users/zhangzhiwen/IdeaProjects/infrastructure/account/account-service/src/main/java">
+                             <!--targetProject="E:\jast\infrastructure\payment\payment-service\src\main\java">-->
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
-        <table tableName="payment_order"/>
-        <table tableName="payment_order_item"/>
+        <table tableName="account"/>
     </context>
 </generatorConfiguration>
