@@ -6,8 +6,13 @@ import org.springframework.web.context.request.NativeWebRequest;
 
 public class MySignInAdapter implements SignInAdapter {
 
+    public MySignInAdapter() {
+        System.out.println("MySignInAdapter init");
+    }
+
     @Override
     public String signIn(String userId, Connection<?> connection, NativeWebRequest request) {
-        return null;
+        System.out.println(userId);
+        return "/";
     }
 }

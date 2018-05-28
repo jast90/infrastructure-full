@@ -7,8 +7,14 @@
 <body>
 <form action="${'/signin/linkedin'}" method="POST">
 <button type="submit">
-    <img src="${'/resources/social/twitter/sign-in-with-twitter-d.png'}" />
+    linkedin
 </button>
+</form>
+
+<form action="${'/signin/github'}" method="POST">
+    <button type="submit">
+        github
+    </button>
 </form>
 </body>
 </html>
