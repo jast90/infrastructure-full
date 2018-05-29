@@ -18,21 +18,26 @@ public class MyConnectionSignUp implements ConnectionSignUp {
 
     @Override
     public String execute(Connection<?> connection) {
-        System.out.println(connection.getKey().getProviderId());
         UserProfile userProfile = connection.fetchUserProfile();
-        Account account = new Account();
-        account.setAccountName(userProfile.getName());
-        account.setFirstName(userProfile.getFirstName());
-        account.setLastName(userProfile.getLastName());
-        account.setEmail(userProfile.getEmail());
-        account.setUsername(userProfile.getUsername());
-        account.setAcountFrom(connection.getKey().getProviderId());
-        int i = accountMapper.insert(account);
-        //TODO 用户存在时，查询出用户。
-        if(i>0){
-            return String.valueOf(account.getAccountId());
-        }else{
-            return null;
+        Account account1 = accountMapper.selectByUsernameAndAccountFrom(userProfile.getUsername(), connection.getKey().getProviderId());
+        if (account1 == null) {
+            Account account = new Account();
+            account.setAccountName(userProfile.getName());
+            account.setFirstName(userProfile.getFirstName());
+            account.setLastName(userProfile.getLastName());
+            account.setEmail(userProfile.getEmail());
+            account.setUsername(userProfile.getUsername());
+            account.setAccountFrom(connection.getKey().getProviderId());
+            int i = accountMapper.insert(account);
+
+            if (i > 0) {
+                return String.valueOf(account.getAccountId());
+            } else {
+                return null;
+            }
+        } else {
+            return String.valueOf(account1.getAccountId());
         }
+
     }
 }

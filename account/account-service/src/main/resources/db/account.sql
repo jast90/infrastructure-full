@@ -7,12 +7,13 @@ create table account
   last_name    varchar(100)                        null,
   email        varchar(100)                        null,
   username     varchar(100)                        null,
-  acount_from  varchar(100)                        null
+  account_from varchar(100)                        null
   comment '用户来源：github,qq,wx,weibo',
   created_time timestamp default CURRENT_TIMESTAMP not null,
   updated_time timestamp                           null,
   constraint account_username_from_pk
-  unique (username, acount_from)
-);
+  unique (username, account_from)
+)
+  engine = InnoDB;
 
 

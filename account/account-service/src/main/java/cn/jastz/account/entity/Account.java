@@ -15,7 +15,7 @@ public class Account {
 
     private String username;
 
-    private String acountFrom;
+    private String accountFrom;
 
     private Date createdTime;
 
@@ -69,12 +69,12 @@ public class Account {
         this.username = username == null ? null : username.trim();
     }
 
-    public String getAcountFrom() {
-        return acountFrom;
+    public String getAccountFrom() {
+        return accountFrom;
     }
 
-    public void setAcountFrom(String acountFrom) {
-        this.acountFrom = acountFrom == null ? null : acountFrom.trim();
+    public void setAccountFrom(String accountFrom) {
+        this.accountFrom = accountFrom;
     }
 
     public Date getCreatedTime() {
