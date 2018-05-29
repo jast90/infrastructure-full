@@ -23,4 +23,7 @@ public class SocialConfig extends SocialConfigurerAdapter {
         inMemoryUsersConnectionRepository.setConnectionSignUp(connectionSignUp);
         return inMemoryUsersConnectionRepository;
     }
+
+
+
 }

@@ -76,6 +76,12 @@
         </dependency>
 
         <dependency>
+            <groupId>cn.jastz</groupId>
+            <artifactId>spring-social-weibo</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>font-awesome</artifactId>
             <version>5.0.13</version>

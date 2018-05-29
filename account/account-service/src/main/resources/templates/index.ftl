@@ -22,6 +22,12 @@
                 <i class="fab fa-github fa-3x"></i>
             </a>
         </form>
+
+        <form id="weibo" action="${'/signin/weibo'}" method="POST">
+            <a href="javascript:void(0);" onclick="document.getElementById('weibo').submit();">
+                <i class="fab fa-weibo fa-3x"></i>
+            </a>
+        </form>
     </#if>
 
 </body>
