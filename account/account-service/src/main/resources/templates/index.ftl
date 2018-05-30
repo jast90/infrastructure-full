@@ -28,6 +28,11 @@
                 <i class="fab fa-weibo fa-3x"></i>
             </a>
         </form>
+    <form id="weixin" action="${'/signin/wechat'}" method="POST">
+        <a href="javascript:void(0);" onclick="document.getElementById('weixin').submit();">
+            <i class="fab fa-weixin fa-3x"></i>
+        </a>
+    </form>
     </#if>
 
 </body>

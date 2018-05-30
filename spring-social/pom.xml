@@ -19,6 +19,7 @@
     <modules>
         <module>spring-social-github</module>
         <module>spring-social-weibo</module>
+        <module>spring-social-wechat</module>
     </modules>
 
 </project>
