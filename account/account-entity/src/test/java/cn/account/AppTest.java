@@ -1,4 +1,4 @@
-package cn.jastz;
+package cn.account;
 
 import static org.junit.Assert.assertTrue;
 

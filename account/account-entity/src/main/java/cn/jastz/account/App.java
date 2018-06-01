@@ -1,4 +1,4 @@
-package cn.jastz;
+package cn.jastz.account;
 
 /**
  * Hello world!

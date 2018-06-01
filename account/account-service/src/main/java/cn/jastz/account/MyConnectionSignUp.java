@@ -1,16 +1,20 @@
 package cn.jastz.account;
 
 import cn.jastz.account.entity.Account;
-import cn.jastz.account.mapper.AccountMapper;
+import cn.jastz.account.entity.AccountSocialRef;
+import cn.jastz.account.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionSignUp;
 import org.springframework.social.connect.UserProfile;
 
+/**
+ * @author jast
+ */
 public class MyConnectionSignUp implements ConnectionSignUp {
 
     @Autowired
-    private AccountMapper accountMapper;
+    private AccountService accountService;
 
     public MyConnectionSignUp() {
         System.out.println("MyConnectionSignUp init");
@@ -18,17 +22,21 @@ public class MyConnectionSignUp implements ConnectionSignUp {
 
     @Override
     public String execute(Connection<?> connection) {
+        String social = connection.getKey().getProviderId();
         UserProfile userProfile = connection.fetchUserProfile();
-        Account account1 = accountMapper.selectByUsernameAndAccountFrom(userProfile.getUsername(), connection.getKey().getProviderId());
+        Account account1 = accountService.selectAccountByUsernameAndSocial(userProfile.getUsername(), social);
         if (account1 == null) {
             Account account = new Account();
-            account.setAccountName(userProfile.getName());
-            account.setFirstName(userProfile.getFirstName());
-            account.setLastName(userProfile.getLastName());
-            account.setEmail(userProfile.getEmail());
-            account.setUsername(userProfile.getUsername());
+            account.setAccountName(userProfile.getUsername());
             account.setAccountFrom(connection.getKey().getProviderId());
-            int i = accountMapper.insert(account);
+
+            AccountSocialRef accountSocialRef = new AccountSocialRef();
+            accountSocialRef.setUsername(userProfile.getUsername());
+            accountSocialRef.setFirstName(userProfile.getFirstName());
+            accountSocialRef.setLastName(userProfile.getLastName());
+            accountSocialRef.setEmail(userProfile.getEmail());
+            accountSocialRef.setSocial(social);
+            int i = accountService.saveAccount(account,accountSocialRef);
 
             if (i > 0) {
                 return String.valueOf(account.getAccountId());

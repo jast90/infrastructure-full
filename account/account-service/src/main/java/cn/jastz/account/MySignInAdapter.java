@@ -11,6 +11,9 @@ import org.springframework.web.context.request.ServletWebRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ * @author jast
+ */
 public class MySignInAdapter implements SignInAdapter {
 
     @Autowired

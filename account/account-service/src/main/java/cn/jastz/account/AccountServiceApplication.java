@@ -12,6 +12,8 @@ import org.springframework.social.connect.web.SignInAdapter;
 
 /**
  * 为了将项目打包成war包需要继承自SpringBootServletInitializer
+ *
+ * @author jast
  */
 @SpringBootApplication
 @MapperScan(basePackages = "cn.jastz.*.mapper")

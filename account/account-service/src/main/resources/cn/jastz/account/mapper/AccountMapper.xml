@@ -6,8 +6,8 @@
     <result column="account_name" property="accountName" jdbcType="VARCHAR" />
     <result column="first_name" property="firstName" jdbcType="VARCHAR" />
     <result column="last_name" property="lastName" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="account_from" property="accountFrom" jdbcType="VARCHAR" />
     <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
     <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
@@ -18,11 +18,11 @@
   </delete>
   <insert id="insert" parameterType="cn.jastz.account.entity.Account" useGeneratedKeys="true" keyColumn="account_id" keyProperty="accountId">
     insert into account (account_id, account_name, first_name, 
-      last_name, email, username, 
+      last_name, phone, email, 
       account_from, updated_time
       )
     values (#{accountId,jdbcType=INTEGER}, #{accountName,jdbcType=VARCHAR}, #{firstName,jdbcType=VARCHAR}, 
-      #{lastName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{lastName,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{accountFrom,jdbcType=VARCHAR}, #{updatedTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -31,28 +31,21 @@
     set account_name = #{accountName,jdbcType=VARCHAR},
       first_name = #{firstName,jdbcType=VARCHAR},
       last_name = #{lastName,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
-      username = #{username,jdbcType=VARCHAR},
       account_from = #{accountFrom,jdbcType=VARCHAR},
       created_time = #{createdTime,jdbcType=TIMESTAMP},
       updated_time = #{updatedTime,jdbcType=TIMESTAMP}
     where account_id = #{accountId,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select account_id, account_name, first_name, last_name, email, username, account_from,
+    select account_id, account_name, first_name, last_name, phone, email, account_from, 
     created_time, updated_time
     from account
     where account_id = #{accountId,jdbcType=INTEGER}
   </select>
-
-  <select id="selectByUsernameAndAccountFrom" resultMap="BaseResultMap" parameterType="map" >
-    select account_id, account_name, first_name, last_name, email, username, account_from,
-    created_time, updated_time
-    from account
-    where username = #{username,jdbcType=INTEGER} AND account_from = #{accountFrom,jdbcType=VARCHAR}
-  </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select account_id, account_name, first_name, last_name, email, username, account_from,
+    select account_id, account_name, first_name, last_name, phone, email, account_from, 
     created_time, updated_time
     from account
   </select>

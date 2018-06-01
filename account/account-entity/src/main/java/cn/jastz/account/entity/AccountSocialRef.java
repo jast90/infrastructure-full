@@ -1,11 +1,14 @@
 package cn.jastz.account.entity;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
-public class Account {
+public class AccountSocialRef {
     private Integer accountId;
 
-    private String accountName;
+    private String social;
+
+    private String username;
 
     private String firstName;
 
@@ -13,11 +16,7 @@ public class Account {
 
     private String email;
 
-    private String username;
-
-    private String accountFrom;
-
-    private Date createdTime;
+    private Date createdTime = new Timestamp(System.currentTimeMillis());
 
     private Date updatedTime;
 
@@ -29,12 +28,20 @@ public class Account {
         this.accountId = accountId;
     }
 
-    public String getAccountName() {
-        return accountName;
+    public String getSocial() {
+        return social;
     }
 
-    public void setAccountName(String accountName) {
-        this.accountName = accountName == null ? null : accountName.trim();
+    public void setSocial(String social) {
+        this.social = social == null ? null : social.trim();
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
     public String getFirstName() {
@@ -59,22 +66,6 @@ public class Account {
 
     public void setEmail(String email) {
         this.email = email == null ? null : email.trim();
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
-    }
-
-    public String getAccountFrom() {
-        return accountFrom;
-    }
-
-    public void setAccountFrom(String accountFrom) {
-        this.accountFrom = accountFrom;
     }
 
     public Date getCreatedTime() {

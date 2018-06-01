@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jastz.account.mapper.AccountSocialRefMapper" >
+  <resultMap id="BaseResultMap" type="cn.jastz.account.entity.AccountSocialRef" >
+    <id column="account_id" property="accountId" jdbcType="INTEGER" />
+    <id column="social" property="social" jdbcType="CHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="first_name" property="firstName" jdbcType="VARCHAR" />
+    <result column="last_name" property="lastName" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from account_social_ref
+    where account_id = #{accountId,jdbcType=INTEGER}
+      and social = #{social,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.jastz.account.entity.AccountSocialRef" >
+    insert into account_social_ref (account_id, social, username, 
+      first_name, last_name, email, 
+      created_time, updated_time)
+    values (#{accountId,jdbcType=INTEGER}, #{social,jdbcType=CHAR}, #{username,jdbcType=VARCHAR}, 
+      #{firstName,jdbcType=VARCHAR}, #{lastName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{createdTime,jdbcType=TIMESTAMP}, #{updatedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.jastz.account.entity.AccountSocialRef" >
+    update account_social_ref
+    set username = #{username,jdbcType=VARCHAR},
+      first_name = #{firstName,jdbcType=VARCHAR},
+      last_name = #{lastName,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP}
+    where account_id = #{accountId,jdbcType=INTEGER}
+      and social = #{social,jdbcType=CHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select account_id, social, username, first_name, last_name, email, created_time, 
+    updated_time
+    from account_social_ref
+    where account_id = #{accountId,jdbcType=INTEGER}
+      and social = #{social,jdbcType=CHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select account_id, social, username, first_name, last_name, email, created_time, 
+    updated_time
+    from account_social_ref
+  </select>
+  <select id="selectByUserNameAndSocial" resultMap="BaseResultMap">
+    select account_id, social, username, first_name, last_name, email, created_time,
+    updated_time
+    from account_social_ref
+    where username = #{username,jdbcType=CHAR }
+      and social = #{social,jdbcType=CHAR}
+  </select>
+</mapper>
