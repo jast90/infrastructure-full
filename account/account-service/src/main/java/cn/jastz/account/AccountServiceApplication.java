@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.social.connect.ConnectionSignUp;
 import org.springframework.social.connect.web.SignInAdapter;
 
+import java.util.Locale;
+
 /**
  * 为了将项目打包成war包需要继承自SpringBootServletInitializer
  *
@@ -21,10 +23,12 @@ public class AccountServiceApplication extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+
         return application.sources(AccountServiceApplication.class);
     }
 
     public static void main(String[] args) {
+        Locale.setDefault(Locale.US);
         SpringApplication.run(AccountServiceApplication.class, args);
     }
 
