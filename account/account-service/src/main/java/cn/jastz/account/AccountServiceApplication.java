@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.social.connect.ConnectionSignUp;
 import org.springframework.social.connect.web.SignInAdapter;
 
@@ -17,6 +18,7 @@ import java.util.Locale;
  *
  * @author jast
  */
+
 @SpringBootApplication
 @MapperScan(basePackages = "cn.jastz.*.mapper")
 public class AccountServiceApplication extends SpringBootServletInitializer {

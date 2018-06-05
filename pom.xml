@@ -27,6 +27,7 @@
         <module>payment</module>
         <module>account</module>
         <module>spring-social</module>
+        <module>open</module>
     </modules>
     <dependencies>
         <dependency>
