@@ -19,6 +19,7 @@
     <modules>
         <module>open-entity</module>
         <module>open-service</module>
+        <module>open-client</module>
     </modules>
 
 </project>

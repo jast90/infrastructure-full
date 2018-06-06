@@ -6,7 +6,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 import java.util.Locale;
 
@@ -15,8 +18,12 @@ import java.util.Locale;
  *
  * @author jast
  */
+@EnableFeignClients
+@EnableResourceServer
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @SpringBootApplication
 @MapperScan(basePackages = "cn.jastz.*.mapper")
+@EnableDiscoveryClient
 public class OpenServiceApplication extends SpringBootServletInitializer {
 
     @Override
@@ -26,7 +33,6 @@ public class OpenServiceApplication extends SpringBootServletInitializer {
     }
 
     public static void main(String[] args) {
-        Locale.setDefault(Locale.US);
         SpringApplication.run(OpenServiceApplication.class, args);
     }
 
