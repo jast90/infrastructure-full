@@ -1,8 +1,8 @@
 package cn.jastz.payment.controller;
 
-import cn.jastz.open.client.AppClient;
-import cn.jastz.open.entity.App;
 import cn.jastz.payment.service.PaymentOrderService;
+import me.jastz.common.json.result.IResult;
+import me.jastz.common.json.result.SampleResult;
 import me.jastz.common.wx.WxTemplates;
 import me.jastz.common.wx.wxpay.WxTradeType;
 import me.jastz.common.wx.wxpay.entity.UnifiedOrderForm;
@@ -12,7 +12,6 @@ import me.jastz.common.zxing.QRCodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
@@ -30,10 +29,6 @@ public class PaymentController {
 
     @Autowired
     private PaymentOrderService orderService;
-
-    @Autowired
-    private AppClient appClient;
-
 
     @GetMapping("scanPay")
     public void scanPay(int accountId, int productId, String productName, BigDecimal payAmount, HttpServletResponse response) {
@@ -59,8 +54,9 @@ public class PaymentController {
     }
 
     @ResponseBody
-    @GetMapping("app/{appid}")
-    public App getAppp(@PathVariable("appid") String appid) {
-        return appClient.getById(appid);
+    @GetMapping("test")
+    public IResult test() {
+        return SampleResult.SUCCESS;
     }
+
 }

@@ -19,6 +19,7 @@
     <modules>
         <module>payment-service</module>
         <module>payment-entity</module>
+        <module>payment-client</module>
     </modules>
 
 </project>

@@ -1,12 +1,16 @@
-package cn.jastz.account.config;
+package cn.jastz.cms.config;
 
+import cn.jastz.cms.social.MyConnectionSignUp;
+import cn.jastz.cms.social.MySignInAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.social.config.annotation.SocialConfigurerAdapter;
 import org.springframework.social.connect.ConnectionFactoryLocator;
 import org.springframework.social.connect.ConnectionSignUp;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.mem.InMemoryUsersConnectionRepository;
+import org.springframework.social.connect.web.SignInAdapter;
 
 /**
  * @author zhiwen
@@ -24,6 +28,16 @@ public class SocialConfig extends SocialConfigurerAdapter {
         return inMemoryUsersConnectionRepository;
     }
 
+    @Bean
+    public SignInAdapter signInAdapter() {
+        System.out.println("signInAdapter init");
+        return new MySignInAdapter();
+    }
 
+
+    @Bean
+    public ConnectionSignUp connectionSignUp() {
+        return new MyConnectionSignUp();
+    }
 
 }

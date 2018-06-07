@@ -35,4 +35,8 @@ public class AccountService {
         accountSocialRefMapper.insert(accountSocialRef);
         return count;
     }
+
+    public Account queryByAccountId(int accountId) {
+        return accountMapper.selectByPrimaryKey(accountId);
+    }
 }

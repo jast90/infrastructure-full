@@ -6,21 +6,26 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.Bean;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
-import org.springframework.social.connect.ConnectionSignUp;
-import org.springframework.social.connect.web.SignInAdapter;
 
 import java.util.Locale;
+
 
 /**
  * 为了将项目打包成war包需要继承自SpringBootServletInitializer
  *
  * @author jast
  */
-
+@EnableResourceServer
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @SpringBootApplication
 @MapperScan(basePackages = "cn.jastz.*.mapper")
+@EnableDiscoveryClient
+@Configuration
 public class AccountServiceApplication extends SpringBootServletInitializer {
 
     @Override
@@ -34,15 +39,5 @@ public class AccountServiceApplication extends SpringBootServletInitializer {
         SpringApplication.run(AccountServiceApplication.class, args);
     }
 
-    @Bean
-    public SignInAdapter signInAdapter() {
-        System.out.println("signInAdapter init");
-        return new MySignInAdapter();
-    }
-
-
-    @Bean
-    public ConnectionSignUp connectionSignUp() {
-        return new MyConnectionSignUp();
-    }
 }
+

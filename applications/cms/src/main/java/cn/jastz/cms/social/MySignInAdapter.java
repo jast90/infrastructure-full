@@ -1,7 +1,7 @@
-package cn.jastz.account;
+package cn.jastz.cms.social;
 
+import cn.jastz.account.client.AccountClient;
 import cn.jastz.account.entity.Account;
-import cn.jastz.account.mapper.AccountMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.web.SignInAdapter;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 public class MySignInAdapter implements SignInAdapter {
 
     @Autowired
-    private AccountMapper accountMapper;
+    private AccountClient accountClient;
 
     public MySignInAdapter() {
         System.out.println("MySignInAdapter init");
@@ -29,7 +29,7 @@ public class MySignInAdapter implements SignInAdapter {
             HttpServletRequest httpServletRequest = ((ServletWebRequest) request).getRequest();
             HttpSession session = httpServletRequest.getSession();
             session.setAttribute("accountId", userId);
-            Account account = accountMapper.selectByPrimaryKey(Integer.parseInt(userId));
+            Account account = accountClient.queryAccountByAccountId(Integer.parseInt(userId));
             session.setAttribute("username", account.getAccountName());
         }
         return "/";

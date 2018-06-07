@@ -3,24 +3,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>account</artifactId>
+        <artifactId>payment</artifactId>
         <groupId>cn.jastz</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>account-client</artifactId>
+    <artifactId>payment-client</artifactId>
 
-    <name>account-client</name>
+    <name>payment-client</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
     <dependencies>
-        <dependency>
-            <groupId>cn.jastz</groupId>
-            <artifactId>account-entity</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-feign</artifactId>
@@ -30,6 +25,11 @@
             <artifactId>common-utils</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>cn.jastz</groupId>
+            <artifactId>payment-entity</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

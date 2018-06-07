@@ -1,12 +1,14 @@
 package cn.jastz.account.controller;
 
+import cn.jastz.account.entity.Account;
+import cn.jastz.account.form.AccountAddForm;
+import cn.jastz.account.result.AccountResult;
+import cn.jastz.account.service.AccountService;
 import me.jastz.common.json.result.IResult;
 import me.jastz.common.json.result.SampleResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,6 +22,9 @@ public class AccountController {
     @Autowired
     private HttpServletRequest request;
 
+    @Autowired
+    private AccountService accountService;
+
     @GetMapping("logout")
     public String logout() {
         request.getSession().invalidate();
@@ -30,6 +35,27 @@ public class AccountController {
     @GetMapping("result")
     public IResult testResult() {
         return SampleResult.FAIL;
+    }
+
+    @GetMapping("/{id}")
+    public Account queryAccountByAccountId(@PathVariable("id") int accountId) {
+        return accountService.queryByAccountId(accountId);
+    }
+
+    @ResponseBody
+    @GetMapping("queryAccountByUsernameAndSocial/{username}/{social}")
+    public Account queryAccountByUsernameAndSocial(@PathVariable("username") String username, @PathVariable("social") String social) {
+        return accountService.selectAccountByUsernameAndSocial(username, social);
+    }
+
+    @ResponseBody
+    @PostMapping("add")
+    public IResult addAccount(@RequestBody AccountAddForm accountAddForm) {
+        int count = accountService.saveAccount(accountAddForm.getAccount(), accountAddForm.getAccountSocialRef());
+        if (count > 0) {
+            return AccountResult.SUCCESS;
+        }
+        return AccountResult.FAIL;
     }
 
 
