@@ -6,7 +6,10 @@ import cn.jastz.account.result.AccountResult;
 import cn.jastz.account.service.AccountService;
 import me.jastz.common.json.result.IResult;
 import me.jastz.common.json.result.SampleResult;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("account")
 @Controller
 public class AccountController {
+    protected final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private HttpServletRequest request;
@@ -34,6 +38,8 @@ public class AccountController {
     @ResponseBody
     @GetMapping("result")
     public IResult testResult() {
+        String appId = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        logger.debug("Current app id is {}", appId);
         return SampleResult.FAIL;
     }
 
