@@ -3,6 +3,7 @@ package cn.jastz.open.service;
 import cn.jastz.open.domain.MyClientDetails;
 import cn.jastz.open.entity.App;
 import cn.jastz.open.mapper.AppMapper;
+import com.google.common.collect.Sets;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -34,6 +35,7 @@ public class MyClientDetailsService implements ClientDetailsService {
         Set<GrantedAuthority> authorities = new HashSet<>();
         authorities.add(new SimpleGrantedAuthority("ROLE_CLIENT"));
         myClientDetails.setAuthorities(authorities);
+        myClientDetails.setAuthorizedGrantTypes(Sets.newHashSet("client_credentials"));
         return myClientDetails;
     }
 }

@@ -25,6 +25,8 @@ create table account_social_ref
   first_name varchar(100)                       null,
   last_name  varchar(100)                       null,
   email      varchar(100)                       null,
+  created_time timestamp default CURRENT_TIMESTAMP not null,
+  updated_time timestamp                           null,
   primary key (account_id, social)
 )
   comment '账号关联的社交账号'

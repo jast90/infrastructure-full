@@ -19,7 +19,7 @@ public class UserController {
     @Autowired
     private AccountClient accountClient;
 
-    @GetMapping("")
+    @GetMapping("/")
     public String login() {
         return "index";
     }

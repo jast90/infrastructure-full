@@ -37,6 +37,7 @@ public class AccountController {
         return SampleResult.FAIL;
     }
 
+    @ResponseBody
     @GetMapping("/{id}")
     public Account queryAccountByAccountId(@PathVariable("id") int accountId) {
         return accountService.queryByAccountId(accountId);
