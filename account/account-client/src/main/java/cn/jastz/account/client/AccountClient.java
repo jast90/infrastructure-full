@@ -2,7 +2,7 @@ package cn.jastz.account.client;
 
 import cn.jastz.account.entity.Account;
 import cn.jastz.account.form.AccountAddForm;
-import me.jastz.common.json.result.IResult;
+import me.jastz.common.json.result.BaseResult;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,10 +18,10 @@ public interface AccountClient {
     Account queryAccountByAccountId(@PathVariable("id") int accountId);
 
     @GetMapping("account/result")
-    IResult testResult();
+    BaseResult testResult();
 
     @PostMapping("account/add")
-    IResult addAccount(@RequestBody AccountAddForm accountAddForm);
+    BaseResult addAccount(@RequestBody AccountAddForm accountAddForm);
 
     @GetMapping("account/queryAccountByUsernameAndSocial/{username}/{social}")
     Account queryAccountByUsernameAndSocial(@PathVariable("username") String username, @PathVariable("social") String social);
