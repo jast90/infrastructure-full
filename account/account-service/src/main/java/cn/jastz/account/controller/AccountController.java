@@ -5,6 +5,7 @@ import cn.jastz.account.form.AccountAddForm;
 import cn.jastz.account.result.AccountResult;
 import cn.jastz.account.service.AccountService;
 import cn.jastz.common.controller.CommonBaseController;
+import me.jastz.common.json.JsonUtil;
 import me.jastz.common.json.result.IResult;
 import me.jastz.common.json.result.SampleResult;
 import org.slf4j.Logger;
@@ -26,6 +27,7 @@ public class AccountController extends CommonBaseController {
     @GetMapping("result")
     public IResult testResult() {
         logger.debug("Current app id is {}", getAppId());
+        logger.debug("Current authentication is {}", JsonUtil.objectToPrettyJson(getAuthentication()));
         return SampleResult.FAIL;
     }
 
