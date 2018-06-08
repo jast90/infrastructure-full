@@ -21,11 +21,11 @@
   <insert id="insert" parameterType="cn.jastz.account.entity.AccountSocialRef" >
     insert into account_social_ref (account_id, social, app_id,
       username, first_name, last_name,
-      email, created_time, updated_time
+      email, updated_time
       )
     values (#{accountId,jdbcType=INTEGER}, #{social,jdbcType=CHAR}, #{appId,jdbcType=VARCHAR},
       #{username,jdbcType=VARCHAR}, #{firstName,jdbcType=VARCHAR}, #{lastName,jdbcType=VARCHAR},
-      #{email,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, #{updatedTime,jdbcType=TIMESTAMP}
+      #{email,jdbcType=VARCHAR}, #{updatedTime,jdbcType=TIMESTAMP}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.jastz.account.entity.AccountSocialRef" >
