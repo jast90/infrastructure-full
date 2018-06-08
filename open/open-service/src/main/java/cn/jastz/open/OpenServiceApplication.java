@@ -11,14 +11,12 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
-import java.util.Locale;
-
 /**
  * 为了将项目打包成war包需要继承自SpringBootServletInitializer
  *
  * @author jast
  */
-@EnableFeignClients
+@EnableFeignClients(basePackages = "cn.jastz.*.client")
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @SpringBootApplication

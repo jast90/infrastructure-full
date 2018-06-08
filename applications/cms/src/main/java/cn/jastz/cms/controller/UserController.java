@@ -5,6 +5,7 @@ import cn.jastz.account.client.LoginClient;
 import cn.jastz.account.entity.Account;
 import me.jastz.common.json.result.BaseResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,9 @@ public class UserController {
     @Autowired
     private AccountClient accountClient;
 
+    @Autowired
+    private OAuth2RestTemplate accountRestTemplate;
+
     @GetMapping("/")
     public String login() {
         return "index";
@@ -32,8 +36,14 @@ public class UserController {
     }
 
     @ResponseBody
+    @GetMapping("test2")
+    public BaseResult testResult1() {
+        return accountClient.testResult();
+    }
+
+    @ResponseBody
     @GetMapping("test")
     public BaseResult testResult() {
-        return accountClient.testResult();
+        return accountRestTemplate.getForEntity("http://localhost:8081/account/result", BaseResult.class).getBody();
     }
 }

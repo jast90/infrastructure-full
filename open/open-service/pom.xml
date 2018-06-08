@@ -56,7 +56,11 @@
             <groupId>org.springframework.security.oauth</groupId>
             <artifactId>spring-security-oauth2</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>cn.jastz</groupId>
+            <artifactId>account-client</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>

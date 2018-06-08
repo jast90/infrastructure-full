@@ -1,6 +1,5 @@
 package cn.jastz.cms;
 
-import cn.jastz.cms.service.CustomUserInfoTokenServices;
 import feign.RequestInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -16,10 +15,10 @@ import org.springframework.cloud.security.oauth2.client.feign.OAuth2FeignRequest
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.oauth2.client.DefaultOAuth2ClientContext;
+import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsResourceDetails;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
-import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
 
 /**
  * @author zhiwen
@@ -56,13 +55,19 @@ public class CmsApplication extends SpringBootServletInitializer {
     @Bean
     @ConfigurationProperties(prefix = "security.oauth2.client")
     public ClientCredentialsResourceDetails clientCredentialsResourceDetails() {
-        return new ClientCredentialsResourceDetails();
+        ClientCredentialsResourceDetails resourceDetails = new ClientCredentialsResourceDetails();
+        return resourceDetails;
     }
 
     @Bean
-    public ResourceServerTokenServices tokenServices() {
-        return new CustomUserInfoTokenServices(sso.getUserInfoUri(), sso.getClientId());
+    public OAuth2RestTemplate accountRestTemplate(OAuth2ClientContext oauth2Context) {
+        return new OAuth2RestTemplate(clientCredentialsResourceDetails(), oauth2Context);
     }
 
+    //多余的bean
+   /* @Bean
+    public ResourceServerTokenServices tokenServices() {
+        return new CustomUserInfoTokenServices(sso.getUserInfoUri(), sso.getClientId());
+    }*/
 
 }
