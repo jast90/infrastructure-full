@@ -29,6 +29,7 @@
         <module>spring-social</module>
         <module>open</module>
         <module>applications</module>
+        <module>common</module>
     </modules>
     <dependencies>
         <dependency>
