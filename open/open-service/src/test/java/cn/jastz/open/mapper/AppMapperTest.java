@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.UUID;
-
 /**
  * @author zhiwen
  */
@@ -22,12 +20,21 @@ public class AppMapperTest {
     public AppMapper appMapper;
 
     @Test
-    public void add() {
+    public void addAccount() {
+        addApp("account", "www.jastz.cn/account");
+    }
+
+    private void addApp(String account, String s) {
         App app = new App();
-        app.setAppId(UUID.randomUUID().toString().replace("-", ""));
-        app.setAppSecret(UUID.randomUUID().toString().replace("-", ""));
-        app.setDomain("www.jastz.cn");
+        app.setAppId(account);
+        app.setAppSecret(account);
+        app.setDomain(s);
         int i = appMapper.insert(app);
         Assert.assertTrue(i > 0);
+    }
+
+    @Test
+    public void addPayment() {
+        addApp("payment", "www.jastz.cn/payment");
     }
 }
