@@ -42,6 +42,7 @@ public class AccountController extends CommonBaseController {
     @PostMapping("add")
     public IResult addAccount(@RequestBody AccountAddForm accountAddForm) {
         accountAddForm.getAccount().setAppId(getAppId());
+        accountAddForm.getAccountSocialRef().setAppId(getAppId());
         int count = accountService.saveAccount(accountAddForm.getAccount(), accountAddForm.getAccountSocialRef());
         if (count > 0) {
             return AccountResult.SUCCESS;
