@@ -3,6 +3,7 @@
 <mapper namespace="cn.jastz.account.mapper.AccountMapper" >
   <resultMap id="BaseResultMap" type="cn.jastz.account.entity.Account" >
     <id column="account_id" property="accountId" jdbcType="INTEGER" />
+    <result column="app_id" property="appId" jdbcType="VARCHAR"/>
     <result column="account_name" property="accountName" jdbcType="VARCHAR" />
     <result column="first_name" property="firstName" jdbcType="VARCHAR" />
     <result column="last_name" property="lastName" jdbcType="VARCHAR" />
@@ -17,18 +18,19 @@
     where account_id = #{accountId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.jastz.account.entity.Account" useGeneratedKeys="true" keyColumn="account_id" keyProperty="accountId">
-    insert into account (account_id, account_name, first_name, 
+    insert into account (account_id, app_id,account_name, first_name,
       last_name, phone, email, 
       account_from, updated_time
       )
-    values (#{accountId,jdbcType=INTEGER}, #{accountName,jdbcType=VARCHAR}, #{firstName,jdbcType=VARCHAR}, 
+    values (#{accountId,jdbcType=INTEGER}, #{appId,jdbcType=VARCHAR}, #{accountName,jdbcType=VARCHAR}, #{firstName,jdbcType=VARCHAR},
       #{lastName,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{accountFrom,jdbcType=VARCHAR}, #{updatedTime,jdbcType=TIMESTAMP}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.jastz.account.entity.Account" >
     update account
-    set account_name = #{accountName,jdbcType=VARCHAR},
+    set app_id = #{appId,jdbcType=VARCHAR},
+      account_name = #{accountName,jdbcType=VARCHAR},
       first_name = #{firstName,jdbcType=VARCHAR},
       last_name = #{lastName,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
@@ -39,13 +41,13 @@
     where account_id = #{accountId,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select account_id, account_name, first_name, last_name, phone, email, account_from, 
+    select account_id,app_id, account_name, first_name, last_name, phone, email, account_from,
     created_time, updated_time
     from account
     where account_id = #{accountId,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select account_id, account_name, first_name, last_name, phone, email, account_from, 
+    select account_id, appid, account_name, first_name, last_name, phone, email, account_from,
     created_time, updated_time
     from account
   </select>

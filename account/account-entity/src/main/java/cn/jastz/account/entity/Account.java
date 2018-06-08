@@ -5,6 +5,8 @@ import java.util.Date;
 public class Account {
     private Integer accountId;
 
+    private String appId;
+
     private String accountName;
 
     private String firstName;
@@ -27,6 +29,14 @@ public class Account {
 
     public void setAccountId(Integer accountId) {
         this.accountId = accountId;
+    }
+
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId;
     }
 
     public String getAccountName() {

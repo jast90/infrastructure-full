@@ -7,12 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
-
-import java.util.Locale;
 
 
 /**
@@ -35,7 +32,6 @@ public class AccountServiceApplication extends SpringBootServletInitializer {
     }
 
     public static void main(String[] args) {
-        Locale.setDefault(Locale.US);
         SpringApplication.run(AccountServiceApplication.class, args);
     }
 

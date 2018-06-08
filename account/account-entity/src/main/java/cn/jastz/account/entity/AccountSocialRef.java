@@ -1,12 +1,13 @@
 package cn.jastz.account.entity;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 public class AccountSocialRef {
     private Integer accountId;
 
     private String social;
+
+    private String appId;
 
     private String username;
 
@@ -16,7 +17,7 @@ public class AccountSocialRef {
 
     private String email;
 
-    private Date createdTime = new Timestamp(System.currentTimeMillis());
+    private Date createdTime;
 
     private Date updatedTime;
 
@@ -34,6 +35,14 @@ public class AccountSocialRef {
 
     public void setSocial(String social) {
         this.social = social == null ? null : social.trim();
+    }
+
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId == null ? null : appId.trim();
     }
 
     public String getUsername() {

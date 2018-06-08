@@ -20,8 +20,8 @@ public class AccountService {
     private AccountSocialRefMapper accountSocialRefMapper;
 
 
-    public Account selectAccountByUsernameAndSocial(String username, String social) {
-        AccountSocialRef accountSocialRef = accountSocialRefMapper.selectByUserNameAndSocial(username, social);
+    public Account selectAccountByUsernameAndSocialAndAppId(String username, String social, String appId) {
+        AccountSocialRef accountSocialRef = accountSocialRefMapper.selectByUserNameAndSocialAndAppId(username, social, appId);
         if (accountSocialRef == null) {
             return null;
         }

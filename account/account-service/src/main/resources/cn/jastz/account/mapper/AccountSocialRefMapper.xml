@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="cn.jastz.account.entity.AccountSocialRef" >
     <id column="account_id" property="accountId" jdbcType="INTEGER" />
     <id column="social" property="social" jdbcType="CHAR" />
+    <id column="app_id" property="appId" jdbcType="VARCHAR"/>
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="first_name" property="firstName" jdbcType="VARCHAR" />
     <result column="last_name" property="lastName" jdbcType="VARCHAR" />
@@ -15,14 +16,17 @@
     delete from account_social_ref
     where account_id = #{accountId,jdbcType=INTEGER}
       and social = #{social,jdbcType=CHAR}
+      and app_id = #{appId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="cn.jastz.account.entity.AccountSocialRef" >
-    insert into account_social_ref (account_id, social, username, 
-      first_name, last_name, email, 
-      created_time, updated_time)
-    values (#{accountId,jdbcType=INTEGER}, #{social,jdbcType=CHAR}, #{username,jdbcType=VARCHAR}, 
-      #{firstName,jdbcType=VARCHAR}, #{lastName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{createdTime,jdbcType=TIMESTAMP}, #{updatedTime,jdbcType=TIMESTAMP})
+    insert into account_social_ref (account_id, social, app_id,
+      username, first_name, last_name,
+      email, created_time, updated_time
+      )
+    values (#{accountId,jdbcType=INTEGER}, #{social,jdbcType=CHAR}, #{appId,jdbcType=VARCHAR},
+      #{username,jdbcType=VARCHAR}, #{firstName,jdbcType=VARCHAR}, #{lastName,jdbcType=VARCHAR},
+      #{email,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, #{updatedTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.jastz.account.entity.AccountSocialRef" >
     update account_social_ref
@@ -34,24 +38,27 @@
       updated_time = #{updatedTime,jdbcType=TIMESTAMP}
     where account_id = #{accountId,jdbcType=INTEGER}
       and social = #{social,jdbcType=CHAR}
+      and app_id = #{appId,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
-    select account_id, social, username, first_name, last_name, email, created_time, 
+    select account_id, social, app_id, username, first_name, last_name, email, created_time, 
     updated_time
     from account_social_ref
     where account_id = #{accountId,jdbcType=INTEGER}
       and social = #{social,jdbcType=CHAR}
+      and app_id = #{appId,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select account_id, social, username, first_name, last_name, email, created_time, 
+    select account_id, social, app_id, username, first_name, last_name, email, created_time, 
     updated_time
     from account_social_ref
   </select>
-  <select id="selectByUserNameAndSocial" resultMap="BaseResultMap">
+  <select id="selectByUserNameAndSocialAndAppId" resultMap="BaseResultMap" parameterType="map">
     select account_id, social, username, first_name, last_name, email, created_time,
     updated_time
     from account_social_ref
     where username = #{username,jdbcType=CHAR }
       and social = #{social,jdbcType=CHAR}
+      and app_id = #{appId,jdbcType=VARCHAR}
   </select>
 </mapper>
