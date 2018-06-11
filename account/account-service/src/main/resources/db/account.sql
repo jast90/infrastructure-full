@@ -13,6 +13,8 @@ create table account
   comment '用户来源：github,qq,wx,weibo,null（不是通过社交网站注册的）',
   created_time timestamp default CURRENT_TIMESTAMP not null,
   updated_time timestamp                           null,
+  constraint account_account_name_uindex
+  unique (account_name),
   constraint account_username_from_pk
   unique (account_from)
 )

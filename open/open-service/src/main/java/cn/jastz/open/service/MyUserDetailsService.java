@@ -21,11 +21,12 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Account account = accountClient.queryAccountByAccountId(Integer.parseInt(username));
+        Account account = accountClient.queryAccountByUsernameAndSocial(username, "");
         if (account == null) {
             throw new UsernameNotFoundException(username);
         }
-        User user = new User(account.getAccountName(), "", Lists.newArrayList());
+        //TODO 这里的password需要传递过去，因为需要校验
+        User user = new User(account.getAccountName(), "123", Lists.newArrayList());
         return user;
     }
 }

@@ -39,4 +39,8 @@ public class AccountService {
     public Account queryByAccountId(int accountId) {
         return accountMapper.selectByPrimaryKey(accountId);
     }
+
+    public Account queryByAccountByAccount(String accountName) {
+        return accountMapper.selectByAccount(accountName);
+    }
 }
