@@ -35,7 +35,9 @@ public class MyClientDetailsService implements ClientDetailsService {
         Set<GrantedAuthority> authorities = new HashSet<>();
         authorities.add(new SimpleGrantedAuthority("ROLE_CLIENT"));
         myClientDetails.setAuthorities(authorities);
-        myClientDetails.setAuthorizedGrantTypes(Sets.newHashSet("client_credentials","authorization_code"));
+        myClientDetails.setScope(Sets.newHashSet("all"));
+        myClientDetails.setAuthorizedGrantTypes(Sets.newHashSet("client_credentials", "authorization_code"));
+        myClientDetails.setAutoApproveScopes(Sets.newHashSet("all"));
         return myClientDetails;
     }
 }
