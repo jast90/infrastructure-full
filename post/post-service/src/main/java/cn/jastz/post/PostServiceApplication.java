@@ -1,4 +1,4 @@
-package cn.jastz.account;
+package cn.jastz.post;
 
 
 import org.mybatis.spring.annotation.MapperScan;
@@ -24,17 +24,16 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @MapperScan(basePackages = "cn.jastz.*.mapper")
 @EnableDiscoveryClient
 @Configuration
-@ComponentScan(basePackages = {"cn.jastz.account", "cn.jastz.common"})
-public class AccountServiceApplication extends SpringBootServletInitializer {
+@ComponentScan(basePackages = {"cn.jastz"})
+public class PostServiceApplication extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-
-        return application.sources(AccountServiceApplication.class);
+        return application.sources(PostServiceApplication.class);
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(AccountServiceApplication.class, args);
+        SpringApplication.run(PostServiceApplication.class, args);
     }
 
 }

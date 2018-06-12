@@ -18,7 +18,7 @@ import org.springframework.security.oauth2.client.DefaultOAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
-import org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeResourceDetails;
+import org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsResourceDetails;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 
 /**
@@ -56,8 +56,8 @@ public class CmsApplication extends SpringBootServletInitializer {
     @Bean
     @ConfigurationProperties(prefix = "security.oauth2.client")
     public OAuth2ProtectedResourceDetails clientCredentialsResourceDetails() {
-        AuthorizationCodeResourceDetails resourceDetails = new AuthorizationCodeResourceDetails();
-        return new AuthorizationCodeResourceDetails();
+//        return ew AuthorizationCodeResourceDetails();
+        return new ClientCredentialsResourceDetails();
     }
 
     @Bean

@@ -24,4 +24,9 @@ public class LoginController {
         session.invalidate();
         return "redirect:/";
     }
+
+    @GetMapping("login")
+    public String login() {
+        return "login/login";
+    }
 }

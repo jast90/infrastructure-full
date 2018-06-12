@@ -2,6 +2,7 @@ package cn.jastz.cms.social;
 
 import cn.jastz.account.client.AccountClient;
 import cn.jastz.account.entity.Account;
+import cn.jastz.cms.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.web.SignInAdapter;
@@ -28,7 +29,7 @@ public class MySignInAdapter implements SignInAdapter {
         if (request instanceof ServletWebRequest) {
             HttpServletRequest httpServletRequest = ((ServletWebRequest) request).getRequest();
             HttpSession session = httpServletRequest.getSession();
-            session.setAttribute("accountId", userId);
+            session.setAttribute(Constants.CURRENT_ACCOUNT_ID, userId);
             Account account = accountClient.queryAccountByAccountId(Integer.parseInt(userId));
             session.setAttribute("username", account.getAccountName());
         }

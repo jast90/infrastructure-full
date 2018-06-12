@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/webjars/font-awesome/5.0.13/web-fonts-with-css/css/fontawesome-all.min.css">
 </head>
 <body>
-<#if Session.accountId?exists>
+<#if Session.currentAccountId?exists>
 欢迎用户${Session.username}<a href="${requestContext.getContextPath()}/logout">退出</a>
 <#else >
 <a href="${'/login/wechat'}">
