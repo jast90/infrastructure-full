@@ -3,6 +3,7 @@
 <mapper namespace="cn.jastz.post.mapper.PostMapper" >
   <resultMap id="BaseResultMap" type="cn.jastz.post.entity.Post" >
     <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="app_id" property="appId" jdbcType="VARCHAR" />
     <result column="post_author" property="postAuthor" jdbcType="INTEGER" />
     <result column="post_title" property="postTitle" jdbcType="VARCHAR" />
     <result column="post_content" property="postContent" jdbcType="VARCHAR" />
@@ -14,16 +15,17 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.jastz.post.entity.Post" >
-    insert into post (id, post_author, post_title, 
-      post_content, created_time, updated_time
-      )
-    values (#{id,jdbcType=INTEGER}, #{postAuthor,jdbcType=INTEGER}, #{postTitle,jdbcType=VARCHAR}, 
-      #{postContent,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, #{updatedTime,jdbcType=TIMESTAMP}
-      )
+    insert into post (id, app_id, post_author, 
+      post_title, post_content, created_time, 
+      updated_time)
+    values (#{id,jdbcType=INTEGER}, #{appId,jdbcType=VARCHAR}, #{postAuthor,jdbcType=INTEGER}, 
+      #{postTitle,jdbcType=VARCHAR}, #{postContent,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, 
+      #{updatedTime,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.jastz.post.entity.Post" >
     update post
-    set post_author = #{postAuthor,jdbcType=INTEGER},
+    set app_id = #{appId,jdbcType=VARCHAR},
+      post_author = #{postAuthor,jdbcType=INTEGER},
       post_title = #{postTitle,jdbcType=VARCHAR},
       post_content = #{postContent,jdbcType=VARCHAR},
       created_time = #{createdTime,jdbcType=TIMESTAMP},
@@ -31,12 +33,12 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select id, post_author, post_title, post_content, created_time, updated_time
+    select id, app_id, post_author, post_title, post_content, created_time, updated_time
     from post
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select id, post_author, post_title, post_content, created_time, updated_time
+    select id, app_id, post_author, post_title, post_content, created_time, updated_time
     from post
   </select>
 </mapper>

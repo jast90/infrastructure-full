@@ -3,6 +3,7 @@ package cn.jastz.cms.controller;
 import cn.jastz.cms.controller.base.BaseController;
 import cn.jastz.post.client.PostClient;
 import cn.jastz.post.form.PostAddForm;
+import cn.jastz.post.form.PostCommentAddForm;
 import me.jastz.common.json.result.BaseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,13 @@ public class PostController extends BaseController {
     public BaseResult addPost(PostAddForm postAddForm) {
         postAddForm.setPostAuthor(getCurrentAccountId());
         return postClient.addPost(postAddForm);
+    }
+
+    @ResponseBody
+    @PostMapping("post/comment")
+    public BaseResult addPost(PostCommentAddForm postCommentAddForm) {
+        postCommentAddForm.setCommentAuthor(getCurrentAccountId());
+        return postClient.addPostComment(postCommentAddForm);
     }
 
 }

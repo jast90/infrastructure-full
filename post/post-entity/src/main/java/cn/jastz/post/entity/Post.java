@@ -5,6 +5,8 @@ import java.util.Date;
 public class Post {
     private Integer id;
 
+    private String appId;
+
     private Integer postAuthor;
 
     private String postTitle;
@@ -21,6 +23,14 @@ public class Post {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId == null ? null : appId.trim();
     }
 
     public Integer getPostAuthor() {

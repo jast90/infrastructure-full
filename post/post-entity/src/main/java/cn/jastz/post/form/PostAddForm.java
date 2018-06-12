@@ -11,6 +11,7 @@ public class PostAddForm {
     private String postTitle;
     private String postContent;
     private int postAuthor;
+    private String appId;
 
     public String getPostTitle() {
         return postTitle;
@@ -36,12 +37,21 @@ public class PostAddForm {
         this.postAuthor = postAuthor;
     }
 
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId;
+    }
+
     public Post toPost() {
         Post post = new Post();
         post.setCreatedTime(new Date());
         post.setPostAuthor(this.getPostAuthor());
         post.setPostTitle(this.getPostTitle());
         post.setPostContent(this.getPostContent());
+        post.setAppId(appId);
         return post;
     }
 }
