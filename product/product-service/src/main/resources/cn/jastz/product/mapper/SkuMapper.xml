@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jastz.product.mapper.SkuMapper" >
+  <resultMap id="BaseResultMap" type="cn.jastz.product.entity.Sku" >
+    <id column="sku_id" property="skuId" jdbcType="INTEGER" />
+    <result column="product_id" property="productId" jdbcType="INTEGER" />
+    <result column="sku_code" property="skuCode" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="app_id" property="appId" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sku
+    where sku_id = #{skuId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.jastz.product.entity.Sku" >
+    insert into sku (sku_id, product_id, sku_code, 
+      price, app_id, created_time, 
+      updated_time)
+    values (#{skuId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{skuCode,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DECIMAL}, #{appId,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, 
+      #{updatedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.jastz.product.entity.Sku" >
+    update sku
+    set product_id = #{productId,jdbcType=INTEGER},
+      sku_code = #{skuCode,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      app_id = #{appId,jdbcType=VARCHAR},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP}
+    where sku_id = #{skuId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select sku_id, product_id, sku_code, price, app_id, created_time, updated_time
+    from sku
+    where sku_id = #{skuId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select sku_id, product_id, sku_code, price, app_id, created_time, updated_time
+    from sku
+  </select>
+</mapper>

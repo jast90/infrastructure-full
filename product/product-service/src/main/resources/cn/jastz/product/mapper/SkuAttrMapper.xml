@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jastz.product.mapper.SkuAttrMapper" >
+  <resultMap id="BaseResultMap" type="cn.jastz.product.entity.SkuAttr" >
+    <id column="sku_attr_id" property="skuAttrId" jdbcType="INTEGER" />
+    <result column="attr_name" property="attrName" jdbcType="VARCHAR" />
+    <result column="attr_code" property="attrCode" jdbcType="VARCHAR" />
+    <result column="attr_desc" property="attrDesc" jdbcType="VARCHAR" />
+    <result column="sku_category_id" property="skuCategoryId" jdbcType="INTEGER" />
+    <result column="app_id" property="appId" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sku_attr
+    where sku_attr_id = #{skuAttrId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.jastz.product.entity.SkuAttr" >
+    insert into sku_attr (sku_attr_id, attr_name, attr_code, 
+      attr_desc, sku_category_id, app_id, 
+      created_time, updated_time)
+    values (#{skuAttrId,jdbcType=INTEGER}, #{attrName,jdbcType=VARCHAR}, #{attrCode,jdbcType=VARCHAR}, 
+      #{attrDesc,jdbcType=VARCHAR}, #{skuCategoryId,jdbcType=INTEGER}, #{appId,jdbcType=VARCHAR}, 
+      #{createdTime,jdbcType=TIMESTAMP}, #{updatedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.jastz.product.entity.SkuAttr" >
+    update sku_attr
+    set attr_name = #{attrName,jdbcType=VARCHAR},
+      attr_code = #{attrCode,jdbcType=VARCHAR},
+      attr_desc = #{attrDesc,jdbcType=VARCHAR},
+      sku_category_id = #{skuCategoryId,jdbcType=INTEGER},
+      app_id = #{appId,jdbcType=VARCHAR},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP}
+    where sku_attr_id = #{skuAttrId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select sku_attr_id, attr_name, attr_code, attr_desc, sku_category_id, app_id, created_time, 
+    updated_time
+    from sku_attr
+    where sku_attr_id = #{skuAttrId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select sku_attr_id, attr_name, attr_code, attr_desc, sku_category_id, app_id, created_time, 
+    updated_time
+    from sku_attr
+  </select>
+</mapper>
