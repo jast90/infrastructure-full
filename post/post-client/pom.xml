@@ -16,19 +16,25 @@
     <url>http://www.example.com</url>
     <dependencies>
         <dependency>
-            <groupId>cn.jastz</groupId>
-            <artifactId>post-entity</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-feign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.jastz</groupId>
+            <artifactId>mybatis-page</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>me.jastz</groupId>
             <artifactId>common-utils</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>cn.jastz</groupId>
+            <artifactId>post-entity</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

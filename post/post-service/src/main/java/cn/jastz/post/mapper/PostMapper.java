@@ -1,6 +1,8 @@
 package cn.jastz.post.mapper;
 
+import cn.jastz.page.domain.PageRequest;
 import cn.jastz.post.entity.Post;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,4 +16,7 @@ public interface PostMapper {
     List<Post> selectAll();
 
     int updateByPrimaryKey(Post record);
+
+    List<Post> queryPageByAppId(@Param("pageRequest") PageRequest pageRequest
+            , @Param("appId") String appId);
 }

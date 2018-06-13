@@ -1,5 +1,8 @@
 package cn.jastz.post.client;
 
+import cn.jastz.page.domain.Page;
+import cn.jastz.page.domain.PageRequest;
+import cn.jastz.post.entity.Post;
 import cn.jastz.post.form.PostAddForm;
 import cn.jastz.post.form.PostCommentAddForm;
 import me.jastz.common.json.result.BaseResult;
@@ -17,4 +20,7 @@ public interface PostClient {
 
     @PostMapping("/post/comment")
     BaseResult addPostComment(@RequestBody PostCommentAddForm postCommentAddForm);
+
+    @PostMapping("/post/page")
+    Page<Post> queryPage(@RequestBody PageRequest pageRequest);
 }

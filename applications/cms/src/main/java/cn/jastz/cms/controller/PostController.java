@@ -1,13 +1,17 @@
 package cn.jastz.cms.controller;
 
 import cn.jastz.cms.controller.base.BaseController;
+import cn.jastz.page.domain.Page;
+import cn.jastz.page.domain.PageRequest;
 import cn.jastz.post.client.PostClient;
+import cn.jastz.post.entity.Post;
 import cn.jastz.post.form.PostAddForm;
 import cn.jastz.post.form.PostCommentAddForm;
 import me.jastz.common.json.result.BaseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -39,4 +43,9 @@ public class PostController extends BaseController {
         return postClient.addPostComment(postCommentAddForm);
     }
 
+    @ResponseBody
+    @GetMapping("/post/page/{page}")
+    public Page<Post> queryPage(@PathVariable("page") int page) {
+        return postClient.queryPage(PageRequest.of(page-1, 15));
+    }
 }

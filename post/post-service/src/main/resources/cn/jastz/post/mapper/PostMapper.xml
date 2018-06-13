@@ -41,4 +41,9 @@
     select id, app_id, post_author, post_title, post_content, created_time, updated_time
     from post
   </select>
+  <select id="queryPageByAppId" resultMap="BaseResultMap">
+    select id, app_id, post_author, post_title, post_content, created_time, updated_time
+    from post
+    where app_id = #{appId}
+  </select>
 </mapper>
