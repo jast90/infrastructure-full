@@ -15,13 +15,16 @@ create table product
 
 create table product_sku_attr_ref
 (
-  ref_id       int auto_increment
+  ref_id         int auto_increment
     primary key,
-  product_id   int                                 not null,
-  sku_attr_id  int                                 not null,
-  app_id       varchar(100)                        not null,
-  created_time timestamp default CURRENT_TIMESTAMP not null,
-  updated_time timestamp                           null
+  product_id     int                                 not null,
+  sku_attr_id    int                                 not null,
+  sku_attr_value varchar(100)                        not null,
+  app_id         varchar(100)                        not null,
+  created_time   timestamp default CURRENT_TIMESTAMP not null,
+  updated_time   timestamp                           null,
+  constraint uindex
+  unique (product_id, sku_attr_id, sku_attr_value)
 )
   engine = InnoDB;
 

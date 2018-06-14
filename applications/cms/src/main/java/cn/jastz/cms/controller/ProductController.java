@@ -1,6 +1,6 @@
 package cn.jastz.cms.controller;
 
-import cn.jastz.product.client.ProductClient;
+import cn.jastz.product.client.SkuCategoryClient;
 import cn.jastz.product.form.SkuCategoryAddForm;
 import me.jastz.common.json.result.BaseResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ProductController {
     @Autowired
-    private ProductClient productClient;
+    private SkuCategoryClient skuCategoryClient;
 
     @GetMapping("/product/sku/category")
     public String addSkuCategory() {
@@ -25,6 +25,6 @@ public class ProductController {
     @ResponseBody
     @PostMapping("/product/sku/category")
     public BaseResult addSkuCategory(SkuCategoryAddForm skuCategoryAddForm) {
-        return productClient.addSkuCategory(skuCategoryAddForm);
+        return skuCategoryClient.addSkuCategory(skuCategoryAddForm);
     }
 }
