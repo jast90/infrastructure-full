@@ -43,11 +43,11 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
-        <table tableName="product"/>
+        <!--<table tableName="product"/>-->
         <table tableName="product_sku_attr_ref"/>
-        <table tableName="sku"/>
-        <table tableName="sku_attr"/>
-        <table tableName="sku_attr_ref"/>
-        <table tableName="sku_category"/>
+        <!--<table tableName="sku"/>
+        <table tableName="sku_attr"/>-->
+        <!--<table tableName="sku_attr_ref"/>-->
+        <!--<table tableName="sku_category"/>-->
     </context>
 </generatorConfiguration>

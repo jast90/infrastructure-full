@@ -56,13 +56,14 @@ create table sku_attr
 
 create table sku_attr_ref
 (
-  ref_id       int auto_increment
+  ref_id         int auto_increment
     primary key,
-  sku_id       int                                 not null,
-  sku_attr_id  int                                 not null,
-  app_id       varchar(100)                        not null,
-  created_time timestamp default CURRENT_TIMESTAMP not null,
-  updated_time timestamp                           null
+  sku_id         int                                 not null,
+  sku_attr_id    int                                 not null,
+  sku_attr_value varchar(100)                        not null,
+  app_id         varchar(100)                        not null,
+  created_time   timestamp default CURRENT_TIMESTAMP not null,
+  updated_time   timestamp                           null
 )
   engine = InnoDB;
 

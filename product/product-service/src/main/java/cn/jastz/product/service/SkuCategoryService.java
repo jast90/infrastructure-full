@@ -13,6 +13,12 @@ public class SkuCategoryService {
     @Autowired
     private SkuCategoryMapper skuCategoryMapper;
 
+    /**
+     * service 中传递form是为了方便单元测试
+     *
+     * @param skuCategoryAddForm
+     * @return
+     */
     public boolean addSkuCategory(SkuCategoryAddForm skuCategoryAddForm) {
         return skuCategoryMapper.insert(skuCategoryAddForm.to()) > 0;
     }

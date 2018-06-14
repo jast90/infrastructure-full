@@ -9,6 +9,8 @@ public interface ProductSkuAttrRefMapper {
 
     int insert(ProductSkuAttrRef record);
 
+    int batchInsert(List<ProductSkuAttrRef> records);
+
     ProductSkuAttrRef selectByPrimaryKey(Integer refId);
 
     List<ProductSkuAttrRef> selectAll();

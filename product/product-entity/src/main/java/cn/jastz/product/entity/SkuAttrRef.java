@@ -9,6 +9,8 @@ public class SkuAttrRef {
 
     private Integer skuAttrId;
 
+    private String skuAttrValue;
+
     private String appId;
 
     private Date createdTime;
@@ -37,6 +39,14 @@ public class SkuAttrRef {
 
     public void setSkuAttrId(Integer skuAttrId) {
         this.skuAttrId = skuAttrId;
+    }
+
+    public String getSkuAttrValue() {
+        return skuAttrValue;
+    }
+
+    public void setSkuAttrValue(String skuAttrValue) {
+        this.skuAttrValue = skuAttrValue == null ? null : skuAttrValue.trim();
     }
 
     public String getAppId() {
