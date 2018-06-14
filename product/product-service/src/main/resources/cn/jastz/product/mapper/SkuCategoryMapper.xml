@@ -39,4 +39,9 @@
     select category_id, category_name, category_desc, app_id, created_time, updated_time
     from sku_category
   </select>
+  <select id="selectAllByAppId" resultMap="BaseResultMap">
+    select category_id, category_name, category_desc, app_id, created_time, updated_time
+    from sku_category
+    where app_id = #{appId,jdbcType=VARCHAR}
+  </select>
 </mapper>

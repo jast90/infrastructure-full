@@ -10,6 +10,12 @@
     <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
     <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
   </resultMap>
+  <resultMap id="ProductVoResultMap" type="cn.jastz.product.vo.ProductVo" extends="BaseResultMap">
+    <collection property="productSkuAttrRefVos" column="product_id"
+                ofType="cn.jastz.product.vo.ProductSkuAttrRefVo"
+                select="cn.jastz.product.mapper.ProductSkuAttrRefMapper.queryProductSkuAttrRefVoByProductId">
+    </collection>
+  </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from product
     where product_id = #{productId,jdbcType=INTEGER}
@@ -42,5 +48,11 @@
     select product_id, product_name, product_code, product_desc, app_id, created_time, 
     updated_time
     from product
+  </select>
+  <select id="queryProductVoByPrimaryKey" resultMap="ProductVoResultMap">
+    select product_id, product_name, product_code, product_desc, app_id, created_time,
+    updated_time
+    from product
+    where product_id = #{productId}
   </select>
 </mapper>

@@ -1,6 +1,7 @@
 package cn.jastz.product.mapper;
 
 import cn.jastz.product.entity.Product;
+import cn.jastz.product.vo.ProductVo;
 
 import java.util.List;
 
@@ -14,4 +15,6 @@ public interface ProductMapper {
     List<Product> selectAll();
 
     int updateByPrimaryKey(Product record);
+
+    ProductVo queryProductVoByPrimaryKey(Integer productId);
 }

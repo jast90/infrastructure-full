@@ -10,6 +10,9 @@
     <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
     <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
   </resultMap>
+  <resultMap id="ProductSkuAttrRefVoResultMap" type="cn.jastz.product.vo.ProductSkuAttrRefVo" extends="BaseResultMap">
+    <association property="skuAttr" column="sku_attr_id" javaType="cn.jastz.product.entity.SkuAttr" select="cn.jastz.product.mapper.SkuAttrMapper.selectByPrimaryKey"></association>
+  </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from product_sku_attr_ref
     where ref_id = #{refId,jdbcType=INTEGER}
@@ -51,5 +54,16 @@ insert into product_sku_attr_ref (ref_id, product_id, sku_attr_id,
   <select id="selectAll" resultMap="BaseResultMap" >
     select ref_id, product_id, sku_attr_id, sku_attr_value, app_id, created_time, updated_time
     from product_sku_attr_ref
+  </select>
+  <select id="queryProductSkuAttrRefVoByProductId" resultMap="ProductSkuAttrRefVoResultMap">
+     select ref_id, product_id, sku_attr_id, sku_attr_value, app_id, created_time, updated_time
+    from product_sku_attr_ref
+    where product_id = #{productId}
+  </select>
+  <select id="selectByProductIdAndSkuAttrIdAndSkuAttrValue"
+          resultMap="BaseResultMap">
+    select ref_id, product_id, sku_attr_id, sku_attr_value, app_id, created_time, updated_time
+    from product_sku_attr_ref
+    where product_id = #{productId} and sku_attr_id = #{skuAttrId} and sku_attr_value=#{skuAttrValue}
   </select>
 </mapper>

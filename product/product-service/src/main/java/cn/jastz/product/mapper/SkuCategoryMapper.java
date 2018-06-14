@@ -14,4 +14,6 @@ public interface SkuCategoryMapper {
     List<SkuCategory> selectAll();
 
     int updateByPrimaryKey(SkuCategory record);
+
+    List<SkuCategory> selectAllByAppId(String appId);
 }

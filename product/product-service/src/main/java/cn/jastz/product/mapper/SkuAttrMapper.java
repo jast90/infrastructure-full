@@ -13,5 +13,7 @@ public interface SkuAttrMapper {
 
     List<SkuAttr> selectAll();
 
+    List<SkuAttr> selectAllByAppId(String appId);
+
     int updateByPrimaryKey(SkuAttr record);
 }
