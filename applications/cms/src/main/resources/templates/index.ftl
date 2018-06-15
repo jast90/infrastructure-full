@@ -12,7 +12,7 @@
     <p>${post.createdTime?datetime}</p>
     <p>${post.postContent}</p>
     </#list>
-
+    <@pagination modelName="page" url="${requestContext.getContextPath()}/post/page"></@pagination>
 <#if Session.currentAccountId?exists>
 欢迎用户${Session.username}<a href="${requestContext.getContextPath()}/logout">退出</a>
 <#else >
