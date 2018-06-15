@@ -2,17 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CMS</title>
-    <link rel="stylesheet"
-          href="${requestContext.getContextPath()}/webjars/font-awesome/5.0.13/web-fonts-with-css/css/fontawesome-all.min.css">
+    <title>cms</title>
+    <link rel="stylesheet" href="/webjars/font-awesome/5.0.13/web-fonts-with-css/css/fontawesome-all.min.css">
 </head>
 <body>
-    <#list page.getContent() as post>
-    <p>${post.postTitle}</p>
-    <p>${post.createdTime?datetime}</p>
-    <p>${post.postContent}</p>
-    </#list>
-
 <#if Session.currentAccountId?exists>
 欢迎用户${Session.username}<a href="${requestContext.getContextPath()}/logout">退出</a>
 <#else >

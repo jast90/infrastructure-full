@@ -23,12 +23,6 @@ public class UserController {
     @Autowired
     private OAuth2RestTemplate accountRestTemplate;
 
-    @GetMapping("/")
-    public String login() {
-        return "index";
-    }
-
-
     @ResponseBody
     @GetMapping("user/{accountId}")
     public Account getUserById(@PathVariable("accountId") int accountId) {

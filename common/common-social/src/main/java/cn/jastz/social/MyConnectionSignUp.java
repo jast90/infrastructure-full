@@ -1,4 +1,4 @@
-package cn.jastz.cms.social;
+package cn.jastz.social;
 
 import cn.jastz.account.client.AccountClient;
 import cn.jastz.account.entity.Account;

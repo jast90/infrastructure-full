@@ -44,6 +44,7 @@ public class PostController extends CommonBaseController {
 
     @PostMapping("/post/page")
     public Page<Post> queryPage(@RequestBody PageRequest pageRequest) {
-        return postService.queryPageByAppId(pageRequest, getAppId());
+        Page<Post> page = postService.queryPageByAppId(pageRequest, getAppId());
+        return page;
     }
 }

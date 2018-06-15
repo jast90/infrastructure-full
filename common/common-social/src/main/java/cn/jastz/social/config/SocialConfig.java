@@ -1,7 +1,7 @@
-package cn.jastz.cms.config;
+package cn.jastz.social.config;
 
-import cn.jastz.cms.social.MyConnectionSignUp;
-import cn.jastz.cms.social.MySignInAdapter;
+import cn.jastz.social.MyConnectionSignUp;
+import cn.jastz.social.MySignInAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
