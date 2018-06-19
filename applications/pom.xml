@@ -18,6 +18,7 @@
 
     <modules>
         <module>cms</module>
+        <module>freemarker</module>
     </modules>
 
 </project>

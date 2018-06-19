@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jastz.product.mapper.ProductSkuAttrRefMapper" >
+  <resultMap id="BaseResultMap" type="cn.jastz.product.entity.ProductSkuAttrRef" >
+    <id column="ref_id" property="refId" jdbcType="INTEGER" />
+    <result column="product_id" property="productId" jdbcType="INTEGER" />
+    <result column="sku_attr_id" property="skuAttrId" jdbcType="INTEGER" />
+    <result column="sku_attr_value" property="skuAttrValue" jdbcType="VARCHAR" />
+    <result column="app_id" property="appId" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ProductSkuAttrRefVoResultMap" type="cn.jastz.product.vo.ProductSkuAttrRefVo" extends="BaseResultMap">
+    <association property="skuAttr" column="sku_attr_id" javaType="cn.jastz.product.entity.SkuAttr" select="cn.jastz.product.mapper.SkuAttrMapper.selectByPrimaryKey"></association>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from product_sku_attr_ref
+    where ref_id = #{refId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.jastz.product.entity.ProductSkuAttrRef" >
+    insert into product_sku_attr_ref (ref_id, product_id, sku_attr_id, 
+      sku_attr_value, app_id, created_time, 
+      updated_time)
+    values (#{refId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{skuAttrId,jdbcType=INTEGER}, 
+      #{skuAttrValue,jdbcType=VARCHAR}, #{appId,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, 
+      #{updatedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="batchInsert" parameterType="cn.jastz.product.entity.ProductSkuAttrRef">
+insert into product_sku_attr_ref (ref_id, product_id, sku_attr_id,
+      sku_attr_value, app_id, created_time,
+      updated_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+    (#{item.refId,jdbcType=INTEGER}, #{item.productId,jdbcType=INTEGER}, #{item.skuAttrId,jdbcType=INTEGER},
+      #{item.skuAttrValue,jdbcType=VARCHAR}, #{item.appId,jdbcType=VARCHAR}, #{item.createdTime,jdbcType=TIMESTAMP},
+      #{item.updatedTime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.jastz.product.entity.ProductSkuAttrRef" >
+    update product_sku_attr_ref
+    set product_id = #{productId,jdbcType=INTEGER},
+      sku_attr_id = #{skuAttrId,jdbcType=INTEGER},
+      sku_attr_value = #{skuAttrValue,jdbcType=VARCHAR},
+      app_id = #{appId,jdbcType=VARCHAR},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP}
+    where ref_id = #{refId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select ref_id, product_id, sku_attr_id, sku_attr_value, app_id, created_time, updated_time
+    from product_sku_attr_ref
+    where ref_id = #{refId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select ref_id, product_id, sku_attr_id, sku_attr_value, app_id, created_time, updated_time
+    from product_sku_attr_ref
+  </select>
+  <select id="queryProductSkuAttrRefVoByProductId" resultMap="ProductSkuAttrRefVoResultMap">
+     select ref_id, product_id, sku_attr_id, sku_attr_value, app_id, created_time, updated_time
+    from product_sku_attr_ref
+    where product_id = #{productId}
+  </select>
+  <select id="selectByProductIdAndSkuAttrIdAndSkuAttrValue"
+          resultMap="BaseResultMap">
+    select ref_id, product_id, sku_attr_id, sku_attr_value, app_id, created_time, updated_time
+    from product_sku_attr_ref
+    where product_id = #{productId} and sku_attr_id = #{skuAttrId} and sku_attr_value=#{skuAttrValue}
+  </select>
+</mapper>

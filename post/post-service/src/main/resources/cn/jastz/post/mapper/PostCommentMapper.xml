@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jastz.post.mapper.PostCommentMapper" >
+  <resultMap id="BaseResultMap" type="cn.jastz.post.entity.PostComment" >
+    <id column="comment_id" property="commentId" jdbcType="INTEGER" />
+    <result column="app_id" property="appId" jdbcType="VARCHAR" />
+    <result column="post_id" property="postId" jdbcType="INTEGER" />
+    <result column="comment_author" property="commentAuthor" jdbcType="INTEGER" />
+    <result column="comment_author_ip" property="commentAuthorIp" jdbcType="INTEGER" />
+    <result column="comment_author_email" property="commentAuthorEmail" jdbcType="VARCHAR" />
+    <result column="comment_author_url" property="commentAuthorUrl" jdbcType="VARCHAR" />
+    <result column="comment_parent" property="commentParent" jdbcType="INTEGER" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from post_comment
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.jastz.post.entity.PostComment" >
+    insert into post_comment (comment_id, app_id, post_id, 
+      comment_author, comment_author_ip, comment_author_email, 
+      comment_author_url, comment_parent, created_time, 
+      updated_time)
+    values (#{commentId,jdbcType=INTEGER}, #{appId,jdbcType=VARCHAR}, #{postId,jdbcType=INTEGER}, 
+      #{commentAuthor,jdbcType=INTEGER}, #{commentAuthorIp,jdbcType=INTEGER}, #{commentAuthorEmail,jdbcType=VARCHAR}, 
+      #{commentAuthorUrl,jdbcType=VARCHAR}, #{commentParent,jdbcType=INTEGER}, #{createdTime,jdbcType=TIMESTAMP}, 
+      #{updatedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.jastz.post.entity.PostComment" >
+    update post_comment
+    set app_id = #{appId,jdbcType=VARCHAR},
+      post_id = #{postId,jdbcType=INTEGER},
+      comment_author = #{commentAuthor,jdbcType=INTEGER},
+      comment_author_ip = #{commentAuthorIp,jdbcType=INTEGER},
+      comment_author_email = #{commentAuthorEmail,jdbcType=VARCHAR},
+      comment_author_url = #{commentAuthorUrl,jdbcType=VARCHAR},
+      comment_parent = #{commentParent,jdbcType=INTEGER},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP}
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select comment_id, app_id, post_id, comment_author, comment_author_ip, comment_author_email, 
+    comment_author_url, comment_parent, created_time, updated_time
+    from post_comment
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select comment_id, app_id, post_id, comment_author, comment_author_ip, comment_author_email, 
+    comment_author_url, comment_parent, created_time, updated_time
+    from post_comment
+  </select>
+</mapper>

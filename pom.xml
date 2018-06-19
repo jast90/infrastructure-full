@@ -30,6 +30,8 @@
         <module>open</module>
         <module>applications</module>
         <module>common</module>
+        <module>post</module>
+        <module>product</module>
     </modules>
     <dependencies>
         <dependency>
