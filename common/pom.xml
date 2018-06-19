@@ -19,6 +19,7 @@
     <modules>
         <module>common-service</module>
         <module>common-social</module>
+        <module>common-sitemesh</module>
     </modules>
 
 </project>
