@@ -1,7 +1,7 @@
 package cn.jastz.cms.controller;
 
 import cn.jastz.cms.controller.base.BaseController;
-import cn.jastz.page.domain.Page;
+import cn.jastz.page.domain.IPage;
 import cn.jastz.page.domain.PageRequest;
 import cn.jastz.post.client.PostClient;
 import cn.jastz.post.entity.Post;
@@ -45,7 +45,7 @@ public class PostController extends BaseController {
 
     @ResponseBody
     @GetMapping("/post/page/{page}")
-    public Page<Post> queryPage(@PathVariable("page") int page) {
+    public IPage<Post> queryPage(@PathVariable("page") int page) {
         return postClient.queryPage(PageRequest.of(page-1, 15));
     }
 }

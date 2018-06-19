@@ -1,6 +1,7 @@
 package cn.jastz.post.controller;
 
 import cn.jastz.common.controller.CommonBaseController;
+import cn.jastz.page.domain.IPage;
 import cn.jastz.page.domain.Page;
 import cn.jastz.page.domain.PageRequest;
 import cn.jastz.post.PostResult;
@@ -43,7 +44,7 @@ public class PostController extends CommonBaseController {
     }
 
     @PostMapping("/post/page")
-    public Page<Post> queryPage(@RequestBody PageRequest pageRequest) {
+    public IPage<Post> queryPage(@RequestBody PageRequest pageRequest) {
         Page<Post> page = postService.queryPageByAppId(pageRequest, getAppId());
         return page;
     }

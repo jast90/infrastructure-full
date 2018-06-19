@@ -57,6 +57,11 @@
             <version>4.1.0</version>
         </dependency>
         <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>popper.js</artifactId>
+            <version>1.14.1</version>
+        </dependency>
+        <dependency>
             <groupId>cn.jastz</groupId>
             <artifactId>common-social</artifactId>
             <version>1.0-SNAPSHOT</version>
