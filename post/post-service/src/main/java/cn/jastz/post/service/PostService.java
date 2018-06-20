@@ -37,4 +37,8 @@ public class PostService {
         PageList pageList = (PageList) postMapper.queryPageByAppId(pageRequest, appId);
         return pageList.getPage();
     }
+
+    public Post queryByIdAndAppId(int id) {
+        return postMapper.selectByPrimaryKey(id);
+    }
 }

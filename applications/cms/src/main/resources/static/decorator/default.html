@@ -9,10 +9,30 @@
           href="/webjars/font-awesome/5.0.13/web-fonts-with-css/css/fontawesome-all.min.css">
     <link rel="stylesheet"
           href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css">
+    <style type="text/css">
+        article {
+            cursor: pointer;
+        }
+
+        div.card:hover {
+            border-color: #28a745 !important
+        }
+    </style>
+    <sitemesh:write property='css'/>
 </head>
 <body>
 <div class="container">
-    <sitemesh:write property='body'/>
+    <div class="row">
+        <div class="col-md-2">
+            <sitemesh:write property='sideBar'/>
+        </div>
+        <div class="col-md-10">
+            <sitemesh:write property='body'/>
+        </div>
+    </div>
+    <footer style="text-align: center">
+        <sitemesh:write property='footer'/>
+    </footer>
 </div>
 <script src="/webjars/jquery/2.1.1/jquery.min.js"></script>
 <script src="/webjars/popper.js/1.14.1/umd/popper.min.js"></script>

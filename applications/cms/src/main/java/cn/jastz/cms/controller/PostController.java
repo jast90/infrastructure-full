@@ -10,6 +10,7 @@ import cn.jastz.post.form.PostCommentAddForm;
 import me.jastz.common.json.result.BaseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +37,12 @@ public class PostController extends BaseController {
         return postClient.addPost(postAddForm);
     }
 
+    @GetMapping("post/{id}")
+    public String detail(@PathVariable("id") int id, Model model) {
+        model.addAttribute("post", postClient.quertById(id));
+        return "post/detail";
+    }
+
     @ResponseBody
     @PostMapping("post/comment")
     public BaseResult addPost(PostCommentAddForm postCommentAddForm) {
@@ -46,6 +53,6 @@ public class PostController extends BaseController {
     @ResponseBody
     @GetMapping("/post/page/{page}")
     public IPage<Post> queryPage(@PathVariable("page") int page) {
-        return postClient.queryPage(PageRequest.of(page-1, 15));
+        return postClient.queryPage(PageRequest.of(page - 1, 15));
     }
 }

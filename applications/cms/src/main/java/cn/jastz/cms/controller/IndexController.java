@@ -18,7 +18,7 @@ public class IndexController {
 
     @GetMapping("")
     public String index(Model model, @RequestParam(value = "page", required = false, defaultValue = "1") int page
-            , @RequestParam(value = "size", required = false, defaultValue = "1") int size) {
+            , @RequestParam(value = "size", required = false, defaultValue = "12") int size) {
 
         model.addAttribute("page", postClient.queryPage(PageRequest.of(page < 1 ? 0 : page - 1, size)));
         return "index";

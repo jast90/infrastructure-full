@@ -11,9 +11,7 @@ import cn.jastz.post.form.PostCommentAddForm;
 import cn.jastz.post.service.PostService;
 import me.jastz.common.json.result.IResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author zhiwen
@@ -47,5 +45,10 @@ public class PostController extends CommonBaseController {
     public IPage<Post> queryPage(@RequestBody PageRequest pageRequest) {
         Page<Post> page = postService.queryPageByAppId(pageRequest, getAppId());
         return page;
+    }
+
+    @GetMapping("/post/{id}")
+    public Post quertById(@PathVariable("id") int id) {
+        return postService.queryByIdAndAppId(id);
     }
 }

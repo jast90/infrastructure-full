@@ -7,6 +7,8 @@ import cn.jastz.post.form.PostAddForm;
 import cn.jastz.post.form.PostCommentAddForm;
 import me.jastz.common.json.result.BaseResult;
 import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -23,4 +25,7 @@ public interface PostClient {
 
     @PostMapping("/post/page")
     IPage<Post> queryPage(@RequestBody PageRequest pageRequest);
+
+    @GetMapping("/post/{id}")
+    Post quertById(@PathVariable("id") int id);
 }
