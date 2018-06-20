@@ -1,6 +1,7 @@
 package cn.jastz.product.mapper;
 
 import cn.jastz.product.entity.Sku;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,4 +15,6 @@ public interface SkuMapper {
     List<Sku> selectAll();
 
     int updateByPrimaryKey(Sku record);
+
+    List<Sku> selectListByIds(@Param("ids") List<Integer> ids, @Param("appId") String appId);
 }

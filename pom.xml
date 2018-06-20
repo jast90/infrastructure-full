@@ -32,6 +32,7 @@
         <module>common</module>
         <module>post</module>
         <module>product</module>
+        <module>store</module>
     </modules>
     <dependencies>
         <dependency>

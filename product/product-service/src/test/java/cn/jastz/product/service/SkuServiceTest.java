@@ -1,6 +1,7 @@
 package cn.jastz.product.service;
 
 import cn.jastz.product.BaseTest;
+import cn.jastz.product.entity.Sku;
 import cn.jastz.product.form.SkuAddForm;
 import cn.jastz.product.form.SkuAttrRefAddForm;
 import cn.jastz.product.form.SkuAttrRefBatchAddForm;
@@ -41,7 +42,7 @@ public class SkuServiceTest extends BaseTest<SkuService> {
 
         skuAddForm = new SkuAddForm();
         skuAddForm.setAppId(getAppId());
-        skuAddForm.setPrice(new BigDecimal( 9605));
+        skuAddForm.setPrice(new BigDecimal(9605));
         skuAddForm.setProductId(1);
         skuAddForm.setSkuCode("iphone-x-silver-256GB");
         Assert.assertTrue(service.addSku(skuAddForm));
@@ -57,5 +58,11 @@ public class SkuServiceTest extends BaseTest<SkuService> {
         list.add(new SkuAttrRefAddForm(4, 3, "256G", getAppId()));
         skuAttrRefBatchAddForm.setList(list);
         Assert.assertTrue(service.batchAddSkuAttrRef(skuAttrRefBatchAddForm));
+    }
+
+    @Test
+    public void test() {
+        List<Sku> list = service.queryListByIds(Lists.newArrayList(1, 2, 3), getAppId());
+        System.out.println(list);
     }
 }
