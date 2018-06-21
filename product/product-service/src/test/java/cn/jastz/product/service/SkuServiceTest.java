@@ -52,6 +52,10 @@ public class SkuServiceTest extends BaseTest<SkuService> {
     public void batchAddSkuAttrRef() {
         SkuAttrRefBatchAddForm skuAttrRefBatchAddForm = new SkuAttrRefBatchAddForm();
         List<SkuAttrRefAddForm> list = Lists.newArrayList();
+        list.add(new SkuAttrRefAddForm(1, 1, "space_gray", getAppId()));
+        list.add(new SkuAttrRefAddForm(1, 3, "64G", getAppId()));
+        list.add(new SkuAttrRefAddForm(2, 1, "space_gray", getAppId()));
+        list.add(new SkuAttrRefAddForm(2, 3, "256G", getAppId()));
         list.add(new SkuAttrRefAddForm(3, 1, "silver", getAppId()));
         list.add(new SkuAttrRefAddForm(3, 3, "64G", getAppId()));
         list.add(new SkuAttrRefAddForm(4, 1, "silver", getAppId()));

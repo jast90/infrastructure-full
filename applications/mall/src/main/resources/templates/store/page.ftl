@@ -37,7 +37,7 @@
         <div class="form-group row">
             <label for="inputPassword3" class="col-sm-2 control-label">SKU</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="code" placeholder="唯一编码">
+                <select name="productId" ></select>
             </div>
         </div>
     </div>
@@ -57,6 +57,7 @@
             });
             $("form[name='" + formName + "']").find("input[name='storeId']").val(storeId);
             $("form[name='" + formName + "']").find("input[name='storeName']").val(storeName).prop("disabled", true);
+            $("form[name='" + formName + "']").find("select[name='productId']").productSku();
         }
 
     </script>
