@@ -41,4 +41,8 @@
     select store_id, store_name, address, longitude, latitude, created_time, updated_time
     from store
   </select>
+  <select id="selectPage" resultMap="BaseResultMap" >
+    select store_id, store_name, address, longitude, latitude, created_time, updated_time
+    from store
+  </select>
 </mapper>

@@ -1,5 +1,8 @@
 package cn.jastz.store.service;
 
+import cn.jastz.page.domain.Page;
+import cn.jastz.page.domain.PageList;
+import cn.jastz.page.domain.PageRequest;
 import cn.jastz.product.client.SkuClient;
 import cn.jastz.product.entity.Sku;
 import cn.jastz.store.entity.Store;
@@ -67,5 +70,10 @@ public class StoreService {
             storeSkuStockList.add(storeSkuStock);
         }
         return storeSkuStockMapper.batchInsert(storeSkuStockList) > 1;
+    }
+
+    public Page<Store> queryPage(PageRequest pageRequest) {
+        PageList pageList = (PageList) storeMapper.selectPage(pageRequest);
+        return pageList.getPage();
     }
 }

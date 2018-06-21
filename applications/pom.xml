@@ -19,6 +19,13 @@
     <modules>
         <module>cms</module>
         <module>freemarker</module>
+        <module>mall</module>
     </modules>
-
+    <dependencies>
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>bootstrap-validator</artifactId>
+            <version>0.11.9</version>
+        </dependency>
+    </dependencies>
 </project>

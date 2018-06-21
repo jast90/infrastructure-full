@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.UUID;
+
 /**
  * @author zhiwen
  */
@@ -36,5 +38,10 @@ public class AppMapperTest {
     @Test
     public void addPayment() {
         addApp("payment", "www.jastz.cn/payment");
+    }
+
+    @Test
+    public void addMall() {
+        addApp(UUID.randomUUID().toString().replace("-", ""), "www.jastz.cn/mall");
     }
 }

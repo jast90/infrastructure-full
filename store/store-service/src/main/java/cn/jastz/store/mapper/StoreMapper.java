@@ -1,6 +1,8 @@
 package cn.jastz.store.mapper;
 
+import cn.jastz.page.domain.PageRequest;
 import cn.jastz.store.entity.Store;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,4 +16,6 @@ public interface StoreMapper {
     List<Store> selectAll();
 
     int updateByPrimaryKey(Store record);
+
+    List<Store> selectPage(@Param("pageRequest") PageRequest pageRequest);
 }

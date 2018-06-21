@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        <sitemesh:write property='title'/>
+    </title>
+    <link rel="stylesheet"
+          href="/webjars/font-awesome/5.0.13/web-fonts-with-css/css/fontawesome-all.min.css">
+    <link rel="stylesheet"
+          href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css">
+    <style type="text/css">
+        article {
+            cursor: pointer;
+        }
+
+        div.card:hover {
+            border-color: #28a745 !important
+        }
+    </style>
+    <sitemesh:write property='css'/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <sitemesh:write property='sideBar'/>
+        </div>
+        <div class="col-md-10">
+            <sitemesh:write property='body'/>
+        </div>
+    </div>
+    <footer style="text-align: center">
+        <sitemesh:write property='footer'/>
+    </footer>
+</div>
+<script src="/webjars/jquery/2.1.1/jquery.min.js"></script>
+<script src="/webjars/popper.js/1.14.1/umd/popper.min.js"></script>
+<script src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="/webjars/bootstrap-validator/0.11.9/dist/validator.min.js"></script>
+<script src="/static/js/modal.js"></script>
+<sitemesh:write property="javascript"/>
+</body>
+</html>
