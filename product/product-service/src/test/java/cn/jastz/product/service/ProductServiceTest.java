@@ -27,4 +27,10 @@ public class ProductServiceTest extends BaseTest<ProductService> {
     public void queryProductVo() {
         System.out.println(JsonUtil.objectToPrettyJson(service.queryProductVo(1)));
     }
+
+    @Test
+    public void queryAllProductSkuVoList() {
+        System.out.println(JsonUtil.objectToPrettyJson(service.queryAllProductSkuVoList()));
+    }
+
 }

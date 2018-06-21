@@ -17,4 +17,6 @@ public interface SkuMapper {
     int updateByPrimaryKey(Sku record);
 
     List<Sku> selectListByIds(@Param("ids") List<Integer> ids, @Param("appId") String appId);
+
+    List<Sku> selectListByProductId(@Param("productId") int productId);
 }

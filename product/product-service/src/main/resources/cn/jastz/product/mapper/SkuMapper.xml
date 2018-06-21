@@ -46,4 +46,9 @@
     from sku
     where sku_id in <foreach collection="ids" item="id" open="(" close=")" separator=",">#{id}</foreach> and app_id = #{appId}
   </select>
+  <select id="selectListByProductId" resultMap="BaseResultMap">
+    select sku_id, product_id, sku_code, price, app_id, created_time, updated_time
+    from sku
+    where product_id = #{productId}
+  </select>
 </mapper>

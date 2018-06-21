@@ -16,6 +16,12 @@
                 select="cn.jastz.product.mapper.ProductSkuAttrRefMapper.queryProductSkuAttrRefVoByProductId">
     </collection>
   </resultMap>
+  <resultMap id="ProductSkuVoResultMap" type="cn.jastz.product.vo.ProductSkuVo" extends="BaseResultMap">
+    <collection property="skuList" column="product_id"
+                ofType="cn.jastz.product.entity.Sku"
+                select="cn.jastz.product.mapper.SkuMapper.selectListByProductId">
+    </collection>
+  </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from product
     where product_id = #{productId,jdbcType=INTEGER}
@@ -54,5 +60,10 @@
     updated_time
     from product
     where product_id = #{productId}
+  </select>
+  <select id="queryAllProductSkuVo" resultMap="ProductSkuVoResultMap">
+    select product_id, product_name, product_code, product_desc, app_id, created_time,
+    updated_time
+    from product
   </select>
 </mapper>
