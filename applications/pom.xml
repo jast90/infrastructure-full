@@ -27,5 +27,10 @@
             <artifactId>bootstrap-validator</artifactId>
             <version>0.11.9</version>
         </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery-form</artifactId>
+            <version>4.2.1</version>
+        </dependency>
     </dependencies>
 </project>
