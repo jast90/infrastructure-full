@@ -1,4 +1,4 @@
-package cn.jastz.store.form;
+package cn.jastz.mall.form;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -10,9 +10,10 @@ import java.util.Map;
 /**
  * @author zhiwen
  */
-public class StoreAddSkuForm {
+public class MallStoreAddSkuForm {
+
     private int storeId;
-    private List<StoreAddSkuItem> storeAddSkuItems;
+    private List<MallStoreAddSkuItem> storeAddSkuItems;
 
     public List<Integer> skuIdList() {
         List<Integer> skuIdList = Lists.newArrayList();
@@ -20,8 +21,8 @@ public class StoreAddSkuForm {
         return skuIdList;
     }
 
-    public Map<Integer, StoreAddSkuItem> map() {
-        Map<Integer, StoreAddSkuItem> map = Maps.newHashMap();
+    public Map<Integer, MallStoreAddSkuItem> map() {
+        Map<Integer, MallStoreAddSkuItem> map = Maps.newHashMap();
         storeAddSkuItems.forEach(storeAddSkuItem -> map.put(storeAddSkuItem.getSkuId(), storeAddSkuItem));
         return map;
     }
@@ -37,27 +38,19 @@ public class StoreAddSkuForm {
         this.storeId = storeId;
     }
 
-    public List<StoreAddSkuItem> getStoreAddSkuItems() {
+    public List<MallStoreAddSkuItem> getStoreAddSkuItems() {
         return storeAddSkuItems;
     }
 
-    public void setStoreAddSkuItems(List<StoreAddSkuItem> storeAddSkuItems) {
+    public void setStoreAddSkuItems(List<MallStoreAddSkuItem> storeAddSkuItems) {
         this.storeAddSkuItems = storeAddSkuItems;
     }
 
-    public static class StoreAddSkuItem {
-        private int productId;
+
+    public static class MallStoreAddSkuItem {
         private int skuId;
         private BigDecimal storePrice;
         private BigDecimal stock;
-
-        public int getProductId() {
-            return productId;
-        }
-
-        public void setProductId(int productId) {
-            this.productId = productId;
-        }
 
         public int getSkuId() {
             return skuId;

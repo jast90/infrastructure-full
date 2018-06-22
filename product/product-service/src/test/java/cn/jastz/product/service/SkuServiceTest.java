@@ -66,7 +66,7 @@ public class SkuServiceTest extends BaseTest<SkuService> {
 
     @Test
     public void test() {
-        List<Sku> list = service.queryListByIds(Lists.newArrayList(1, 2, 3), getAppId());
+        List<Sku> list = service.queryListByIds(Lists.newArrayList(1, 2, 3));
         System.out.println(list);
     }
 }

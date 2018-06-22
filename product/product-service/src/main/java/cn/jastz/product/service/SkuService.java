@@ -76,10 +76,10 @@ public class SkuService {
         return count > 0;
     }
 
-    public List<Sku> queryListByIds(List<Integer> ids, String appId) {
+    public List<Sku> queryListByIds(List<Integer> ids) {
         if (CollectionUtils.isEmpty(ids)) {
             return Lists.newArrayList();
         }
-        return skuMapper.selectListByIds(ids, appId);
+        return skuMapper.selectListByIds(ids);
     }
 }

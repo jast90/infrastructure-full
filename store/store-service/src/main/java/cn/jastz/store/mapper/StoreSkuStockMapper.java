@@ -6,11 +6,11 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface StoreSkuStockMapper {
-    int deleteByPrimaryKey(@Param("productId") Integer productId, @Param("storeId") Integer storeId);
+    int deleteByPrimaryKey(@Param("productId") Integer productId, @Param("storeId") Integer storeId, @Param("skuId") Integer skuId);
 
     int insert(StoreSkuStock record);
 
-    StoreSkuStock selectByPrimaryKey(@Param("productId") Integer productId, @Param("storeId") Integer storeId);
+    StoreSkuStock selectByPrimaryKey(@Param("productId") Integer productId, @Param("storeId") Integer storeId, @Param("skuId") Integer skuId);
 
     List<StoreSkuStock> selectAll();
 

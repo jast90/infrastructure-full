@@ -3,8 +3,6 @@ package cn.jastz.store.service;
 import cn.jastz.page.domain.Page;
 import cn.jastz.page.domain.PageList;
 import cn.jastz.page.domain.PageRequest;
-import cn.jastz.product.client.SkuClient;
-import cn.jastz.product.entity.Sku;
 import cn.jastz.store.entity.Store;
 import cn.jastz.store.entity.StoreSkuStock;
 import cn.jastz.store.form.StoreAddForm;
@@ -18,11 +16,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.geo.Point;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author zhiwen
@@ -35,9 +33,6 @@ public class StoreService {
 
     @Autowired
     private AMapTemplate aMapTemplate;
-
-    @Autowired
-    private SkuClient skuClient;
 
     @Autowired
     private StoreSkuStockMapper storeSkuStockMapper;
@@ -56,20 +51,25 @@ public class StoreService {
     }
 
     public boolean batchAddStoreSku(StoreAddSkuForm storeAddSkuForm) {
-        List<Sku> skuList = skuClient.queryListByIds(storeAddSkuForm.skuIdList());
         List<StoreSkuStock> storeSkuStockList = Lists.newArrayList();
-        Map<Integer, StoreAddSkuForm.StoreAddSkuItem> map = storeAddSkuForm.map();
-        for (Sku sku : skuList) {
+        if (storeAddSkuForm.getStoreAddSkuItems() == null) {
+            return false;
+        }
+        for (StoreAddSkuForm.StoreAddSkuItem storeAddSkuItem : storeAddSkuForm.getStoreAddSkuItems()) {
             StoreSkuStock storeSkuStock = new StoreSkuStock();
-            storeSkuStock.setProductId(sku.getProductId());
-            storeSkuStock.setSkuId(sku.getSkuId());
-            storeSkuStock.setSkuPrice(map.get(sku.getSkuId()) != null ? map.get(sku.getSkuId()).getStorePrice() : sku.getPrice());
-            storeSkuStock.setSkuStock(map.get(sku.getSkuId()) != null ? map.get(sku.getSkuId()).getStock() : BigDecimal.ZERO);
+            storeSkuStock.setProductId(storeAddSkuItem.getProductId());
+            storeSkuStock.setSkuId(storeAddSkuItem.getSkuId());
+            storeSkuStock.setSkuPrice(storeAddSkuItem.getStorePrice());
+            storeSkuStock.setSkuStock(storeAddSkuItem.getStock());
             storeSkuStock.setCreatedTime(new Date());
             storeSkuStock.setStoreId(storeAddSkuForm.getStoreId());
             storeSkuStockList.add(storeSkuStock);
         }
-        return storeSkuStockMapper.batchInsert(storeSkuStockList) > 1;
+        if (CollectionUtils.isEmpty(storeSkuStockList)) {
+            logger.warn("StoreSkuStockList is empty.");
+            return false;
+        }
+        return storeSkuStockMapper.batchInsert(storeSkuStockList) > 0;
     }
 
     public Page<Store> queryPage(PageRequest pageRequest) {

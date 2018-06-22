@@ -1,4 +1,4 @@
-package cn.jastz.product;
+package cn.jastz.store;
 
 
 import org.mybatis.spring.annotation.MapperScan;
@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -19,7 +18,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
  *
  * @author jast
  */
-@EnableFeignClients("cn.jastz.*.client")
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @SpringBootApplication

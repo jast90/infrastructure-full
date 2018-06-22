@@ -8,7 +8,6 @@ import cn.jastz.product.result.ProductResult;
 import cn.jastz.product.service.SkuService;
 import me.jastz.common.json.result.IResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,8 +40,8 @@ public class SkuController extends CommonBaseController {
         }
     }
 
-    @GetMapping("sku/queryListByIds")
+    @PostMapping("sku/queryListByIds")
     public List<Sku> queryListByIds(@RequestBody List<Integer> ids) {
-        return skuService.queryListByIds(ids, getAppId());
+        return skuService.queryListByIds(ids);
     }
 }

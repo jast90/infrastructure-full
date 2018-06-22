@@ -51,7 +51,7 @@
         function showAddSku(element, storeName, storeId) {
             var id = "addStoreSkuModal";
             var formName = "addStoreSkuForm";
-            var formAction = "${requestContext.getContextPath()}/";
+            var formAction = "${requestContext.getContextPath()}/store/sku/batch/add";
             $(element).myModal({
                 "id": id,
                 "title": "添加点位SKU",

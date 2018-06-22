@@ -14,6 +14,7 @@
     delete from store_sku_stock
     where product_id = #{productId,jdbcType=INTEGER}
       and store_id = #{storeId,jdbcType=INTEGER}
+      and sku_id = #{skuId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.jastz.store.entity.StoreSkuStock" >
     insert into store_sku_stock (product_id, store_id, sku_id, 
@@ -27,25 +28,26 @@
      insert into store_sku_stock (product_id, store_id, sku_id,
       sku_price, sku_stock, created_time,
       update_time)
-    values <foreach collection="list" item="item" separator=",">(#{productId,jdbcType=INTEGER}, #{storeId,jdbcType=INTEGER}, #{skuId,jdbcType=INTEGER},
-    #{skuPrice,jdbcType=DECIMAL}, #{skuStock,jdbcType=DECIMAL}, #{createdTime,jdbcType=TIMESTAMP},
-    #{updateTime,jdbcType=TIMESTAMP})</foreach>
+    values <foreach collection="list" item="item" separator=",">(#{item.productId,jdbcType=INTEGER}, #{item.storeId,jdbcType=INTEGER}, #{item.skuId,jdbcType=INTEGER},
+    #{item.skuPrice,jdbcType=DECIMAL}, #{item.skuStock,jdbcType=DECIMAL}, #{item.createdTime,jdbcType=TIMESTAMP},
+    #{item.updateTime,jdbcType=TIMESTAMP})</foreach>
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.jastz.store.entity.StoreSkuStock" >
     update store_sku_stock
-    set sku_id = #{skuId,jdbcType=INTEGER},
-      sku_price = #{skuPrice,jdbcType=DECIMAL},
+    set sku_price = #{skuPrice,jdbcType=DECIMAL},
       sku_stock = #{skuStock,jdbcType=DECIMAL},
       created_time = #{createdTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where product_id = #{productId,jdbcType=INTEGER}
       and store_id = #{storeId,jdbcType=INTEGER}
+      and sku_id = #{skuId,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
     select product_id, store_id, sku_id, sku_price, sku_stock, created_time, update_time
     from store_sku_stock
     where product_id = #{productId,jdbcType=INTEGER}
       and store_id = #{storeId,jdbcType=INTEGER}
+      and sku_id = #{skuId,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
     select product_id, store_id, sku_id, sku_price, sku_stock, created_time, update_time

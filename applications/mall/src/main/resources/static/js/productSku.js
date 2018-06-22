@@ -25,7 +25,7 @@
             $(element).parent().next().remove();
         }
         skuSelect.push('<div class="col">');
-        skuSelect.push('<select name="skuId" class="form-control"><option>请选择SKU</option></select>');
+        skuSelect.push('<select name="storeAddSkuItems[0].skuId" class="form-control"><option>请选择SKU</option></select>');
         skuSelect.push('</div>');
         $(element).parent().after(skuSelect.join(""))
         $(element).change(function () {
@@ -44,7 +44,7 @@
                 // console.log(value);
                 skuOptions.push('<option value="' + value.skuId + '">' + value.skuCode + ':' + value.price + '</option>')
             });
-            var skuSelect = $(element).parent().next().find("select[name='skuId']");
+            var skuSelect = $(element).parent().next().find("select");
             $(skuSelect).empty().append(skuOptions.join(""));
         });
     }
