@@ -37,7 +37,11 @@
         <div class="form-group row">
             <label for="inputPassword3" class="col-sm-2 control-label">SKU</label>
             <div class="col-sm-10">
-                <select name="productId" ></select>
+                <div class="form-row">
+                    <div class="col">
+                        <select name="productId" class="form-control"></select>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
