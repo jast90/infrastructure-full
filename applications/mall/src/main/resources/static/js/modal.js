@@ -14,7 +14,7 @@
             "okBtn": {
                 "text": "提交",
                 "onclick": function () {
-                    $('form[name="' + settings.formName + '"').submit(function () {.
+                    $('form[name="' + settings.formName + '"').submit(function () {
                         $(this).ajaxSubmit();
                         return false;
                     })
