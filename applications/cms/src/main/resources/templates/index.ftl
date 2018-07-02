@@ -27,7 +27,7 @@
                 <article>
                     <p><a href="/post/${post.id}">${post.postTitle}</a></p>
                     <p>${post.createdTime?datetime}</p>
-                    <p>${post.postContent}</p>
+                    <p>${post.postDescription!""}</p>
                 </article>
             </div>
 

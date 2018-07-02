@@ -33,6 +33,7 @@
         <module>post</module>
         <module>product</module>
         <module>store</module>
+        <module>oss</module>
     </modules>
     <dependencies>
         <dependency>

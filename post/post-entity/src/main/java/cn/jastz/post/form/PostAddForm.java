@@ -10,6 +10,7 @@ import java.util.Date;
 public class PostAddForm {
     private String postTitle;
     private String postContent;
+    private String postDescription;
     private int postAuthor;
     private String appId;
 
@@ -19,6 +20,14 @@ public class PostAddForm {
 
     public void setPostTitle(String postTitle) {
         this.postTitle = postTitle;
+    }
+
+    public String getPostDescription() {
+        return postDescription;
+    }
+
+    public void setPostDescription(String postDescription) {
+        this.postDescription = postDescription;
     }
 
     public String getPostContent() {
@@ -50,6 +59,7 @@ public class PostAddForm {
         post.setCreatedTime(new Date());
         post.setPostAuthor(this.getPostAuthor());
         post.setPostTitle(this.getPostTitle());
+        post.setPostDescription(this.getPostDescription());
         post.setPostContent(this.getPostContent());
         post.setAppId(appId);
         return post;

@@ -11,6 +11,8 @@ public class Post {
 
     private String postTitle;
 
+    private String postDescription;
+
     private String postContent;
 
     private Date createdTime;
@@ -47,6 +49,14 @@ public class Post {
 
     public void setPostTitle(String postTitle) {
         this.postTitle = postTitle == null ? null : postTitle.trim();
+    }
+
+    public String getPostDescription() {
+        return postDescription;
+    }
+
+    public void setPostDescription(String postDescription) {
+        this.postDescription = postDescription;
     }
 
     public String getPostContent() {

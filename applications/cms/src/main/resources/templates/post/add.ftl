@@ -9,9 +9,10 @@
 </head>
 <body>
 <form method="post" action="/post">
-    <input type="text" name="postTitle">
+    标题：<input type="text" name="postTitle">
+    描述：<input type="text" name="postDescription">
     <div id="editormd">
-        <textarea name="postContent"></textarea>
+        内容：<textarea name="postContent"></textarea>
     </div>
     <button type="submit">提交</button>
 </form>
