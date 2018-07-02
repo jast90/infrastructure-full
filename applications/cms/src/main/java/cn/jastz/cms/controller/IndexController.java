@@ -1,7 +1,7 @@
 package cn.jastz.cms.controller;
 
+import cn.jastz.oss.client.PostClient;
 import cn.jastz.page.domain.PageRequest;
-import cn.jastz.post.client.PostClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

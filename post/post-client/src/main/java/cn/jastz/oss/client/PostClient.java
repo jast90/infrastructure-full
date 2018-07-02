@@ -1,4 +1,4 @@
-package cn.jastz.post.client;
+package cn.jastz.oss.client;
 
 import cn.jastz.page.domain.IPage;
 import cn.jastz.page.domain.PageRequest;

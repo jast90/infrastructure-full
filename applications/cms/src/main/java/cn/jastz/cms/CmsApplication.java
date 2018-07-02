@@ -1,6 +1,9 @@
 package cn.jastz.cms;
 
+import com.aliyun.oss.OSS;
+import com.aliyun.oss.OSSClientBuilder;
 import feign.RequestInterceptor;
+import me.jastz.common.aliyun.oss.AliYunOssTemplate;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -24,6 +27,7 @@ import org.springframework.security.oauth2.client.token.grant.client.ClientCrede
 @ComponentScan(basePackages = {"cn.jastz.cms", "cn.jastz.social"})
 public class CmsApplication {
 
+    public static final String ossEndpoint = "oss-cn-beijing.aliyuncs.com";
 
     public static void main(String[] args) {
         SpringApplication.run(CmsApplication.class, args);
@@ -46,5 +50,14 @@ public class CmsApplication {
         return new ClientCredentialsResourceDetails();
     }
 
+    @Bean
+    public OSS oss() {
+        OSS oss = new OSSClientBuilder().build(ossEndpoint, "", "");
+        return oss;
+    }
 
+    @Bean
+    public AliYunOssTemplate aliYunOssTemplate(OSS oss) {
+        return new AliYunOssTemplate(oss);
+    }
 }

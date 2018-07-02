@@ -9,8 +9,8 @@
 </head>
 <body>
 <form method="post" action="/post">
-    标题：<input type="text" name="postTitle">
-    描述：<input type="text" name="postDescription">
+    标题：<input type="text" name="postTitle"><br>
+    描述：<input type="text" name="postDescription"><br>
     <div id="editormd">
         内容：<textarea name="postContent"></textarea>
     </div>
@@ -25,7 +25,7 @@
                 height: 640,
                 imageUpload: true,
                 imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-                imageUploadURL: "./php/upload.php?test=dfdf"
+                imageUploadURL: "${'/upload'}"
                 /*
                  上传的后台只需要返回一个 JSON 数据，结构如下：
                  {
