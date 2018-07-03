@@ -19,4 +19,8 @@ public interface PostMapper {
 
     List<Post> queryPageByAppId(@Param("pageRequest") PageRequest pageRequest
             , @Param("appId") String appId);
+
+    List<Post> selectAllByYear(@Param("year") int year, @Param("appId") String appId);
+
+    List<Integer> selectYears(String appId);
 }

@@ -47,5 +47,20 @@
     select id, app_id, post_author, post_title, post_description, post_content, created_time, updated_time
     from post
     where app_id = #{appId}
+    order by created_time desc
+  </select>
+  <select id="selectAllByYear" resultType="cn.jastz.post.entity.Post">
+      select id, app_id, post_author, post_title, post_description, post_content, created_time, updated_time
+    from post
+    where app_id = #{appId} and year(created_time)=#{year}
+  </select>
+  <select id="selectYears" resultType="_int">
+    SELECT
+      YEAR(created_time) AS `year`
+    FROM
+      post
+    WHERE app_id = #{appId}
+    GROUP BY `year`
+    ORDER BY `year` DESC
   </select>
 </mapper>

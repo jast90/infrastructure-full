@@ -1,9 +1,9 @@
 package cn.jastz.cms.controller;
 
 import cn.jastz.cms.controller.base.BaseController;
-import cn.jastz.oss.client.PostClient;
 import cn.jastz.page.domain.IPage;
 import cn.jastz.page.domain.PageRequest;
+import cn.jastz.post.client.PostClient;
 import cn.jastz.post.entity.Post;
 import cn.jastz.post.form.PostAddForm;
 import cn.jastz.post.form.PostCommentAddForm;
@@ -39,7 +39,7 @@ public class PostController extends BaseController {
 
     @GetMapping("post/{id}")
     public String detail(@PathVariable("id") int id, Model model) {
-        model.addAttribute("post", postClient.quertById(id));
+        model.addAttribute("post", postClient.queryById(id));
         return "post/detail";
     }
 

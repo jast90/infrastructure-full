@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author zhiwen
@@ -40,5 +41,13 @@ public class PostService {
 
     public Post queryByIdAndAppId(int id) {
         return postMapper.selectByPrimaryKey(id);
+    }
+
+    public List<Post> queryListByYear(int year, String appId) {
+        return postMapper.selectAllByYear(year, appId);
+    }
+
+    public List<Integer> queryPostYears(String appId) {
+        return postMapper.selectYears(appId);
     }
 }

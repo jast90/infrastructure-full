@@ -13,6 +13,8 @@ import me.jastz.common.json.result.IResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @author zhiwen
  */
@@ -48,7 +50,17 @@ public class PostController extends CommonBaseController {
     }
 
     @GetMapping("/post/{id}")
-    public Post quertById(@PathVariable("id") int id) {
+    public Post queryById(@PathVariable("id") int id) {
         return postService.queryByIdAndAppId(id);
+    }
+
+    @GetMapping("/post/listByYear/{year}")
+    public List<Post> queryByYear(@PathVariable("year") int year) {
+        return postService.queryListByYear(year, getAppId());
+    }
+
+    @GetMapping("/post/years")
+    public List<Integer> queryPostYears() {
+        return postService.queryPostYears(getAppId());
     }
 }

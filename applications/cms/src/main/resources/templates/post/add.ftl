@@ -9,12 +9,18 @@
 </head>
 <body>
 <form method="post" action="/post">
-    标题：<input type="text" name="postTitle"><br>
-    描述：<input type="text" name="postDescription"><br>
+    <div class="form-group">
+        <label for="postTitle">标题</label>
+        <input type="text" name="postTitle" id="postTitle" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="postDescription">描述</label>
+        <textarea name="postDescription" id="postDescription" class="form-control"></textarea>
+    </div>
     <div id="editormd">
         内容：<textarea name="postContent"></textarea>
     </div>
-    <button type="submit">提交</button>
+    <button type="submit" class="btn btn-primary">提交</button>
 </form>
 <javascript>
     <script src="/webjars/editor.md/1.5.0/editormd.min.js"></script>
