@@ -1,7 +1,8 @@
 FROM java:8-jre
-MAINTAINER Jast Zhang <zhangzhiwen91@gmail.com>
+MAINTAINER Zhiwen Zhang <zhangzhiwen91@gmail.com>
+ENV PROFILE default
+ENV PORT 8888
+ADD ./target/open-service.jar /app/
+CMD ["java", "-Xmx200m", "-jar","-Dspring.profiles.active=$PROFILE","-Dserver.port=$PORT","/app/open-service.jar"]
 
-ADD ./target/open-service-1.0-SNAPSHOT.jar /app/
-
-CMD ["java","-Xmx200m","jar","/app/open-service-1.0-SNAPSHOT.jar"]
 EXPOSE 8888

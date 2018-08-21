@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>account-service</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>account-service</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
@@ -70,7 +70,6 @@
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
