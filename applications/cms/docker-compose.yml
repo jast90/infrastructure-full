@@ -45,3 +45,6 @@ cms:
     aliyunOssSecretAccessKey: $aliyunOssAccessKeyId
   ports:
   - 8080:8080
+
+# 运行命令如下：
+# aliyunOssAccessKeyId=your-keyId aliyunOssSecretAccessKey=your-access-key docker-compose.exe up --build
