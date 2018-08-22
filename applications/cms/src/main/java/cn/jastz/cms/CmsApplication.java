@@ -53,7 +53,9 @@ public class CmsApplication {
     @Bean
     public OSS oss() {
         //从环境变量中获取
-        String accessKeyId = System.getenv("aliyunOssAccessKeyId"), secretAccessKey = System.getenv("aliyunOssSecretAccessKey");
+        String accessKeyId = System.getProperty("aliyunOssAccessKeyId"), secretAccessKey = System.getProperty("aliyunOssSecretAccessKey");
+        System.out.println("Aliyun OSS accessKeyId:" + accessKeyId);
+        System.out.println("Aliyun OSS secretAccessKey:" + secretAccessKey);
         OSS oss = new OSSClientBuilder().build(ossEndpoint, accessKeyId, secretAccessKey);
         return oss;
     }

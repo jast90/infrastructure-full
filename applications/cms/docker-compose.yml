@@ -35,3 +35,13 @@ product:
     PORT: 8084
   ports:
   - 8084:8084
+
+cms:
+  build: ./
+  environment:
+    PROFILE: ubox
+    PORT: 8080
+    aliyunOssAccessKeyId: $aliyunOssAccessKeyId
+    aliyunOssSecretAccessKey: $aliyunOssAccessKeyId
+  ports:
+  - 8080:8080
