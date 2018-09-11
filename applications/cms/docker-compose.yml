@@ -2,7 +2,7 @@ discovery:
   image: registry.docker-cn.com/jast90/spring-eureka
   restart: always
   ports:
-  - 8761:8761
+    - 8761:8761
 
 open:
   build: ../../open/open-service
@@ -10,7 +10,7 @@ open:
     PROFILE: ubox
     PORT: 8888
   ports:
-  - 8888:8888
+    - 8888:8888
 
 account:
   build: ../../account/account-service
@@ -18,7 +18,7 @@ account:
     PROFILE: ubox
     PORT: 8081
   ports:
-  - 8081:8081
+    - 8081:8081
 
 post:
   build: ../../post/post-service
@@ -26,7 +26,7 @@ post:
     PROFILE: ubox
     PORT: 8082
   ports:
-  - 8082:8082
+    - 8082:8082
 
 product:
   build: ../../product/product-service
@@ -34,9 +34,9 @@ product:
     PROFILE: ubox
     PORT: 8084
   ports:
-  - 8084:8084
+    - 8084:8084
 
-cms:
+cms8080:
   build: ./
   environment:
     PROFILE: ubox
@@ -44,7 +44,23 @@ cms:
     aliyunOssAccessKeyId: $aliyunOssAccessKeyId
     aliyunOssSecretAccessKey: $aliyunOssAccessKeyId
   ports:
-  - 8080:8080
+    - 8080:8080
 
+cms9090:
+  build: ./
+  environment:
+    PROFILE: ubox
+    PORT: 9090
+    aliyunOssAccessKeyId: $aliyunOssAccessKeyId
+    aliyunOssSecretAccessKey: $aliyunOssAccessKeyId
+  ports:
+  - 9090:9090
+
+#nginx:
+#  image: nginx
+#  volumes:
+#    - ./nginx.conf:/etc/nginx/nginx.conf
+#  ports:
+#    - "80:80"
 # 运行命令如下：
 # aliyunOssAccessKeyId=your-keyId aliyunOssSecretAccessKey=your-access-key docker-compose.exe up --build
