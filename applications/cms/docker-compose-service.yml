@@ -1,0 +1,46 @@
+discovery:
+  image: registry.docker-cn.com/jast90/spring-eureka
+  restart: always
+  ports:
+    - 8761:8761
+
+open:
+  build: ../../open/open-service
+  environment:
+    PROFILE: ubox
+    PORT: 8888
+  ports:
+    - 8888:8888
+
+account:
+  build: ../../account/account-service
+  environment:
+    PROFILE: ubox
+    PORT: 8081
+  ports:
+    - 8081:8081
+
+post:
+  build: ../../post/post-service
+  environment:
+    PROFILE: ubox
+    PORT: 8082
+  ports:
+    - 8082:8082
+
+product:
+  build: ../../product/product-service
+  environment:
+    PROFILE: ubox
+    PORT: 8084
+  ports:
+    - 8084:8084
+
+#nginx:
+#  image: nginx
+#  volumes:
+#    - ./nginx.conf:/etc/nginx/nginx.conf
+#  ports:
+#    - "80:80"
+# 运行命令如下：
+# aliyunOssAccessKeyId=your-keyId aliyunOssSecretAccessKey=your-access-key docker-compose.exe up --build
