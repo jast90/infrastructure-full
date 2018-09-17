@@ -32,6 +32,13 @@ product:
   ports:
     - 8084:8084
 
+store:
+  build: ../../store/store-service
+  environment:
+    PORT: 8087
+  ports:
+    - 8087:8087
+
 #nginx:
 #  image: nginx
 #  volumes:
