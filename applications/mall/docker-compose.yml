@@ -1,0 +1,22 @@
+mall1:
+  build: ./
+  environment:
+    PORT: 9527
+  ports:
+  - 9527:9527
+
+mall2:
+  build: ./
+  environment:
+    PORT: 9528
+  ports:
+  - 9528:9528
+
+nginx:
+  image: nginx
+  volumes:
+    - ./nginx.conf:/etc/nginx/nginx.conf
+  ports:
+    - "81:81"
+# 运行命令如下：
+# docker-compose up --build

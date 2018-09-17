@@ -16,11 +16,11 @@ cms9090:
   ports:
   - 9090:9090
 
-nginx:
-  image: nginx
-  volumes:
-    - ./nginx.conf:/etc/nginx/nginx.conf
-  ports:
-    - "80:80"
+#nginx:
+#  image: nginx
+#  volumes:
+#    - ./nginx.conf:/etc/nginx/nginx.conf
+#  ports:
+#    - "80:80"
 # 运行命令如下：
-# aliyunOssAccessKeyId=your-keyId aliyunOssSecretAccessKey=your-access-key docker-compose -f docker-compose.yml up --build
+# aliyunOssAccessKeyId=your-keyId aliyunOssSecretAccessKey=your-access-key docker-compose.exe up --build

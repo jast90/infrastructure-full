@@ -1,5 +1,6 @@
 package cn.jastz.common.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -11,6 +12,10 @@ import org.springframework.security.oauth2.provider.token.ResourceServerTokenSer
 @Configuration
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
+    @Value("${my.host}")
+    private String host;
+
+
     @Primary
     @Bean
     public ResourceServerTokenServices tokenServices() {
@@ -18,7 +23,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         tokenServices.setClientId("service");
         tokenServices.setClientSecret("service123");
         //TODO 将该地址放到配置文件
-        tokenServices.setCheckTokenEndpointUrl("http://192.168.99.100:8888/oauth/check_token");
+        tokenServices.setCheckTokenEndpointUrl(String.format("http://%s:8888/oauth/check_token",host));
         return tokenServices;
     }
 
