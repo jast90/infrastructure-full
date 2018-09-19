@@ -2,6 +2,7 @@ mall1:
   build: ./
   environment:
     PORT: 9527
+    PROFILE: ubox
   ports:
   - 9527:9527
 
@@ -9,6 +10,7 @@ mall2:
   build: ./
   environment:
     PORT: 9528
+    PROFILE: ubox
   ports:
   - 9528:9528
 
