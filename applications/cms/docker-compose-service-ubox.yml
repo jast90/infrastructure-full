@@ -7,6 +7,7 @@ discovery:
 open:
   build: ../../open/open-service
   environment:
+    PROFILE: ubox
     PORT: 8888
   ports:
     - 8888:8888
@@ -14,6 +15,7 @@ open:
 account:
   build: ../../account/account-service
   environment:
+    PROFILE: ubox
     PORT: 8081
   ports:
     - 8081:8081
@@ -21,6 +23,7 @@ account:
 post:
   build: ../../post/post-service
   environment:
+    PROFILE: ubox
     PORT: 8082
   ports:
     - 8082:8082
@@ -28,6 +31,7 @@ post:
 product:
   build: ../../product/product-service
   environment:
+    PROFILE: ubox
     PORT: 8084
   ports:
     - 8084:8084
@@ -39,4 +43,4 @@ product:
 #  ports:
 #    - "80:80"
 # 运行命令如下：
-# aliyunOssAccessKeyId=your-keyId aliyunOssSecretAccessKey=your-access-key docker-compose.exe up --build
+# docker-compose.exe -f docker-compose-service-ubox.yml up --build

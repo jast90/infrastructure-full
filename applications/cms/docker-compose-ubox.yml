@@ -2,6 +2,7 @@ cms8080:
   build: ./
   environment:
     PORT: 8080
+    PROFILE: ubox
     aliyunOssAccessKeyId: $aliyunOssAccessKeyId
     aliyunOssSecretAccessKey: $aliyunOssAccessKeyId
   ports:
@@ -11,6 +12,7 @@ cms9090:
   build: ./
   environment:
     PORT: 9090
+    PROFILE: ubox
     aliyunOssAccessKeyId: $aliyunOssAccessKeyId
     aliyunOssSecretAccessKey: $aliyunOssAccessKeyId
   ports:
