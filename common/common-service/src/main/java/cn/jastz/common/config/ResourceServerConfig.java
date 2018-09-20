@@ -12,7 +12,7 @@ import org.springframework.security.oauth2.provider.token.ResourceServerTokenSer
 @Configuration
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
-    @Value("${my.host}")
+    @Value("${my.service.host}")
     private String host;
 
 
