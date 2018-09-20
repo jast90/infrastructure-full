@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Properties>
+        <Property name="logPath">/logs</Property>
+        <Property name="fileName">open</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="%d [%t] %-5level %logger{1.} - %msg%n"/>
+            <!--pattern="%highlight{%d [%t] %-5level %logger{1.} - %msg%n}{FATAL=white, ERROR=red, WARN=blue, INFO=black, DEBUG=green, TRACE=blue}"/>-->
+        </Console>
+        <File name="file" fileName="${logPath}/${fileName}.log">
+            <PatternLayout>
+                <Pattern>%highlight{%d [%t] %-5level %logger{1.} - %msg%n}{FATAL=white, ERROR=red, WARN=blue,
+                    INFO=black, DEBUG=green, TRACE=blue}
+                </Pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Logger name="cn.jastz" level="debug">
+            <AppenderRef ref="file"></AppenderRef>
+        </Logger>
+        <Logger name="com.netflix.discovery" level="debug">
+            <AppenderRef ref="Console"></AppenderRef>
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="Console"></AppenderRef>
+        </Root>
+    </Loggers>
+</Configuration>
