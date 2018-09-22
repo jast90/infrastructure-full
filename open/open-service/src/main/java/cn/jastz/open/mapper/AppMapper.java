@@ -1,6 +1,9 @@
 package cn.jastz.open.mapper;
 
 import cn.jastz.open.entity.App;
+import cn.jastz.page.domain.PageRequest;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 public interface AppMapper {
@@ -13,4 +16,6 @@ public interface AppMapper {
     List<App> selectAll();
 
     int updateByPrimaryKey(App record);
+
+    List<App> queryPage(@Param("pageRequest") PageRequest pageRequest);
 }

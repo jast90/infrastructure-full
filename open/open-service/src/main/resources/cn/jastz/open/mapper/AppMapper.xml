@@ -35,4 +35,9 @@
     select app_id, app_secret, domain, created_time, updated_time
     from app
   </select>
+
+  <select id="queryPage" resultMap="BaseResultMap">
+    select app_id, app_secret, domain, created_time, updated_time
+    from app
+  </select>
 </mapper>

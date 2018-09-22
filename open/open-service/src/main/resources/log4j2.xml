@@ -19,12 +19,13 @@
         </File>
     </Appenders>
     <Loggers>
-        <Logger name="cn.jastz" level="debug">
+        <Logger name="cn.jastz" level="debug" additivity="false">
             <AppenderRef ref="file"></AppenderRef>
-        </Logger>
-        <Logger name="com.netflix.discovery" level="debug">
             <AppenderRef ref="Console"></AppenderRef>
         </Logger>
+        <!--<Logger name="com.netflix.discovery" level="debug">-->
+            <!--<AppenderRef ref="Console"></AppenderRef>-->
+        <!--</Logger>-->
         <Root level="info">
             <AppenderRef ref="Console"></AppenderRef>
         </Root>
