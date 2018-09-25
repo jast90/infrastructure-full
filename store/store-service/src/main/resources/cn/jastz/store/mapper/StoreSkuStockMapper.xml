@@ -53,4 +53,10 @@
     select product_id, store_id, sku_id, sku_price, sku_stock, created_time, update_time
     from store_sku_stock
   </select>
+  <select id="selectListByStoreId" resultMap="BaseResultMap" >
+    select product_id, store_id, sku_id, sku_price, sku_stock, created_time, update_time
+    from store_sku_stock
+    where store_id = #{storeId}
+  </select>
+
 </mapper>

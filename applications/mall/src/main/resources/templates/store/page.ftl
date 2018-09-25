@@ -20,7 +20,8 @@
     <td>${store?index}</td>
     <td>${store.storeName}</td>
     <td>${store.address}</td>
-    <td><a href="javascript:void(0);" onclick="showAddSku(this,'${store.storeName}','${store.storeId}')">添加sku</a></td>
+    <td><a href="javascript:void(0);" onclick="showAddSku(this,'${store.storeName}','${store.storeId}')">添加sku</a>|<a
+            href="${requestContext.getContextPath()}/store/sku/stock/${store.storeId}">sku列表</a></td>
 </tr>
 </#list>
     </tbody>

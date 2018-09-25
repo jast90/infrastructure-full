@@ -1,8 +1,8 @@
 package cn.jastz.product.client;
 
-import cn.jastz.product.entity.Sku;
 import cn.jastz.product.form.SkuAddForm;
 import cn.jastz.product.form.SkuAttrRefBatchAddForm;
+import cn.jastz.product.vo.SkuProductVo;
 import me.jastz.common.json.result.BaseResult;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,5 +23,5 @@ public interface SkuClient {
     BaseResult batchAddSkuAttrRef(@RequestBody SkuAttrRefBatchAddForm skuAttrRefBatchAddForm);
 
     @PostMapping("sku/queryListByIds")
-    List<Sku> queryListByIds(@RequestBody List<Integer> integers);
+    List<SkuProductVo> queryListByIds(@RequestBody List<Integer> integers);
 }

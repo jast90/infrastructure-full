@@ -5,6 +5,8 @@ import cn.jastz.product.entity.Sku;
 import cn.jastz.product.form.SkuAddForm;
 import cn.jastz.product.form.SkuAttrRefAddForm;
 import cn.jastz.product.form.SkuAttrRefBatchAddForm;
+import cn.jastz.product.vo.SkuProductVo;
+import me.jastz.common.json.JsonUtil;
 import org.assertj.core.util.Lists;
 import org.junit.Assert;
 import org.junit.Test;
@@ -66,7 +68,7 @@ public class SkuServiceTest extends BaseTest<SkuService> {
 
     @Test
     public void test() {
-        List<Sku> list = service.queryListByIds(Lists.newArrayList(1, 2, 3));
-        System.out.println(list);
+        List<SkuProductVo> list = service.queryListByIds(Lists.newArrayList(1, 2, 3));
+        System.out.println(JsonUtil.objectToJson(list));
     }
 }

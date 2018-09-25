@@ -17,4 +17,6 @@ public interface StoreSkuStockMapper {
     int updateByPrimaryKey(StoreSkuStock record);
 
     int batchInsert(List<StoreSkuStock> storeSkuStockList);
+
+    List<StoreSkuStock> selectListByStoreId(int storeId);
 }

@@ -10,6 +10,10 @@
     <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
     <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
   </resultMap>
+
+  <resultMap id="skuProductResultMap" type="cn.jastz.product.vo.SkuProductVo" extends="BaseResultMap">
+    <association property="product" column="product_id" javaType="cn.jastz.product.entity.Product" select="cn.jastz.product.mapper.ProductMapper.selectByPrimaryKey" />
+  </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from sku
     where sku_id = #{skuId,jdbcType=INTEGER}
@@ -41,7 +45,7 @@
     select sku_id, product_id, sku_code, price, app_id, created_time, updated_time
     from sku
   </select>
-  <select id="selectListByIds" resultMap="BaseResultMap">
+  <select id="selectListByIds" resultMap="skuProductResultMap">
     select sku_id, product_id, sku_code, price, app_id, created_time, updated_time
     from sku
     where sku_id in <foreach collection="ids" item="id" open="(" close=")" separator=",">#{id}</foreach>

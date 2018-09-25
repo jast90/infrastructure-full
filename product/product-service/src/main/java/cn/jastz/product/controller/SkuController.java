@@ -6,6 +6,7 @@ import cn.jastz.product.form.SkuAddForm;
 import cn.jastz.product.form.SkuAttrRefBatchAddForm;
 import cn.jastz.product.result.ProductResult;
 import cn.jastz.product.service.SkuService;
+import cn.jastz.product.vo.SkuProductVo;
 import me.jastz.common.json.result.IResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,7 +42,7 @@ public class SkuController extends CommonBaseController {
     }
 
     @PostMapping("sku/queryListByIds")
-    public List<Sku> queryListByIds(@RequestBody List<Integer> ids) {
+    public List<SkuProductVo> queryListByIds(@RequestBody List<Integer> ids) {
         return skuService.queryListByIds(ids);
     }
 }

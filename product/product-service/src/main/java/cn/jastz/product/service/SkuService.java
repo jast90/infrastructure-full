@@ -8,6 +8,7 @@ import cn.jastz.product.form.SkuAttrRefBatchAddForm;
 import cn.jastz.product.mapper.ProductSkuAttrRefMapper;
 import cn.jastz.product.mapper.SkuAttrRefMapper;
 import cn.jastz.product.mapper.SkuMapper;
+import cn.jastz.product.vo.SkuProductVo;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,7 +77,7 @@ public class SkuService {
         return count > 0;
     }
 
-    public List<Sku> queryListByIds(List<Integer> ids) {
+    public List<SkuProductVo> queryListByIds(List<Integer> ids) {
         if (CollectionUtils.isEmpty(ids)) {
             return Lists.newArrayList();
         }

@@ -20,4 +20,5 @@ public interface ProductMapper {
     ProductVo queryProductVoByPrimaryKey(Integer productId);
 
     List<ProductSkuVo> queryAllProductSkuVo();
+
 }

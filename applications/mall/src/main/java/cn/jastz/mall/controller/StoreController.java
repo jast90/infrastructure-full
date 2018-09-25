@@ -52,4 +52,10 @@ public class StoreController {
     public IResult batchAddStoreSku(MallStoreAddSkuForm mallStoreAddSkuForm) {
         return storeService.batchAddStoreSku(mallStoreAddSkuForm);
     }
+
+    @GetMapping("store/sku/stock/{storeId}")
+    public String queryAllStoreSkuStockByStoreId(@PathVariable("storeId") int storeId, Model model) {
+        model.addAttribute("list", storeService.queryAllStoreSkuStockByStoreId(storeId));
+        return "store/sku/list";
+    }
 }
