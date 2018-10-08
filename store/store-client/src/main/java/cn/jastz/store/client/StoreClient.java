@@ -29,6 +29,6 @@ public interface StoreClient {
     @PostMapping("store/page")
     Page<Store> queryPage(@RequestBody PageRequest pageRequest);
 
-    @GetMapping("sku/stock/list/{storeId}")
+    @GetMapping("store/sku/stock/list/{storeId}")
     List<StoreSkuStock> queryStoreSkuStockByStoreId(@PathVariable("storeId") int storeId);
 }
