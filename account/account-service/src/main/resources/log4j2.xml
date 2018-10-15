@@ -7,7 +7,7 @@
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout
-                    pattern="%d [%t] %-5level %logger{1.} - %msg%n"/>
+                    pattern="%d [%t] %-5level %logger{1.} %l - %msg%n"/>
             <!--pattern="%highlight{%d [%t] %-5level %logger{1.} - %msg%n}{FATAL=white, ERROR=red, WARN=blue, INFO=black, DEBUG=green, TRACE=blue}"/>-->
         </Console>
         <File name="file" fileName="${logPath}/${fileName}.log">
@@ -19,13 +19,14 @@
         </File>
     </Appenders>
     <Loggers>
-        <Logger name="cn.jastz" level="debug">
+        <Logger name="cn.jastz" level="debug" additivity="false">
             <AppenderRef ref="file"></AppenderRef>
+            <AppenderRef ref="Console"></AppenderRef>
         </Logger>
         <Logger name="com.netflix.discovery" level="debug">
             <AppenderRef ref="Console"></AppenderRef>
         </Logger>
-        <Root level="info">
+        <Root level="debug">
             <AppenderRef ref="Console"></AppenderRef>
         </Root>
     </Loggers>
