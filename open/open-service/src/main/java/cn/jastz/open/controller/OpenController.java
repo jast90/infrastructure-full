@@ -1,6 +1,8 @@
 package cn.jastz.open.controller;
 
+import cn.jastz.common.entity.enums.SocialEnum;
 import cn.jastz.open.entity.App;
+import cn.jastz.open.entity.AppSocialRef;
 import cn.jastz.open.service.OpenService;
 import cn.jastz.page.domain.Page;
 import cn.jastz.page.domain.PageRequest;
@@ -31,9 +33,10 @@ public class OpenController {
 
     @GetMapping("app/page/{num}")
     public String findAppByPage(@PathVariable("num") int num, Model model) {
-        PageRequest pageRequest = PageRequest.of(num-1, 20);
+        PageRequest pageRequest = PageRequest.of(num - 1, 20);
         Page<App> page = openService.findAppByPage(pageRequest);
         model.addAttribute("page", page);
+        model.addAttribute("socials", SocialEnum.values());
         return "app/list";
     }
 }

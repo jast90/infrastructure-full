@@ -21,6 +21,7 @@
         <module>common-social</module>
         <module>common-sitemesh</module>
         <module>common-webjar</module>
+        <module>common-entity</module>
     </modules>
 
 </project>

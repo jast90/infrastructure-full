@@ -1,25 +1,36 @@
 package cn.jastz.open.controller;
 
 import cn.jastz.open.entity.App;
+import cn.jastz.open.entity.AppSocialRef;
 import cn.jastz.open.mapper.AppMapper;
+import cn.jastz.open.mapper.AppSocialRefMapper;
+import me.jastz.common.json.result.IResult;
+import me.jastz.common.json.result.SampleResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author zhiwen
  */
 @RestController
-@RequestMapping("app")
 public class AppController extends BaseController {
 
     @Autowired
     private AppMapper appMapper;
 
-    @GetMapping("{appId}")
+    @Autowired
+    private AppSocialRefMapper appSocialRefMapper;
+
+    @GetMapping("app/{appId}")
     public App getById(@PathVariable("appId") String appId) {
         return appMapper.selectByPrimaryKey(appId);
+    }
+
+    @PostMapping("/app/socialRef")
+    public IResult addAppSocialRef(@RequestBody AppSocialRef appSocialRef) {
+        if (appSocialRefMapper.insert(appSocialRef) > 0) {
+            return SampleResult.SUCCESS;
+        }
+        return SampleResult.FAIL;
     }
 }

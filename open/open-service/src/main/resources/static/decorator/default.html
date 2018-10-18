@@ -41,17 +41,19 @@
 <script src="/webjars/jquery-form/4.2.1/jquery.form.min.js"></script>
 <script ype="text/javascript" src="/webjars/bootstrap-sweetalert/1.0.1/dist/sweetalert.min.js"></script>
 <script type="text/javascript" src="/webjars/noty/2.2.4/jquery.noty.packaged.min.js"></script>
+<script src="/webjars/bootstrap-validator/0.11.9/dist/validator.min.js"></script>
+<script src="/static/js/modal.js"></script>
 <script type="text/javascript">
     var options = {
-        beforeSubmit:function(){
+        beforeSubmit: function () {
             console.log("form submit ");
         },
-        success:function(data){
+        success: function (data) {
             // noty({layout:"center",text:data.resultMsg,type:"success"});
             swal(data.resultMsg);
         }
     };
-    $("form").submit(function(){
+    $("form").submit(function () {
         $(this).ajaxSubmit(options);
         return false;
     });

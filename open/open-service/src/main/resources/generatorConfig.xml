@@ -43,6 +43,6 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
-        <table tableName="app"/>
+        <table tableName="app_social_ref"/>
     </context>
 </generatorConfiguration>

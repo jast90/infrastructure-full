@@ -32,7 +32,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @SpringBootApplication(scanBasePackages = "cn.jastz")
 @MapperScan(basePackages = "cn.jastz.*.mapper")
 @EnableOAuth2Client
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 public class OpenServiceApplication extends SpringBootServletInitializer {
 
     @Override
