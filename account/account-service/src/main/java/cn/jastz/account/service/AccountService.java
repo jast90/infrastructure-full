@@ -43,4 +43,14 @@ public class AccountService {
     public Account queryByAccountByAccount(String accountName) {
         return accountMapper.selectByAccount(accountName);
     }
+
+    /**
+     * 绑定社交账号
+     *
+     * @param accountSocialRef
+     * @return
+     */
+    public int saveAccountSocialRef(AccountSocialRef accountSocialRef) {
+        return accountSocialRefMapper.insert(accountSocialRef);
+    }
 }

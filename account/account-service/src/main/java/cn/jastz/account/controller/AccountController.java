@@ -1,6 +1,7 @@
 package cn.jastz.account.controller;
 
 import cn.jastz.account.entity.Account;
+import cn.jastz.account.entity.AccountSocialRef;
 import cn.jastz.account.form.AccountAddForm;
 import cn.jastz.account.result.AccountResult;
 import cn.jastz.account.service.AccountService;
@@ -47,6 +48,14 @@ public class AccountController extends CommonBaseController {
         accountAddForm.getAccountSocialRef().setAppId(getAppId());
         int count = accountService.saveAccount(accountAddForm.getAccount(), accountAddForm.getAccountSocialRef());
         if (count > 0) {
+            return AccountResult.SUCCESS;
+        }
+        return AccountResult.FAIL;
+    }
+
+    @PostMapping("addAccountSocialRef")
+    public IResult addAccountSocialRef(AccountSocialRef accountSocialRef) {
+        if (accountService.saveAccountSocialRef(accountSocialRef) > 0) {
             return AccountResult.SUCCESS;
         }
         return AccountResult.FAIL;
