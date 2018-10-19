@@ -14,10 +14,10 @@
             "okBtn": {
                 "text": "提交",
                 "onclick": function () {
-                    $('form[name="' + settings.formName + '"').submit(function () {
-                        $(this).ajaxSubmit();
-                        return false;
-                    })
+                    var form = $('form[name="' + settings.formName + '"');
+                    $(form).submit(function (event) {
+                        event.preventDefault();
+                    });
                 }
             },
             "bodyHtml": "<p>内容</p>"
@@ -51,8 +51,8 @@
                 '</div>';
             $('body').append(html);
 
-            $("#exampleModalLong .ok").on("click", function () {
-                settings.okBtn.onclick.call(this)
+            $('form[name="' + settings.formName + '"]').find(".ok").on("click", function () {
+                // settings.okBtn.onclick.call(this);
             });
             $('form[name="' + settings.formName + '"]').validator()
         });

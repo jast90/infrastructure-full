@@ -45,13 +45,16 @@
 <script src="/static/js/modal.js"></script>
 <script type="text/javascript">
     var options = {
-        beforeSubmit: function () {
+        beforeSubmit: function (arr, $form, options) {
+            console.log(arr);
             console.log("form submit ");
         },
         success: function (data) {
             // noty({layout:"center",text:data.resultMsg,type:"success"});
             swal(data.resultMsg);
-        }
+        },
+        dataType: "json",
+        contentType: "application/json"
     };
     $("form").submit(function () {
         $(this).ajaxSubmit(options);

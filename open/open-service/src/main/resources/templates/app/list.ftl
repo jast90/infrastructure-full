@@ -20,7 +20,7 @@
         <td>${app.domain}</td>
         <td>${app.appId}</td>
         <td>${app.appSecret}</td>
-        <td><a href="javascript:void(0);" class="addSocialRef" data-appId="${app.appId}">社交配置</a></td>
+        <td><a href="javascript:void(0);" class="addSocialRef" data-app-id="${app.appId}">社交配置</a></td>
     </tr>
     </#list>
     </tbody>
@@ -31,7 +31,7 @@
         <div class="form-group row">
             <label class="col-sm-2 control-label">appId</label>
             <div class="col-sm-10">
-                <input type="text" name="appId" id="appId" readonly>
+                <input type="text" name="appId" readonly class="form-control">
             </div>
         </div>
         <div class="form-group row">
@@ -48,13 +48,13 @@
         <div class="form-group row">
             <label class="col-sm-2 control-label">appId</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="appId" placeholder="appId">
+                <input type="text" class="form-control" name="socialAppId" placeholder="社交appId">
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 control-label">appSecret</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="appSecret" placeholder="密钥">
+                <input type="text" class="form-control" name="socialAppSecret" placeholder="社交密钥">
             </div>
         </div>
     </div>
@@ -64,16 +64,24 @@
     <script type="text/javascript">
         $(function () {
             $(".addSocialRef").on("click", function () {
-                var appId = $(this).data("appId");
-                $("#addSocialRefDiv").find("#appId").val(appId);
                 $(this).myModal({
                     "id": "addSocialRefModel",
                     "title": "社交配置",
                     "formName": "addSocialRefForm",
                     "formAction": "/app/socialRef",
-                    "bodyHtml": $("#addSocialRefDiv").html()
-                })
-                ;
+                    "bodyHtml": $("#addSocialRefDiv").html(),
+                    "okBtn": {
+                        "text": "提交",
+                        "onclick": function () {
+                            /*$('form[name="addSocialRefForm"]').submit(function () {
+                                $('form[name="addSocialRefForm"]').ajaxSubmit(options);
+                                return false;
+                            });*/
+                        }
+                    }
+                });
+                var appId = $(this).data("app-id");
+                $("form[name='addSocialRefForm']").find("input[name='appId']").val(appId);
             });
         });
     </script>
