@@ -27,7 +27,7 @@ public class AppController extends BaseController {
     }
 
     @PostMapping("/app/socialRef")
-    public IResult addAppSocialRef(AppSocialRef appSocialRef) {
+    public IResult addAppSocialRef(@RequestBody AppSocialRef appSocialRef) {
         if (appSocialRefMapper.insert(appSocialRef) > 0) {
             return SampleResult.SUCCESS;
         }

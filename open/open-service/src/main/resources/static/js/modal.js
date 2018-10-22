@@ -15,19 +15,40 @@
                 "text": "提交",
                 "onclick": function () {
                     var form = $('form[name="' + settings.formName + '"');
-                    $(form).submit(function (event) {
-                        event.preventDefault();
-                    });
+                    $(form).validator('validate');
+                    var data = getFormData($(form));
+                    $.ajax({
+                        url: form.attr("action"),
+                        contentType: "application/json; charset=utf-8",
+                        method: "post",
+                        data: JSON.stringify(data),
+                        success: function () {
+                            $("#" + settings.id).modal("hide");
+                        }
+                    })
+
                 }
             },
             "bodyHtml": "<p>内容</p>"
         };
         var settings = $.extend({}, defaults, options);
 
+        function getFormData($form) {
+            var unindexed_array = $form.serializeArray();
+            console.log(unindexed_array);
+            var indexed_array = {};
+
+            $.map(unindexed_array, function (n, i) {
+                indexed_array[n['name']] = n['value'];
+            });
+
+            return indexed_array;
+        }
+
         return this.each(function () {
-            if ($(this).attr("data-target") && $(this).attr("data-toggle")) {
-                $("#" + settings.id).remove();
-            }
+            // if ($(this).attr("data-target") && $(this).attr("data-toggle")) {
+            $("#" + settings.id).remove();
+            // }
             $(this).attr("data-target", "#" + settings.id).attr("data-toggle", "modal");
             var html = '<div class="modal fade" id="' + settings.id + '">\n' +
                 '  <div class="modal-dialog">\n' +
@@ -43,7 +64,7 @@
                 '      </div>\n' +
                 '      <div class="modal-footer">\n' +
                 '        <button type="button" class="btn btn-secondary cancel" data-dismiss="modal">' + settings.cancelBtn.text + '</button>' +
-                '        <button type="submit" class="btn btn-primary ok">' + settings.okBtn.text + '</button>' +
+                '        <button type="button" class="btn btn-primary ok">' + settings.okBtn.text + '</button>' +
                 '      </div>\n' +
                 '</form>\n' +
                 '    </div>\n' +
@@ -52,9 +73,11 @@
             $('body').append(html);
 
             $('form[name="' + settings.formName + '"]').find(".ok").on("click", function () {
-                // settings.okBtn.onclick.call(this);
+                settings.okBtn.onclick.call(this);
             });
-            $('form[name="' + settings.formName + '"]').validator()
+
+            $('form[name="' + settings.formName + '"]').validator();
+
         });
     }
 })(jQuery)

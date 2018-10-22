@@ -37,7 +37,7 @@
         <div class="form-group row">
             <label for="inputEmail3" class="col-sm-2 control-label">社交网站</label>
             <div class="col-sm-10">
-                <select class="form-control" name="social">
+                <select class="form-control" name="social" required>
                     <option value="">请选择社交网站</option>
                     <#list socials as social>
                         <option value="${social.name()}">${social.desc}</option>
@@ -48,13 +48,13 @@
         <div class="form-group row">
             <label class="col-sm-2 control-label">appId</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="socialAppId" placeholder="社交appId">
+                <input type="text" class="form-control" name="socialAppId" placeholder="社交appId" required>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 control-label">appSecret</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="socialAppSecret" placeholder="社交密钥">
+                <input type="text" class="form-control" name="socialAppSecret" placeholder="社交密钥" required>
             </div>
         </div>
     </div>
@@ -69,16 +69,7 @@
                     "title": "社交配置",
                     "formName": "addSocialRefForm",
                     "formAction": "/app/socialRef",
-                    "bodyHtml": $("#addSocialRefDiv").html(),
-                    "okBtn": {
-                        "text": "提交",
-                        "onclick": function () {
-                            /*$('form[name="addSocialRefForm"]').submit(function () {
-                                $('form[name="addSocialRefForm"]').ajaxSubmit(options);
-                                return false;
-                            });*/
-                        }
-                    }
+                    "bodyHtml": $("#addSocialRefDiv").html()
                 });
                 var appId = $(this).data("app-id");
                 $("form[name='addSocialRefForm']").find("input[name='appId']").val(appId);
