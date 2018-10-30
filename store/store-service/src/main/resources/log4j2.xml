@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
     <Properties>
-        <Property name="logPath">/logs</Property>
-        <Property name="fileName">store</Property>
+        <Property name="logPath">${sys:logPath:-/logDefault}</Property>
+        <Property name="fileName">${sys:logFileName:-storeDefault}</Property>
     </Properties>
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
@@ -27,6 +27,7 @@
         </Logger>
         <Root level="info">
             <AppenderRef ref="Console"></AppenderRef>
+            <AppenderRef ref="file"></AppenderRef>
         </Root>
     </Loggers>
 </Configuration>
