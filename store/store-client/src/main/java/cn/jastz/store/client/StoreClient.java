@@ -6,12 +6,11 @@ import cn.jastz.store.entity.Store;
 import cn.jastz.store.entity.StoreSkuStock;
 import cn.jastz.store.form.StoreAddForm;
 import cn.jastz.store.form.StoreAddSkuForm;
+import cn.jastz.store.form.StoreSkuStockForm;
 import me.jastz.common.json.result.BaseResult;
+import me.jastz.common.json.result.IResult;
 import org.springframework.cloud.netflix.feign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,6 +28,7 @@ public interface StoreClient {
     @PostMapping("store/page")
     Page<Store> queryPage(@RequestBody PageRequest pageRequest);
 
+    @Deprecated
     @GetMapping("store/sku/stock/list/{storeId}")
     List<StoreSkuStock> queryStoreSkuStockByStoreId(@PathVariable("storeId") int storeId);
 }

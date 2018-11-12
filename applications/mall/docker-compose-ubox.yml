@@ -6,13 +6,13 @@ mall1:
   ports:
   - 9527:9527
 
-mall2:
-  build: ./
-  environment:
-    PORT: 9528
-    PROFILE: ubox
-  ports:
-  - 9528:9528
+#mall2:
+#  build: ./
+#  environment:
+#    PORT: 9528
+#    PROFILE: ubox
+#  ports:
+#  - 9528:9528
 
 #nginx:
 #  image: nginx

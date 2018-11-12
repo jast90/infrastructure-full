@@ -6,8 +6,10 @@ import cn.jastz.mall.service.StoreService;
 import cn.jastz.page.domain.Page;
 import cn.jastz.page.domain.PageRequest;
 import cn.jastz.store.client.StoreClient;
+import cn.jastz.store.client.StoreSkuStockClient;
 import cn.jastz.store.entity.Store;
 import cn.jastz.store.form.StoreAddForm;
+import cn.jastz.store.form.StoreSkuStockForm;
 import cn.jastz.store.result.StoreResult;
 import me.jastz.common.json.result.IResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ import org.springframework.web.bind.annotation.*;
 public class StoreController {
     @Autowired
     private StoreClient storeClient;
+
+    @Autowired
+    private StoreSkuStockClient storeSkuStockClient;
 
     @Autowired
     private StoreService storeService;
@@ -57,5 +62,15 @@ public class StoreController {
     public String queryAllStoreSkuStockByStoreId(@PathVariable("storeId") int storeId, Model model) {
         model.addAttribute("list", storeService.queryAllStoreSkuStockByStoreId(storeId));
         return "store/sku/list";
+    }
+
+    @PostMapping("store/sku/stock/updateSkuStock")
+    public IResult updateSkuStock(StoreSkuStockForm storeSkuStockForm) {
+        return storeSkuStockClient.updateSkuStock(storeSkuStockForm);
+    }
+
+    @PostMapping("store/sku/stock/updateSkuStock")
+    public IResult updateSkuPrice(StoreSkuStockForm storeSkuStockForm) {
+        return storeSkuStockClient.updateSkuPrice(storeSkuStockForm);
     }
 }

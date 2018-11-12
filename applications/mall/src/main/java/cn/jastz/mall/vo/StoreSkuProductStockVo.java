@@ -17,4 +17,8 @@ public class StoreSkuProductStockVo extends StoreSkuStock {
     public void setSkuProductVo(SkuProductVo skuProductVo) {
         this.skuProductVo = skuProductVo;
     }
+
+    public String getSkuDes() {
+        return String.format("%s-%s", skuProductVo.getSkuCode(), skuProductVo.getPrice());
+    }
 }

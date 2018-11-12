@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class StoreSkuStock {
+
     private Integer productId;
 
     private Integer storeId;
@@ -17,6 +18,15 @@ public class StoreSkuStock {
     private Date createdTime;
 
     private Date updateTime;
+
+    public StoreSkuStock() {
+    }
+
+    public StoreSkuStock(Integer productId, Integer storeId, Integer skuId) {
+        this.productId = productId;
+        this.storeId = storeId;
+        this.skuId = skuId;
+    }
 
     public Integer getProductId() {
         return productId;
