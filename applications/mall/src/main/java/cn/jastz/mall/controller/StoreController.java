@@ -66,11 +66,17 @@ public class StoreController {
 
     @PostMapping("store/sku/stock/updateSkuStock")
     public IResult updateSkuStock(StoreSkuStockForm storeSkuStockForm) {
-        return storeSkuStockClient.updateSkuStock(storeSkuStockForm);
+        if (MallResult.SUCCESS.getResultCode() == storeSkuStockClient.updateSkuStock(storeSkuStockForm).getResultCode()) {
+            return MallResult.SUCCESS;
+        }
+        return MallResult.FAIL;
     }
 
-    @PostMapping("store/sku/stock/updateSkuStock")
+    @PostMapping("store/sku/stock/updateSkuPrice")
     public IResult updateSkuPrice(StoreSkuStockForm storeSkuStockForm) {
-        return storeSkuStockClient.updateSkuPrice(storeSkuStockForm);
+        if (storeSkuStockClient.updateSkuPrice(storeSkuStockForm).getResultCode() == MallResult.SUCCESS.getResultCode()) {
+            return MallResult.SUCCESS;
+        }
+        return MallResult.FAIL;
     }
 }

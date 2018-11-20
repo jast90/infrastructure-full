@@ -1,8 +1,8 @@
-discovery:
-  image: registry.docker-cn.com/jast90/spring-eureka
-  restart: always
-  ports:
-  - 8761:8761
+#discovery:
+#  image: registry.docker-cn.com/jast90/spring-eureka
+#  restart: always
+#  ports:
+#  - 8761:8761
 
 open:
   build: ../open/open-service

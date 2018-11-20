@@ -2,6 +2,7 @@ package cn.jastz.store.client;
 
 import cn.jastz.store.entity.StoreSkuStock;
 import cn.jastz.store.form.StoreSkuStockForm;
+import me.jastz.common.json.result.BaseResult;
 import me.jastz.common.json.result.IResult;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,8 +22,8 @@ public interface StoreSkuStockClient {
     List<StoreSkuStock> queryStoreSkuStockByStoreId(@PathVariable("storeId") int storeId);
 
     @PutMapping("store/sku/stock/updateSkuStock")
-    IResult updateSkuStock(@RequestBody StoreSkuStockForm storeSkuStockForm);
+    BaseResult updateSkuStock(@RequestBody StoreSkuStockForm storeSkuStockForm);
 
     @PutMapping("store/sku/stock/updateSkuPrice")
-    IResult updateSkuPrice(@RequestBody StoreSkuStockForm storeSkuStockForm);
+    BaseResult updateSkuPrice(@RequestBody StoreSkuStockForm storeSkuStockForm);
 }
