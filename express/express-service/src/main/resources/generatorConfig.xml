@@ -16,7 +16,7 @@
         </commentGenerator>
 
         <jdbcConnection userId="root" password="123456" driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/account"/>
+                        connectionURL="jdbc:mysql://localhost:3306/express"/>
 
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>

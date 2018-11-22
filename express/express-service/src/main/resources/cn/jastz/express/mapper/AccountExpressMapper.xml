@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jastz.express.mapper.AccountExpressMapper" >
+  <resultMap id="BaseResultMap" type="cn.jastz.express.entity.AccountExpress" >
+    <id column="express_id" property="expressId" jdbcType="INTEGER" />
+    <result column="app_id" property="appId" jdbcType="VARCHAR" />
+    <result column="sender_account_id" property="senderAccountId" jdbcType="INTEGER" />
+    <result column="longitude" property="longitude" jdbcType="DECIMAL" />
+    <result column="latitude" property="latitude" jdbcType="DECIMAL" />
+    <result column="from_address" property="fromAddress" jdbcType="VARCHAR" />
+    <result column="to_address" property="toAddress" jdbcType="VARCHAR" />
+    <result column="item_description" property="itemDescription" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from account_express
+    where express_id = #{expressId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.jastz.express.entity.AccountExpress" useGeneratedKeys="true" keyColumn="express_id" keyProperty="expressId">
+    insert into account_express (express_id, app_id, sender_account_id, 
+      longitude, latitude, from_address, 
+      to_address, item_description, created_time)
+    values (#{expressId,jdbcType=INTEGER}, #{appId,jdbcType=VARCHAR}, #{senderAccountId,jdbcType=INTEGER}, 
+      #{longitude,jdbcType=DECIMAL}, #{latitude,jdbcType=DECIMAL}, #{fromAddress,jdbcType=VARCHAR}, 
+      #{toAddress,jdbcType=VARCHAR}, #{itemDescription,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.jastz.express.entity.AccountExpress" >
+    update account_express
+    set app_id = #{appId,jdbcType=VARCHAR},
+      sender_account_id = #{senderAccountId,jdbcType=INTEGER},
+      longitude = #{longitude,jdbcType=DECIMAL},
+      latitude = #{latitude,jdbcType=DECIMAL},
+      from_address = #{fromAddress,jdbcType=VARCHAR},
+      to_address = #{toAddress,jdbcType=VARCHAR},
+      item_description = #{itemDescription,jdbcType=VARCHAR},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP}
+    where express_id = #{expressId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select express_id, app_id, sender_account_id, longitude, latitude, from_address, 
+    to_address, item_description, created_time, updated_time
+    from account_express
+    where express_id = #{expressId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select express_id, app_id, sender_account_id, longitude, latitude, from_address, 
+    to_address, item_description, created_time, updated_time
+    from account_express
+  </select>
+  <select id="selectByExpressIds" resultType="cn.jastz.express.entity.AccountExpress">
+    select express_id, app_id, sender_account_id, longitude, latitude, from_address,
+    to_address, item_description, created_time, updated_time
+    from account_express
+    where express_id in
+    <foreach collection="list" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+</mapper>
