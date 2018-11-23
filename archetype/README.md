@@ -5,4 +5,5 @@
 - mvn install
 
 # 参考
-[Create an archetype from a multi-module project](http://maven.apache.org/archetype/maven-archetype-plugin/examples/create-multi-module-project.html)
+- [Create an archetype from a multi-module project](http://maven.apache.org/archetype/maven-archetype-plugin/examples/create-multi-module-project.html)
+- [IDEA中使用maven archetype](https://my.oschina.net/jast90/blog/1817434#h2_6)
