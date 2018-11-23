@@ -43,6 +43,14 @@ store:
     PORT: 8087
   ports:
   - 8087:8087
+
+express:
+  build: ../express/express-service
+  environment:
+    PROFILE: ubox
+    PORT: 8088
+  ports:
+  - 8088:8088
 #nginx:
 #  image: nginx
 #  volumes:

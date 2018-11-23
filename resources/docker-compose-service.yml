@@ -2,42 +2,49 @@ discovery:
   image: registry.docker-cn.com/jast90/spring-eureka
   restart: always
   ports:
-    - 8761:8761
+  - 8761:8761
 
 open:
   build: ../open/open-service
   environment:
     PORT: 8888
   ports:
-    - 8888:8888
+  - 8888:8888
 
 account:
   build: ../account/account-service
   environment:
     PORT: 8081
   ports:
-    - 8081:8081
+  - 8081:8081
 
 post:
   build: ../post/post-service
   environment:
     PORT: 8082
   ports:
-    - 8082:8082
+  - 8082:8082
 
 product:
   build: ../product/product-service
   environment:
     PORT: 8084
   ports:
-    - 8084:8084
+  - 8084:8084
 
 store:
   build: ../store/store-service
   environment:
     PORT: 8087
   ports:
-    - 8087:8087
+  - 8087:8087
+
+express:
+  build: ../express/express-service
+  environment:
+    PORT: 8088
+  ports:
+  - 8088:8080
 
 #nginx:
 #  image: nginx

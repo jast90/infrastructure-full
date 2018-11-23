@@ -1,0 +1,7 @@
+{
+  "usingComponents":{
+    "i-tab-bar":"../component/tab-bar/index",
+    "i-tab-bar-item": "../component/tab-bar-item/index",
+    "i-panel":"../component/panel/index"
+  }
+}
