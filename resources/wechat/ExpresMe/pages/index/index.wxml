@@ -1,37 +1,36 @@
 <!--index.wxml-->
 <view class="container">
   <view class="page-body">
-    <view id="home">
-      <form catchsubmit="formSubmit" catchreset="formReset">
+    <view class="{{current === 'homepage'? 'show' :'hide'}}">
+      <form catchreset="formReset" bindsubmit="addAccountExpress">
+        <input type="text" name="longitude" value="{{longitude}}" hidden="true" />
+        <input type="text" name="latitude" value="{{latitude}}" hidden="true" />
         <view class="weui-cells weui-cells_after-title">
           <!-- <view class="weui-label">寄件地址</view> -->
           <view class="weui-cell weui-cell_input">
-            <input class="weui-input" auto-focus placeholder="寄件地址" />
+            <input class="weui-input" type="text" name="fromAddress" auto-focus placeholder="寄件地址" />
           </view>
         </view>
         <view class="weui-cells weui-cells_after-title">
           <!-- <view class="weui-label">收件地址</view> -->
           <view class="weui-cell weui-cell_input">
-            <input class="weui-input" auto-focus placeholder="收件地址" />
-          </view>
-        </view>
-        <view class="weui-cells weui-cells_after-title">
-          <!-- <view class="weui-label">获取位置</view> -->
-          <view class="weui-cell weui-cell_input">
-            <input class="weui-input" auto-focus placeholder="获取位置" />
+            <input class="weui-input" type="text" name="toAddress" placeholder="收件地址" />
           </view>
         </view>
         <view class="btn-area">
-          <button type="primary" formType="submit">Submit</button>
-          <button formType="reset">Reset</button>
+          <button type="primary" formType="submit">提交</button>
+          <button formType="reset">重置</button>
         </view>
       </form>
     </view>
+    <view class="{{current === 'mall'? 'show' :'hide'}}">商城</view>
+    <view class="{{current === 'remind'? 'show' :'hide'}}">通知</view>
+    <view class="{{current === 'mine'? 'show' :'hide'}}">我的</view>
   </view>
 
   <i-tab-bar current="{{ current }}" class="footer fixed-bottom" bindchange="handleChange">
     <i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页"></i-tab-bar-item>
-    <i-tab-bar-item key="group" icon="group" current-icon="group_fill" title="商城"></i-tab-bar-item>
+    <i-tab-bar-item key="mall" icon="group" current-icon="group_fill" title="商城"></i-tab-bar-item>
     <i-tab-bar-item key="remind" icon="remind" current-icon="remind_fill" title="通知"></i-tab-bar-item>
     <i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" title="我的"></i-tab-bar-item>
   </i-tab-bar>
