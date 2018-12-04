@@ -1,4 +1,4 @@
-package cn.jastz.product.config;
+package cn.jastz.store.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
