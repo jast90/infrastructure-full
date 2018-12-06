@@ -1,5 +1,6 @@
-package cn.jastz.aliyun.service;
+package cn.jastz.aliyun.ecs.instance;
 
+import cn.jastz.aliyun.BaseService;
 import com.aliyuncs.ecs.model.v20140526.DescribeInstanceTypesRequest;
 import com.aliyuncs.ecs.model.v20140526.DescribeInstanceTypesResponse;
 import com.aliyuncs.exceptions.ClientException;

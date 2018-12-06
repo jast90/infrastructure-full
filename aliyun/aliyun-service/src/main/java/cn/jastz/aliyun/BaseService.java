@@ -1,4 +1,4 @@
-package cn.jastz.aliyun.service;
+package cn.jastz.aliyun;
 
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;

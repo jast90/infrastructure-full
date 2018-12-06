@@ -1,6 +1,7 @@
-package cn.jastz.aliyun.service;
+package cn.jastz.aliyun.ecs.instance;
 
-import cn.jastz.aliyun.ecs.ECSCreateForm;
+import cn.jastz.aliyun.BaseService;
+import cn.jastz.aliyun.ecs.instance.modal.ECSCreateForm;
 import com.aliyuncs.ecs.model.v20140526.*;
 import com.aliyuncs.exceptions.ClientException;
 import org.apache.commons.lang3.StringUtils;

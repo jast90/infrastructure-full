@@ -1,4 +1,4 @@
-package cn.jastz.aliyun.ecs;
+package cn.jastz.aliyun.ecs.instance.modal;
 
 import com.aliyuncs.ecs.model.v20140526.CreateInstanceRequest;
 

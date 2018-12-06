@@ -20,6 +20,7 @@
     </modules>
 
     <dependencies>
+        <!-- AliYun SDK https://developer.aliyun.com/tools/sdk?spm=a2c4g.11186623.2.7.4cb65d14QYX0z4#/java -->
         <dependency>
             <groupId>com.aliyun</groupId>
             <artifactId>aliyun-java-sdk-core</artifactId>
@@ -29,6 +30,11 @@
             <groupId>com.aliyun</groupId>
             <artifactId>aliyun-java-sdk-ecs</artifactId>
             <version>4.14.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-slb</artifactId>
+            <version>3.2.7</version>
         </dependency>
     </dependencies>
 </project>

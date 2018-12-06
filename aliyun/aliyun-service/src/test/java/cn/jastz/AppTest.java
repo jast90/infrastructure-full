@@ -1,8 +1,8 @@
 package cn.jastz;
 
-import cn.jastz.aliyun.ecs.ECSCreateForm;
-import cn.jastz.aliyun.service.ECSInstanceService;
-import cn.jastz.aliyun.service.ECSInstanceTypeService;
+import cn.jastz.aliyun.ecs.instance.modal.ECSCreateForm;
+import cn.jastz.aliyun.ecs.instance.ECSInstanceService;
+import cn.jastz.aliyun.ecs.instance.ECSInstanceTypeService;
 import com.aliyuncs.ecs.model.v20140526.DescribeInstanceTypesResponse;
 import me.jastz.common.json.JsonUtil;
 import org.junit.Test;
