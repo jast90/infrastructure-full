@@ -1,6 +1,8 @@
 package cn.jastz;
 
-import cn.jastz.aliyun.service.AliyunECSService;
+import cn.jastz.aliyun.ecs.ECSCreateForm;
+import cn.jastz.aliyun.service.ECSInstanceService;
+import cn.jastz.aliyun.service.ECSInstanceTypeService;
 import com.aliyuncs.ecs.model.v20140526.DescribeInstanceTypesResponse;
 import me.jastz.common.json.JsonUtil;
 import org.junit.Test;
@@ -12,11 +14,13 @@ import java.util.List;
  */
 public class AppTest {
 
-    private AliyunECSService aliyunECSService = new AliyunECSService("cn-shenzhen", "LTAIHffRoUVvaCMI", "yehEjR9Sed8ejCuySh3KqyClm8UPj5");
+    private ECSInstanceService aliyunECSService = new ECSInstanceService("cn-shenzhen", "LTAIHffRoUVvaCMI", "yehEjR9Sed8ejCuySh3KqyClm8UPj5");
+
+    private ECSInstanceTypeService instanceTypeService = new ECSInstanceTypeService("cn-shenzhen", "LTAIHffRoUVvaCMI", "yehEjR9Sed8ejCuySh3KqyClm8UPj5");
 
     @Test
     public void test() {
-        List<DescribeInstanceTypesResponse.InstanceType> instanceTypes = aliyunECSService.instanceType(null);
+        List<DescribeInstanceTypesResponse.InstanceType> instanceTypes = instanceTypeService.types(null);
         System.out.println(JsonUtil.objectToPrettyJson(instanceTypes));
         /**
          [ {
@@ -24,7 +28,7 @@ public class AppTest {
          "cpuCoreCount" : 1,
          "memorySize" : 0.5,
          "instanceTypeFamily" : "ecs.t1",
-         "localStorageCapacity" : null,
+         "localStorageCapacity" : null,ecs.t1.small
          "localStorageAmount" : null,
          "localStorageCategory" : "",
          "initialCredit" : null,
@@ -5817,5 +5821,11 @@ public class AppTest {
          "gpuspec" : "Nvidia GPU"
          } ]
          */
+    }
+
+    @Test
+    public void createInstance() {
+        String instanceId = aliyunECSService.create(new ECSCreateForm());
+        System.out.println(instanceId);
     }
 }
