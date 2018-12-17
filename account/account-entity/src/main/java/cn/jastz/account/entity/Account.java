@@ -23,6 +23,8 @@ public class Account {
 
     private Date updatedTime;
 
+    private AccountPassword accountPassword;
+
     public Integer getAccountId() {
         return accountId;
     }
@@ -101,5 +103,13 @@ public class Account {
 
     public void setUpdatedTime(Date updatedTime) {
         this.updatedTime = updatedTime;
+    }
+
+    public AccountPassword getAccountPassword() {
+        return accountPassword;
+    }
+
+    public void setAccountPassword(AccountPassword accountPassword) {
+        this.accountPassword = accountPassword;
     }
 }

@@ -1,10 +1,14 @@
 package cn.jastz.account.service;
 
 import cn.jastz.account.entity.Account;
+import cn.jastz.account.entity.AccountPassword;
 import cn.jastz.account.entity.AccountSocialRef;
 import cn.jastz.account.mapper.AccountMapper;
+import cn.jastz.account.mapper.AccountPasswordMapper;
 import cn.jastz.account.mapper.AccountSocialRefMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,20 +23,36 @@ public class AccountService {
     @Autowired
     private AccountSocialRefMapper accountSocialRefMapper;
 
+    @Autowired
+    private AccountPasswordMapper accountPasswordMapper;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public Account selectAccountByUsernameAndSocialAndAppId(String username, String social, String appId) {
         AccountSocialRef accountSocialRef = accountSocialRefMapper.selectByUserNameAndSocialAndAppId(username, social, appId);
         if (accountSocialRef == null) {
             return null;
         }
-        return accountMapper.selectByPrimaryKey(accountSocialRef.getAccountId());
+        int accountId = accountSocialRef.getAccountId();
+        Account account = accountMapper.selectByPrimaryKey(accountId);
+        AccountPassword accountPassword = accountPasswordMapper.selectByPrimaryKey(accountId);
+        account.setAccountPassword(accountPassword);
+        return account;
     }
 
     @Transactional(rollbackFor = RuntimeException.class)
-    public int saveAccount(Account account, AccountSocialRef accountSocialRef) {
+    public int saveAccount(Account account, AccountSocialRef accountSocialRef, String password) {
+        if (StringUtils.isEmpty(password)) {
+            password = "123456";
+        }
         int count = accountMapper.insert(account);
         accountSocialRef.setAccountId(account.getAccountId());
         accountSocialRefMapper.insert(accountSocialRef);
+        AccountPassword accountPassword = new AccountPassword();
+        accountPassword.setAccountId(account.getAccountId());
+        accountPassword.setAccountPassword(passwordEncoder.encode(password));
+        accountPasswordMapper.insert(accountPassword);
         return count;
     }
 

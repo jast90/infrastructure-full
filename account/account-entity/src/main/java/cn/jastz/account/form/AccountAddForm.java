@@ -9,6 +9,7 @@ import cn.jastz.account.entity.AccountSocialRef;
 public class AccountAddForm {
     private Account account;
     private AccountSocialRef accountSocialRef;
+    private String password;
 
     public Account getAccount() {
         return account;
@@ -24,5 +25,13 @@ public class AccountAddForm {
 
     public void setAccountSocialRef(AccountSocialRef accountSocialRef) {
         this.accountSocialRef = accountSocialRef;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

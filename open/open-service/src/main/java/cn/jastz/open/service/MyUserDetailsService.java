@@ -25,8 +25,12 @@ public class MyUserDetailsService implements UserDetailsService {
         if (account == null) {
             throw new UsernameNotFoundException(username);
         }
-        //TODO 这里的password需要传递过去，因为需要校验
-        User user = new User(account.getAccountName(), "123", Lists.newArrayList());
+        // 这里的password需要传递过去，因为需要校验
+        String password = "";
+        if (account.getAccountPassword() != null) {
+            password = account.getAccountPassword().getAccountPassword();
+        }
+        User user = new User(account.getAccountName(), password, Lists.newArrayList());
         return user;
     }
 }

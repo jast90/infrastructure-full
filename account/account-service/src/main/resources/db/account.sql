@@ -14,11 +14,19 @@ create table account
   created_time timestamp default CURRENT_TIMESTAMP not null,
   updated_time timestamp                           null,
   constraint account_account_name_uindex
-  unique (account_name),
-  constraint account_username_from_pk
-  unique (account_from)
+  unique (account_name, account_from)
+);
+
+create table account_password
+(
+  account_id       int                                     not null
+    primary key,
+  account_password varchar(256)                            null,
+  created_time     timestamp default CURRENT_TIMESTAMP     not null
+  on update CURRENT_TIMESTAMP,
+  updated_time     timestamp default '0000-00-00 00:00:00' not null
 )
-  engine = InnoDB;
+  comment '用户密码';
 
 create table account_social_ref
 (
@@ -35,7 +43,6 @@ create table account_social_ref
   updated_time timestamp                           null,
   primary key (account_id, social, app_id)
 )
-  comment '账号关联的社交账号'
-  engine = InnoDB;
+  comment '账号关联的社交账号';
 
 
