@@ -23,7 +23,7 @@
             <AppenderRef ref="file"></AppenderRef>
             <AppenderRef ref="Console"></AppenderRef>
         </Logger>
-        <Logger name="com.netflix.discovery" level="debug">
+        <Logger name="com.netflix.discovery" level="info">
             <AppenderRef ref="Console"></AppenderRef>
         </Logger>
         <Root level="debug">

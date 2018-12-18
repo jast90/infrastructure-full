@@ -20,6 +20,7 @@
         <module>cms</module>
         <module>freemarker</module>
         <module>mall</module>
+        <module>mall-api</module>
     </modules>
     <dependencies>
         <dependency>

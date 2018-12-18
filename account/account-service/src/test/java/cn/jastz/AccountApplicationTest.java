@@ -32,12 +32,12 @@ public class AccountApplicationTest {
     public void test() {
         Account account = new Account();
         account.setAccountFrom("github");
-        account.setAccountName("lutas");
-        account.setAppId("123");
+        account.setAccountName("api-user");
+        account.setAppId("mall-api");
         AccountSocialRef accountSocialRef = new AccountSocialRef();
-        accountSocialRef.setAppId("123");
+        accountSocialRef.setAppId("mall-api");
         accountSocialRef.setSocial("github");
-        accountSocialRef.setUsername("lutas");
+        accountSocialRef.setUsername("api-user");
         accountService.saveAccount(account, accountSocialRef, "123456");
     }
 
