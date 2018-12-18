@@ -41,6 +41,18 @@ public class AccountService {
         return account;
     }
 
+    public Account selectAccountByUsernameAndAppId(String username, String appId) {
+        AccountSocialRef accountSocialRef = accountSocialRefMapper.selectByUserNameAndAppId(username, appId);
+        if (accountSocialRef == null) {
+            return null;
+        }
+        int accountId = accountSocialRef.getAccountId();
+        Account account = accountMapper.selectByPrimaryKey(accountId);
+        AccountPassword accountPassword = accountPasswordMapper.selectByPrimaryKey(accountId);
+        account.setAccountPassword(accountPassword);
+        return account;
+    }
+
     @Transactional(rollbackFor = RuntimeException.class)
     public int saveAccount(Account account, AccountSocialRef accountSocialRef, String password) {
         if (StringUtils.isEmpty(password)) {

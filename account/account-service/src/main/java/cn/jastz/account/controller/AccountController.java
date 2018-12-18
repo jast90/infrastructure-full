@@ -42,11 +42,16 @@ public class AccountController extends CommonBaseController {
         return accountService.selectAccountByUsernameAndSocialAndAppId(username, social, getAppId());
     }
 
+    @GetMapping("queryAccountByUsernameAndAppId/{username}/{appId}")
+    public Account queryAccountByUsernameAndAppId(@PathVariable("username") String username, @PathVariable("appId") String appId) {
+        return accountService.selectAccountByUsernameAndAppId(username, appId);
+    }
+
     @PostMapping("add")
     public IResult addAccount(@RequestBody AccountAddForm accountAddForm) {
         accountAddForm.getAccount().setAppId(getAppId());
         accountAddForm.getAccountSocialRef().setAppId(getAppId());
-        int count = accountService.saveAccount(accountAddForm.getAccount(), accountAddForm.getAccountSocialRef(),accountAddForm.getPassword());
+        int count = accountService.saveAccount(accountAddForm.getAccount(), accountAddForm.getAccountSocialRef(), accountAddForm.getPassword());
         if (count > 0) {
             return AccountResult.SUCCESS;
         }

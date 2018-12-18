@@ -25,4 +25,7 @@ public interface AccountClient {
 
     @GetMapping("account/queryAccountByUsernameAndSocial/{username}/{social}")
     Account queryAccountByUsernameAndSocial(@PathVariable("username") String username, @PathVariable("social") String social);
+
+    @GetMapping("account/queryAccountByUsernameAndAppId/{username}/{appId}")
+    Account queryAccountByUsernameAndAppId(@PathVariable("username") String username, @PathVariable("appId") String appId);
 }

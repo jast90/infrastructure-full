@@ -17,4 +17,6 @@ public interface AccountSocialRefMapper {
     int updateByPrimaryKey(AccountSocialRef record);
 
     AccountSocialRef selectByUserNameAndSocialAndAppId(@Param("username") String username, @Param("social") String social, @Param("appId") String appId);
+
+    AccountSocialRef selectByUserNameAndAppId(@Param("username") String username, @Param("appId") String appId);
 }
