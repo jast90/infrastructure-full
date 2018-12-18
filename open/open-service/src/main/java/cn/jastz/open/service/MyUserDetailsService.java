@@ -21,7 +21,8 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Account account = accountClient.queryAccountByUsernameAndSocial(username, "");
+        //查询用户时如何区分各个业务的用户
+        Account account = accountClient.queryAccountByUsernameAndSocial(username, "github");
         if (account == null) {
             throw new UsernameNotFoundException(username);
         }
