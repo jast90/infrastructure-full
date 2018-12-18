@@ -13,7 +13,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
  * @author zhiwen
  */
 @Configuration
-@EnableOAuth2Client
 public class Oauth2ClientConfig {
 
 
