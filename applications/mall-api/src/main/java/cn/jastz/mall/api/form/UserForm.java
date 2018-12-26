@@ -1,10 +1,14 @@
 package cn.jastz.mall.api.form;
 
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * @author zhiwen
  */
 public class UserForm {
+    @ApiModelProperty(value = "api-user")
     private String username;
+    @ApiModelProperty(value = "123456")
     private String password;
 
     public String getUsername() {
