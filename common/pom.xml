@@ -22,6 +22,8 @@
         <module>common-sitemesh</module>
         <module>common-webjar</module>
         <module>common-entity</module>
+        <module>common-oauth2-resource</module>
+        <module>common-oauth2-client</module>
     </modules>
 
 </project>

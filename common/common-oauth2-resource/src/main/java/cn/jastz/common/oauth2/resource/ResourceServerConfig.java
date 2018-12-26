@@ -1,4 +1,4 @@
-package cn.jastz.mall.api.config;
+package cn.jastz.common.oauth2.resource;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
