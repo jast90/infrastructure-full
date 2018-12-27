@@ -24,6 +24,7 @@
         <module>common-entity</module>
         <module>common-oauth2-resource</module>
         <module>common-oauth2-client</module>
+        <module>common-oauth2-feign</module>
     </modules>
 
 </project>
