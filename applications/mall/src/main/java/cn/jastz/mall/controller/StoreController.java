@@ -64,16 +64,18 @@ public class StoreController {
         return "store/sku/list";
     }
 
+    @ResponseBody
     @PostMapping("store/sku/stock/updateSkuStock")
-    public IResult updateSkuStock(StoreSkuStockForm storeSkuStockForm) {
+    public IResult updateSkuStock(@RequestBody StoreSkuStockForm storeSkuStockForm) {
         if (MallResult.SUCCESS.getResultCode() == storeSkuStockClient.updateSkuStock(storeSkuStockForm).getResultCode()) {
             return MallResult.SUCCESS;
         }
         return MallResult.FAIL;
     }
 
+    @ResponseBody
     @PostMapping("store/sku/stock/updateSkuPrice")
-    public IResult updateSkuPrice(StoreSkuStockForm storeSkuStockForm) {
+    public IResult updateSkuPrice(@RequestBody StoreSkuStockForm storeSkuStockForm) {
         if (storeSkuStockClient.updateSkuPrice(storeSkuStockForm).getResultCode() == MallResult.SUCCESS.getResultCode()) {
             return MallResult.SUCCESS;
         }

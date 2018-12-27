@@ -24,7 +24,7 @@ public class StoreSkuStockService {
     }
 
     public IResult updateStockByStoreIdAndSkuId(int storeId, int productId, int skuId, BigDecimal skuStock) {
-        StoreSkuStock storeSkuStock = new StoreSkuStock(storeId, productId, skuId);
+        StoreSkuStock storeSkuStock = new StoreSkuStock(productId, storeId, skuId);
         storeSkuStock.setSkuStock(skuStock);
         if (storeSkuStockMapper.updateByPrimaryKey(storeSkuStock) > 0) {
             return SampleResult.SUCCESS;
@@ -33,7 +33,7 @@ public class StoreSkuStockService {
     }
 
     public IResult updatePriceByStoreIdAndSkuId(int storeId, int productId, int skuId, BigDecimal price) {
-        StoreSkuStock storeSkuStock = new StoreSkuStock(storeId, productId, skuId);
+        StoreSkuStock storeSkuStock = new StoreSkuStock(productId, storeId, skuId);
         storeSkuStock.setSkuPrice(price);
         if (storeSkuStockMapper.updateByPrimaryKey(storeSkuStock) > 0) {
             return SampleResult.SUCCESS;

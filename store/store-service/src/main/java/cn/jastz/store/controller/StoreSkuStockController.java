@@ -30,6 +30,6 @@ public class StoreSkuStockController {
 
     @PutMapping("updateSkuPrice")
     public IResult updateSkuPrice(@RequestBody StoreSkuStockForm storeSkuStockForm) {
-        return storeSkuStockService.updatePriceByStoreIdAndSkuId(storeSkuStockForm.getStoreId(), storeSkuStockForm.getProductId(), storeSkuStockForm.getSkuId(), storeSkuStockForm.getSkuStock());
+        return storeSkuStockService.updatePriceByStoreIdAndSkuId(storeSkuStockForm.getStoreId(), storeSkuStockForm.getProductId(), storeSkuStockForm.getSkuId(), storeSkuStockForm.getSkuPrice());
     }
 }
