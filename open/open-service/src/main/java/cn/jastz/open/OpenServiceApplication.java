@@ -13,6 +13,7 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.security.oauth2.client.feign.OAuth2FeignRequestInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,12 +30,12 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
  * @author jast
  */
 @EnableFeignClients(basePackages = "cn.jastz.*.client")
-@EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@SpringBootApplication(scanBasePackages = "cn.jastz")
+@SpringBootApplication
+@EnableDiscoveryClient
+@Configuration
+@ComponentScan(basePackages = {"cn.jastz.open", "cn.jastz.common"})
 @MapperScan(basePackages = "cn.jastz.*.mapper")
-@EnableOAuth2Client
-//@EnableDiscoveryClient
 public class OpenServiceApplication extends SpringBootServletInitializer {
 
     @Override
@@ -48,24 +49,9 @@ public class OpenServiceApplication extends SpringBootServletInitializer {
     }
 
     @Bean
-    public RequestInterceptor oauth2FeignRequestInterceptor() {
-        return new OAuth2FeignRequestInterceptor(new DefaultOAuth2ClientContext(), clientCredentialsResourceDetails());
-    }
-
-    @Bean
-    public OAuth2RestTemplate clientCredentialsRestTemplate() {
-        return new OAuth2RestTemplate(clientCredentialsResourceDetails());
-    }
-
-    @Bean
-    @ConfigurationProperties(prefix = "security.oauth2.client")
-    public OAuth2ProtectedResourceDetails clientCredentialsResourceDetails() {
-        return new ClientCredentialsResourceDetails();
-    }
-
-    @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
 }
+

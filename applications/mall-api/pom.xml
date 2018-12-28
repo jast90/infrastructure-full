@@ -53,12 +53,27 @@
         <dependency>
             <groupId>cn.jastz</groupId>
             <artifactId>common-oauth2-client</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>cn.jastz</groupId>
             <artifactId>common-oauth2-resource</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.jastz</groupId>
+            <artifactId>common-oauth2-feigin</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.jastz</groupId>
+            <artifactId>account-client</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.jastz</groupId>
+            <artifactId>common-web</artifactId>
+            <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
 </project>

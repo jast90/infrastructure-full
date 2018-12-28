@@ -25,6 +25,7 @@
         <module>common-oauth2-resource</module>
         <module>common-oauth2-client</module>
         <module>common-oauth2-feign</module>
+        <module>common-web</module>
     </modules>
 
 </project>

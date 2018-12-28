@@ -21,7 +21,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
  *
  * @author jast
  */
-@EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @SpringBootApplication
 @MapperScan(basePackages = "cn.jastz.*.mapper")

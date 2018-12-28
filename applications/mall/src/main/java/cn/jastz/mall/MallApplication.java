@@ -16,19 +16,11 @@ import org.springframework.security.oauth2.client.token.grant.client.ClientCrede
  */
 @EnableFeignClients(basePackages = "cn.jastz.*.client")
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
-@EnableConfigurationProperties
 @ComponentScan(basePackages = {"cn.jastz.mall", "cn.jastz.common", "cn.jastz.social"})
 public class MallApplication {
-
 
     public static void main(String[] args) {
         SpringApplication.run(MallApplication.class, args);
     }
 
-    @Bean
-    @ConfigurationProperties(prefix = "security.oauth2.client")
-    public OAuth2ProtectedResourceDetails clientCredentialsResourceDetails() {
-//        return new AuthorizationCodeResourceDetails();
-        return new ClientCredentialsResourceDetails();
-    }
 }
