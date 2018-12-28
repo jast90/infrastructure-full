@@ -20,8 +20,10 @@ public class SiteMeshFilter extends ConfigurableSiteMeshFilter {
     protected void applyCustomConfiguration(SiteMeshFilterBuilder builder) {
         builder.addTagRuleBundle(new MyTagRuleBundle(siteMeshProperties));
         // 路径和 装饰器（模板）
-        siteMeshProperties.getPathDecoratorsMap().forEach((k, v) -> {
-            builder.addDecoratorPaths(k, v);
-        });
+        if (siteMeshProperties.getPathDecoratorsMap() != null) {
+            siteMeshProperties.getPathDecoratorsMap().forEach((k, v) -> {
+                builder.addDecoratorPaths(k, v);
+            });
+        }
     }
 }

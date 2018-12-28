@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
  */
 @EnableConfigurationProperties(SiteMeshProperties.class)
 public class SiteMeshAutoConfiguration {
+
     private final SiteMeshProperties siteMeshProperties;
 
     public SiteMeshAutoConfiguration(SiteMeshProperties siteMeshProperties) {
