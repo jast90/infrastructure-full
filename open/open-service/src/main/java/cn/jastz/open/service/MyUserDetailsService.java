@@ -2,13 +2,13 @@ package cn.jastz.open.service;
 
 import cn.jastz.account.client.AccountClient;
 import cn.jastz.account.entity.Account;
+import cn.jastz.common.entity.MyUser;
 import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -38,7 +38,8 @@ public class MyUserDetailsService implements UserDetailsService {
         if (account.getAccountPassword() != null) {
             password = account.getAccountPassword().getAccountPassword();
         }
-        User user = new User(account.getAccountName(), password, Lists.newArrayList());
+        MyUser user = new MyUser(account.getAccountName(), password, Lists.newArrayList());
+        user.setUserId(account.getAccountId());
         return user;
     }
 }

@@ -2,6 +2,7 @@ package cn.jastz.mall.api.controller;
 
 import cn.jastz.account.client.AccountClient;
 import cn.jastz.account.entity.Account;
+import cn.jastz.common.entity.MyUser;
 import cn.jastz.common.web.controller.CommonBaseController;
 import cn.jastz.mall.api.vo.UserRoleResourceVo;
 import com.google.common.collect.Lists;
@@ -24,10 +25,18 @@ public class UserController extends CommonBaseController {
 
     @GetMapping("user")
     public List<UserRoleResourceVo> user() {
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        int accountId = 0;
+        String username;
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof MyUser) {
+            MyUser myUser = (MyUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            accountId = myUser.getUserId();
+            username = myUser.getUsername();
+        } else {
+            username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        }
         //TODO 根据appId和username查询用户信息（：角色、资源）
         System.out.println("username:" + username);
-        Account account = accountClient.queryAccountByUsernameAndAppId(username, getAppId());
+        Account account = accountClient.queryAccountByAccountId(accountId);
         System.out.println("account:" + JsonUtil.objectToPrettyJson(account));
         return Lists.newArrayList();
     }
