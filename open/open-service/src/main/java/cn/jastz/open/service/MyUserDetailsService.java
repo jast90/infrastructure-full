@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -38,8 +39,7 @@ public class MyUserDetailsService implements UserDetailsService {
         if (account.getAccountPassword() != null) {
             password = account.getAccountPassword().getAccountPassword();
         }
-        MyUser user = new MyUser(account.getAccountName(), password, Lists.newArrayList());
-        user.setUserId(account.getAccountId());
+        MyUser user = new MyUser(account.getAccountId(),account.getAccountId().toString(),password);
         return user;
     }
 }

@@ -25,17 +25,7 @@ public class UserController extends CommonBaseController {
 
     @GetMapping("user")
     public List<UserRoleResourceVo> user() {
-        int accountId = 0;
-        String username;
-        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof MyUser) {
-            MyUser myUser = (MyUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            accountId = myUser.getUserId();
-            username = myUser.getUsername();
-        } else {
-            username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        }
-        //TODO 根据appId和username查询用户信息（：角色、资源）
-        System.out.println("username:" + username);
+        int accountId = Integer.parseInt(SecurityContextHolder.getContext().getAuthentication().getName());
         Account account = accountClient.queryAccountByAccountId(accountId);
         System.out.println("account:" + JsonUtil.objectToPrettyJson(account));
         return Lists.newArrayList();
