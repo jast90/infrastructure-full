@@ -30,4 +30,14 @@ public class UserController extends CommonBaseController {
         System.out.println("account:" + JsonUtil.objectToPrettyJson(account));
         return Lists.newArrayList();
     }
+
+    @GetMapping("/ignore/hello")
+    public List<String> hello() {
+        return Lists.newArrayList("hello");
+    }
+
+    @GetMapping("/ignore/exception")
+    public List<String> exception() {
+        throw new RuntimeException();
+    }
 }
