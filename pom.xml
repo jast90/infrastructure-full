@@ -36,6 +36,7 @@
         <module>oss</module>
         <module>express</module>
         <module>aliyun</module>
+        <module>mq</module>
     </modules>
     <dependencies>
         <dependency>
