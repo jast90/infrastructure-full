@@ -1,6 +1,7 @@
 package cn.jastz.mq.controller;
 
 import cn.jastz.mq.entity.Message;
+import me.jastz.common.json.JsonUtil;
 import me.jastz.common.json.result.IResult;
 import me.jastz.common.json.result.SampleResult;
 import org.slf4j.Logger;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author zhiwen
  */
 @RestController
-@RequestMapping("mq")
+@RequestMapping("/ignore/mq")
 public class MQController {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
@@ -26,6 +27,7 @@ public class MQController {
 
     @PostMapping("send")
     public IResult send(@RequestBody Message message) {
+        logger.info("send mq:{}", JsonUtil.objectToPrettyJson(message));
         IResult result = SampleResult.FAIL;
         try {
             template.send(message.getTopic(), message.getMessage());
