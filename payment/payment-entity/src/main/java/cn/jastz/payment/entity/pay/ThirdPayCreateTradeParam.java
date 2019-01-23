@@ -1,15 +1,11 @@
 package cn.jastz.payment.entity.pay;
 
 import java.math.BigDecimal;
-import java.util.Map;
-import java.util.TreeMap;
 
 /**
  * @author zhiwen
  */
 public class ThirdPayCreateTradeParam {
-    private String appId;
-    private String sign;
     /**
      * title
      * 对应微信的body
@@ -31,11 +27,10 @@ public class ThirdPayCreateTradeParam {
      * trade_type
      * notifyUrl
      */
-    private String mchId;
-    private String nonceStr;
     private String spbillCreateIp;
-    private String tradeType;
     private String notifyUrl;
+    private String tradeType;
+    private String openId;
 
     /**
      * 支付宝专有
@@ -46,21 +41,6 @@ public class ThirdPayCreateTradeParam {
      * version
      */
 
-    public String getAppId() {
-        return appId;
-    }
-
-    public void setAppId(String appId) {
-        this.appId = appId;
-    }
-
-    public String getSign() {
-        return sign;
-    }
-
-    public void setSign(String sign) {
-        this.sign = sign;
-    }
 
     public String getTitle() {
         return title;
@@ -86,36 +66,12 @@ public class ThirdPayCreateTradeParam {
         this.totalFee = totalFee;
     }
 
-    public String getMchId() {
-        return mchId;
-    }
-
-    public void setMchId(String mchId) {
-        this.mchId = mchId;
-    }
-
-    public String getNonceStr() {
-        return nonceStr;
-    }
-
-    public void setNonceStr(String nonceStr) {
-        this.nonceStr = nonceStr;
-    }
-
     public String getSpbillCreateIp() {
         return spbillCreateIp;
     }
 
     public void setSpbillCreateIp(String spbillCreateIp) {
         this.spbillCreateIp = spbillCreateIp;
-    }
-
-    public String getTradeType() {
-        return tradeType;
-    }
-
-    public void setTradeType(String tradeType) {
-        this.tradeType = tradeType;
     }
 
     public String getNotifyUrl() {
@@ -126,18 +82,20 @@ public class ThirdPayCreateTradeParam {
         this.notifyUrl = notifyUrl;
     }
 
-    public Map<String, String> toWxPayMap() {
-        Map<String, String> map = new TreeMap<>();
-        map.put("appid", getAppId());
-        map.put("mch_id", getMchId());
-        map.put("nonce_str", getNonceStr());
-        map.put("notify_url", getNotifyUrl());
-        map.put("out_trade_no", getOutTradeNo());
-        map.put("sign", getSign());
-        map.put("spbill_create_ip", getSpbillCreateIp());
-        map.put("body", getTitle());
-        map.put("trade_type", getTradeType());
-        map.put("total_fee", getTotalFee().toString());
-        return map;
+
+    public String getTradeType() {
+        return tradeType;
+    }
+
+    public void setTradeType(String tradeType) {
+        this.tradeType = tradeType;
+    }
+
+    public String getOpenId() {
+        return openId;
+    }
+
+    public void setOpenId(String openId) {
+        this.openId = openId;
     }
 }

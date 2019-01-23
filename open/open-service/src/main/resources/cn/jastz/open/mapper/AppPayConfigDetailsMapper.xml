@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jastz.open.mapper.AppPayConfigDetailsMapper" >
+  <resultMap id="BaseResultMap" type="cn.jastz.open.entity.AppPayConfigDetails" >
+    <result column="app_pay_config_id" property="appPayConfigId" jdbcType="BIGINT" />
+    <result column="attr_name" property="attrName" jdbcType="CHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+    <result column="attr_value" property="attrValue" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="cn.jastz.open.entity.AppPayConfigDetails" >
+    insert into app_pay_config_details (app_pay_config_id, attr_name, created_time,
+      updated_time, attr_value)
+    values (#{appPayConfigId,jdbcType=BIGINT}, #{attrName,jdbcType=CHAR}, #{createdTime,jdbcType=TIMESTAMP},
+      #{updatedTime,jdbcType=TIMESTAMP}, #{attrValue,jdbcType=LONGVARCHAR})
+  </insert>
+
+  <insert id="batchInsert" parameterType="cn.jastz.open.entity.AppPayConfigDetails" >
+    <foreach collection="list" separator="," close=")" open="(" item="item">
+    insert into app_pay_config_details (app_pay_config_id, attr_name, created_time,
+      updated_time, attr_value)
+    values
+    (#{item.appPayConfigId,jdbcType=BIGINT}, #{item.attrName,jdbcType=CHAR}, #{item.createdTime,jdbcType=TIMESTAMP},
+      #{item.updatedTime,jdbcType=TIMESTAMP}, #{item.attrValue,jdbcType=LONGVARCHAR})
+    ON DUPLICATE KEY UPDATE attrValue = #{item.attrValue,jdbcType=LONGVARCHAR}
+    </foreach>
+  </insert>
+
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select app_pay_config_id, attr_name, created_time, updated_time, attr_value
+    from app_pay_config_details
+  </select>
+</mapper>

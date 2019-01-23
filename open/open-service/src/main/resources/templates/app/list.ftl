@@ -20,7 +20,8 @@
         <td>${app.domain}</td>
         <td>${app.appId}</td>
         <td>${app.appSecret}</td>
-        <td><a href="javascript:void(0);" class="addSocialRef" data-app-id="${app.appId}">社交配置</a></td>
+        <td><a href="javascript:void(0);" class="addSocialRef" data-app-id="${app.appId}">社交配置</a>|<a
+                href="javascript:void(0);" class="addPayConfig" data-app-id="${app.appId}">支付配置</a></td>
     </tr>
     </#list>
     </tbody>
@@ -59,6 +60,48 @@
         </div>
     </div>
 </div>
+
+<div id="addPayConfigDiv" style="display: none">
+    <div class="box-body">
+        <div class="form-group row">
+            <label class="col-sm-2 control-label">appId</label>
+            <div class="col-sm-10">
+                <input type="text" name="appId" readonly class="form-control">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 control-label">支付平台</label>
+            <div class="col-sm-10">
+                <select class="form-control" name="payPlatform" required>
+                    <option value="">请选择平台</option>
+                    <#list payPlatforms as payPlatform>
+                        <option value="${payPlatform.name()}">${payPlatform.name()}</option>
+                    </#list>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 control-label">支付参数</label>
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <select class="form-control" name="attrName" required>
+                        <option value="">请选择参数名称</option>
+                    <#list attrNames as attrName>
+                        <option value="${attrName.name()}">${attrName.name()}</option>
+                    </#list>
+                    </select>
+                    <input type="text" class="form-control" name="attrValue" placeholder="参数值" required>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button"><i
+                                class="fas fa-plus"></i></button>
+                        <button class="btn btn-danger" type="button"><i
+                                class="fas fa-minus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 <javascript>
     <script type="text/javascript">
@@ -73,6 +116,18 @@
                 });
                 var appId = $(this).data("app-id");
                 $("form[name='addSocialRefForm']").find("input[name='appId']").val(appId);
+            });
+
+            $(".addPayConfig").on("click", function () {
+                $(this).myModal({
+                    "id": "addPayConfigModel",
+                    "title": "支付配置",
+                    "formName": "addPayConfigForm",
+                    "formAction": "/app/pay/config",
+                    "bodyHtml": $("#addPayConfigDiv").html()
+                });
+                var appId = $(this).data("app-id");
+                $("form[name='addPayConfigForm']").find("input[name='appId']").val(appId);
             });
         });
     </script>

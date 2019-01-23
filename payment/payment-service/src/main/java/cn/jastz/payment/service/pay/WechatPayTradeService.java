@@ -4,13 +4,17 @@ import cn.jastz.payment.entity.pay.ThirdPayCreateTradeParam;
 import cn.jastz.payment.entity.pay.ThirdPayCreateTradeResult;
 import cn.jastz.payment.entity.pay.ThirdPayMethod;
 import cn.jastz.payment.entity.pay.WechatPayUnifieOrderResult;
+import me.jastz.common.json.JsonUtil;
 import me.jastz.common.wx.WxTemplates;
 import me.jastz.common.wx.wxpay.WxTradeType;
 import me.jastz.common.wx.wxpay.entity.UnifiedOrderForm;
 import me.jastz.common.wx.wxpay.entity.UnifiedOrderReturn;
 import me.jastz.common.wx.wxpay.entity.UnifiedOrderReturnAndResultSuccess;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -18,29 +22,28 @@ import java.sql.Timestamp;
 /**
  * @author zhiwen
  */
+@Service
 public class WechatPayTradeService implements TradeService {
+
+    private Logger logger = LoggerFactory.getLogger(getClass());
+
     @Autowired
     private WxTemplates wxTemplates;
-    @Value("${wx.pay.appId}")
+    @Value("${wx.pay.appID}")
     private String appId;
-    @Value("${wx.pay.mchId}")
+    @Value("${wx.pay.mchID}")
     private String mchId;
-    @Value("${wx.pay.payKey}")
+    @Value("${wx.pay.key}")
     private String payKey;
 
     @Override
     public ThirdPayCreateTradeResult createTrade(ThirdPayCreateTradeParam thirdPayCreateTradeParam) {
-
-        thirdPayCreateTradeParam.setNonceStr(WxTemplates.WxPayUtil.generateNonceStr());
-        thirdPayCreateTradeParam.setAppId(appId);
-        thirdPayCreateTradeParam.setMchId(mchId);
-
         ThirdPayCreateTradeResult thirdPayCreateTradeResult = new ThirdPayCreateTradeResult();
+        thirdPayCreateTradeResult.setThirdPayMethod(ThirdPayMethod.WECHAT_PAY);
         UnifiedOrderForm unifiedOrderForm = UnifiedOrderForm.UnifiedOrderFormBuilder.getInstance()
-                .setAppId(thirdPayCreateTradeParam.getAppId())
-                .setMchId(thirdPayCreateTradeParam.getMchId())
-                .setNonceString(thirdPayCreateTradeParam.getNonceStr())
-                .setSign(WxTemplates.WxPayUtil.generateMD5Sign(thirdPayCreateTradeParam.toWxPayMap(), payKey))
+                .setAppId(appId)
+                .setMchId(mchId)
+//                .setNonceString(WxTemplates.WxPayUtil.generateNonceStr())//
                 .setBody(thirdPayCreateTradeParam.getTitle())
                 .setOutTradeNo(thirdPayCreateTradeParam.getOutTradeNo())
                 .setTotalFee(thirdPayCreateTradeParam.getTotalFee().multiply(new BigDecimal(100)).intValue())
@@ -48,8 +51,10 @@ public class WechatPayTradeService implements TradeService {
                 .setNotifyUrl(thirdPayCreateTradeParam.getNotifyUrl())
                 .setTradeType(WxTradeType.valueOf(thirdPayCreateTradeParam.getTradeType()))
                 .build();
+        unifiedOrderForm.setOpenId(thirdPayCreateTradeParam.getOpenId());
+//        unifiedOrderForm.setSign(WxTemplates.WxPayUtil.generateMD5Sign(unifiedOrderForm.toMap(), payKey));
         UnifiedOrderReturn unifiedOrderReturn = wxTemplates.wxPayOperations().unifiedOrder(unifiedOrderForm);
-        thirdPayCreateTradeResult.setThirdPayMethod(ThirdPayMethod.WECHAT_PAY);
+        logger.debug("wechat pay unified order result:{}", JsonUtil.objectToPrettyJson(unifiedOrderReturn));
         WechatPayUnifieOrderResult wechatPayUnifieOrderResult = new WechatPayUnifieOrderResult();
         if (unifiedOrderReturn instanceof UnifiedOrderReturnAndResultSuccess) {
             UnifiedOrderReturnAndResultSuccess unifiedOrderReturnAndResultSuccess = (UnifiedOrderReturnAndResultSuccess) unifiedOrderReturn;

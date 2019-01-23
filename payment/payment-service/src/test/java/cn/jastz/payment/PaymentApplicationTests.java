@@ -1,7 +1,12 @@
 package cn.jastz.payment;
 
 import cn.jastz.payment.entity.PaymentOrder;
+import cn.jastz.payment.entity.pay.ThirdPayCreateTradeParam;
+import cn.jastz.payment.entity.pay.ThirdPayCreateTradeResult;
+import cn.jastz.payment.entity.pay.ThirdPayMethod;
 import cn.jastz.payment.mapper.PaymentOrderMapper;
+import cn.jastz.payment.service.pay.TradeServiceFactory;
+import me.jastz.common.json.JsonUtil;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,6 +23,9 @@ public class PaymentApplicationTests {
     @Autowired
     private PaymentOrderMapper orderMapper;
 
+    @Autowired
+    private TradeServiceFactory tradeServiceFactory;
+
     @Test
     public void contextLoads() {
         PaymentOrder order = new PaymentOrder();
@@ -30,6 +38,20 @@ public class PaymentApplicationTests {
         int i = orderMapper.insert(order);
         System.out.println(i);
         Assert.assertTrue(order.getOrderId() > 0);
+    }
+
+    @Test
+    public void createTrade() {
+        ThirdPayCreateTradeParam thirdPayCreateTradeParam = new ThirdPayCreateTradeParam();
+        thirdPayCreateTradeParam.setTitle("矿泉水");
+        thirdPayCreateTradeParam.setOutTradeNo("20190122000001");
+        thirdPayCreateTradeParam.setSpbillCreateIp("192.168.1.1");
+        thirdPayCreateTradeParam.setTotalFee(new BigDecimal(0.01));
+        thirdPayCreateTradeParam.setTradeType("JSAPI");
+        thirdPayCreateTradeParam.setNotifyUrl("http://tpaygate.aicebox.com/WECHAT_PAY_JSAPI/payment/callback");
+        thirdPayCreateTradeParam.setOpenId("oqaKZ5WhRHu_PHVJPu7WbQUG3rjI");
+        ThirdPayCreateTradeResult thirdPayCreateTradeResult = tradeServiceFactory.createTradeService(ThirdPayMethod.WECHAT_PAY).createTrade(thirdPayCreateTradeParam);
+        System.out.println(JsonUtil.objectToPrettyJson(thirdPayCreateTradeResult));
     }
 
 }

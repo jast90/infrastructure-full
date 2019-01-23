@@ -36,6 +36,9 @@ public class PaymentController {
     @Autowired
     private HttpServletRequest request;
 
+    @Autowired
+    private TradeServiceFactory tradeServiceFactory;
+
     @GetMapping("scanPay")
     public void scanPay(int accountId, int productId, String productName, BigDecimal payAmount, HttpServletResponse response) {
         int orderId = orderService.saveOneProductOrder(accountId, productId, productName, payAmount);
@@ -67,8 +70,7 @@ public class PaymentController {
     @PostMapping("trade/create/{thirdPayMethod}")
     public ThirdPayCreateTradeResult createThirdTrade(@PathVariable("thirdPayMethod") String thirdPayMethod, @RequestBody ThirdPayCreateTradeParam thirdPayCreateTradeParam) {
         thirdPayCreateTradeParam.setSpbillCreateIp(request.getRemoteAddr());
-    
-        return TradeServiceFactory.createTradeService(ThirdPayMethod.valueOf(thirdPayMethod)).createTrade(thirdPayCreateTradeParam);
+        return tradeServiceFactory.createTradeService(ThirdPayMethod.valueOf(thirdPayMethod)).createTrade(thirdPayCreateTradeParam);
     }
 
 }

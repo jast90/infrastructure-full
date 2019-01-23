@@ -3,6 +3,8 @@ package cn.jastz.open.controller;
 import cn.jastz.common.entity.enums.SocialEnum;
 import cn.jastz.open.entity.App;
 import cn.jastz.open.entity.AppSocialRef;
+import cn.jastz.open.enums.AttrName;
+import cn.jastz.open.enums.PayPlatform;
 import cn.jastz.open.service.OpenService;
 import cn.jastz.page.domain.Page;
 import cn.jastz.page.domain.PageRequest;
@@ -37,6 +39,8 @@ public class OpenController {
         Page<App> page = openService.findAppByPage(pageRequest);
         model.addAttribute("page", page);
         model.addAttribute("socials", SocialEnum.values());
+        model.addAttribute("attrNames", AttrName.values());
+        model.addAttribute("payPlatforms", PayPlatform.values());
         return "app/list";
     }
 }

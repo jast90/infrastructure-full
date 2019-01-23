@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jastz.open.mapper.AppPayConfigMapper" >
+  <resultMap id="BaseResultMap" type="cn.jastz.open.entity.AppPayConfig" >
+    <id column="app_pay_config_id" property="appPayConfigId" jdbcType="BIGINT" />
+    <result column="app_id" property="appId" jdbcType="VARCHAR" />
+    <result column="pay_platform" property="payPlatform" jdbcType="CHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from app_pay_config
+    where app_pay_config_id = #{appPayConfigId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.jastz.open.entity.AppPayConfig" useGeneratedKeys="true" keyProperty="appPayConfigId" keyColumn="app_pay_config_id">
+    insert into app_pay_config (app_pay_config_id, app_id, pay_platform, 
+      created_time, updated_time)
+    values (#{appPayConfigId,jdbcType=BIGINT}, #{appId,jdbcType=VARCHAR}, #{payPlatform,jdbcType=CHAR}, 
+      #{createdTime,jdbcType=TIMESTAMP}, #{updatedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.jastz.open.entity.AppPayConfig" >
+    update app_pay_config
+    set app_id = #{appId,jdbcType=VARCHAR},
+      pay_platform = #{payPlatform,jdbcType=CHAR},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP}
+    where app_pay_config_id = #{appPayConfigId,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select app_pay_config_id, app_id, pay_platform, created_time, updated_time
+    from app_pay_config
+    where app_pay_config_id = #{appPayConfigId,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select app_pay_config_id, app_id, pay_platform, created_time, updated_time
+    from app_pay_config
+  </select>
+</mapper>
