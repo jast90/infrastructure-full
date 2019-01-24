@@ -91,22 +91,22 @@
         <dependency>
             <groupId>cn.jastz</groupId>
             <artifactId>common-webjar</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>cn.jastz</groupId>
             <artifactId>common-entity</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>cn.jastz</groupId>
             <artifactId>common-oauth2-feigin</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>cn.jastz</groupId>
             <artifactId>common-oauth2-resource</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.parent.version}</version>
         </dependency>
 
         <dependency>

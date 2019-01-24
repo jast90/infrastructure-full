@@ -8,6 +8,8 @@ public interface AppPayConfigMapper {
 
     int insert(AppPayConfig record);
 
+    List<AppPayConfig> selectByAppId(String appId);
+
     AppPayConfig selectByPrimaryKey(Long appPayConfigId);
 
     List<AppPayConfig> selectAll();

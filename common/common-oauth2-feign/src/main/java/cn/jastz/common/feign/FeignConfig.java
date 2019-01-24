@@ -25,7 +25,9 @@ public class FeignConfig {
     @ConfigurationProperties(prefix = "security.oauth2.client.feign")
     public OAuth2ProtectedResourceDetails clientCredentialsResourceDetails() {
 //        return new AuthorizationCodeResourceDetails();
-        return new ClientCredentialsResourceDetails();
+        //TODO 能否根据调用方查询相关的appId和secret
+        ClientCredentialsResourceDetails clientCredentialsResourceDetails = new ClientCredentialsResourceDetails();
+        return clientCredentialsResourceDetails;
     }
 
     @Bean

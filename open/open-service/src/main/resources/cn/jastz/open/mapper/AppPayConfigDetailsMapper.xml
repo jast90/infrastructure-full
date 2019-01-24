@@ -30,4 +30,10 @@
     select app_pay_config_id, attr_name, created_time, updated_time, attr_value
     from app_pay_config_details
   </select>
+
+  <select id="selectByAppPayConfigId" resultMap="BaseResultMap" >
+    select app_pay_config_id, attr_name, created_time, updated_time, attr_value
+    from app_pay_config_details
+    where app_pay_config_id = #{appPayConfigId}
+  </select>
 </mapper>

@@ -1,6 +1,7 @@
 package cn.jastz.open.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class AppPayConfig {
     private Long appPayConfigId;
@@ -12,6 +13,8 @@ public class AppPayConfig {
     private Date createdTime;
 
     private Date updatedTime;
+
+    private List<AppPayConfigDetails> appPayConfigDetailsList;
 
     public Long getAppPayConfigId() {
         return appPayConfigId;
@@ -51,5 +54,13 @@ public class AppPayConfig {
 
     public void setUpdatedTime(Date updatedTime) {
         this.updatedTime = updatedTime;
+    }
+
+    public List<AppPayConfigDetails> getAppPayConfigDetailsList() {
+        return appPayConfigDetailsList;
+    }
+
+    public void setAppPayConfigDetailsList(List<AppPayConfigDetails> appPayConfigDetailsList) {
+        this.appPayConfigDetailsList = appPayConfigDetailsList;
     }
 }

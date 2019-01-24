@@ -2,6 +2,7 @@ package cn.jastz.open.service;
 
 import cn.jastz.open.entity.AppPayConfig;
 import cn.jastz.open.entity.AppPayConfigDetails;
+import cn.jastz.open.enums.PayPlatform;
 import cn.jastz.open.form.AppPayConfigAddForm;
 import cn.jastz.open.form.AppPayConfigDetailsAddForm;
 import cn.jastz.open.mapper.AppPayConfigDetailsMapper;
@@ -53,5 +54,23 @@ public class AppPayConfigService {
             return SampleResult.SUCCESS;
         }
         return SampleResult.FAIL;
+    }
+
+    public List<AppPayConfig> queryByAppId(String appId) {
+        List<AppPayConfig> appPayConfigs = appPayConfigMapper.selectByAppId(appId);
+        appPayConfigs.forEach(appPayConfig -> appPayConfig.setAppPayConfigDetailsList(appPayConfigDetailsMapper.selectByAppPayConfigId(appPayConfig.getAppPayConfigId())));
+        return appPayConfigs;
+    }
+
+    public AppPayConfig queryByAppIdAndPayPlatform(String appId, PayPlatform payPlatform) {
+        List<AppPayConfig> appPayConfigs = appPayConfigMapper.selectByAppId(appId);
+        for (AppPayConfig appPayConfig : appPayConfigs) {
+            if (payPlatform.name().equals(appPayConfig.getPayPlatform())) {
+                appPayConfig.setAppPayConfigDetailsList(appPayConfigDetailsMapper.selectByAppPayConfigId(appPayConfig.getAppPayConfigId()));
+                return appPayConfig;
+            }
+        }
+
+        return null;
     }
 }

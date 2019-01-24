@@ -1,5 +1,7 @@
 package cn.jastz.open.controller;
 
+import cn.jastz.open.entity.AppPayConfig;
+import cn.jastz.open.enums.PayPlatform;
 import cn.jastz.open.form.AppPayConfigAddForm;
 import cn.jastz.open.form.AppPayConfigDetailsAddForm;
 import cn.jastz.open.service.AppPayConfigService;
@@ -27,6 +29,16 @@ public class AppPayConfigController extends BaseController {
     @PostMapping("{appPayConfigId}")
     public IResult addAttr(@PathVariable("appPayConfigId") long appPayConfigId, @RequestBody List<AppPayConfigDetailsAddForm> addFormList) {
         return appPayConfigService.saveOrUpdatePayConfigDetails(appPayConfigId, addFormList);
+    }
+
+    @GetMapping("")
+    public List<AppPayConfig> getByAppId() {
+        return appPayConfigService.queryByAppId(getCurrentAppId());
+    }
+
+    @GetMapping("{payPlatform}")
+    public AppPayConfig getByAppIdAndPayPlatform(@PathVariable("payPlatform") PayPlatform payPlatform) {
+        return appPayConfigService.queryByAppIdAndPayPlatform(getCurrentAppId(), payPlatform);
     }
 }
 
