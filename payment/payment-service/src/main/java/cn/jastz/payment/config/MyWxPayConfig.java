@@ -52,6 +52,10 @@ public class MyWxPayConfig implements WXPayConfig {
         return 60000;
     }
 
+    public String getAttrValue(AttrName attrName) {
+        return getAppPayConfig().get(attrName.name());
+    }
+
     private Map<String, String> getAppPayConfig() {
         AppPayConfig appPayConfig = appPayConfigClient.getByAppIdAndPayPlatform(PayPlatform.wechat_pay);
         Map<String, String> map = appPayConfig.getAppPayConfigDetailsList().stream().collect(Collectors.toMap(AppPayConfigDetails::getAttrName, AppPayConfigDetails::getAttrValue));

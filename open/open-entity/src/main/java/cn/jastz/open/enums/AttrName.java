@@ -8,5 +8,6 @@ public enum AttrName {
     app_secret,
     cert,
     mch_id,
-    pay_key
+    pay_key,
+    notify_url
 }

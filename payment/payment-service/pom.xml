@@ -60,6 +60,11 @@
             <artifactId>common-oauth2-resource</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+        <dependency>
+            <groupId>cn.jastz</groupId>
+            <artifactId>common-oauth2-feigin</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

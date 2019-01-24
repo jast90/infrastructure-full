@@ -22,6 +22,16 @@
       #{productName,jdbcType=VARCHAR}, #{quantity,jdbcType=INTEGER}, #{payAmount,jdbcType=DECIMAL},
        #{updateTime,jdbcType=TIMESTAMP})
   </insert>
+  <insert id="batchInsert" parameterType="cn.jastz.payment.entity.PaymentOrderItem" >
+    insert into payment_order_item (item_id, order_id, product_id,
+      product_name, quantity, pay_amount, update_time)
+    values
+    <foreach collection="list" item="item" close=")" open="(" separator=",">
+    #{item.itemId,jdbcType=INTEGER}, #{item.orderId,jdbcType=INTEGER}, #{item.productId,jdbcType=INTEGER},
+      #{item.productName,jdbcType=VARCHAR}, #{item.quantity,jdbcType=INTEGER}, #{item.payAmount,jdbcType=DECIMAL},
+       #{item.updateTime,jdbcType=TIMESTAMP}
+    </foreach>
+  </insert>
   <update id="updateByPrimaryKey" parameterType="cn.jastz.payment.entity.PaymentOrderItem" >
     update payment_order_item
     set order_id = #{orderId,jdbcType=INTEGER},

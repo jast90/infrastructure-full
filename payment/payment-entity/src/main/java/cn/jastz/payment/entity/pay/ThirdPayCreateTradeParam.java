@@ -1,6 +1,9 @@
 package cn.jastz.payment.entity.pay;
 
+import cn.jastz.payment.vo.OrderItemVO;
+
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * @author zhiwen
@@ -11,8 +14,7 @@ public class ThirdPayCreateTradeParam {
      * 对应微信的body
      * 对应支付宝的subject
      */
-    private String title;
-    private String outTradeNo;
+
     /**
      * 单位：元
      */
@@ -41,22 +43,18 @@ public class ThirdPayCreateTradeParam {
      * version
      */
 
+    private int accountId;
+    private List<OrderItemVO> orderItemVOS;
+
 
     public String getTitle() {
-        return title;
+        StringBuilder stringBuilder = new StringBuilder();
+        for (OrderItemVO orderItemVO : orderItemVOS) {
+            stringBuilder.append(String.format("%s X %s", orderItemVO.getProductName(), orderItemVO.getQty()));
+        }
+        return stringBuilder.toString();
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getOutTradeNo() {
-        return outTradeNo;
-    }
-
-    public void setOutTradeNo(String outTradeNo) {
-        this.outTradeNo = outTradeNo;
-    }
 
     public BigDecimal getTotalFee() {
         return totalFee;
@@ -97,5 +95,21 @@ public class ThirdPayCreateTradeParam {
 
     public void setOpenId(String openId) {
         this.openId = openId;
+    }
+
+    public int getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
+    }
+
+    public List<OrderItemVO> getOrderItemVOS() {
+        return orderItemVOS;
+    }
+
+    public void setOrderItemVOS(List<OrderItemVO> orderItemVOS) {
+        this.orderItemVOS = orderItemVOS;
     }
 }
