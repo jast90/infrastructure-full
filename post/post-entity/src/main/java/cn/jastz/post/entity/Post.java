@@ -3,7 +3,7 @@ package cn.jastz.post.entity;
 import java.util.Date;
 
 public class Post {
-    private Integer id;
+    private Long id;
 
     private String appId;
 
@@ -19,11 +19,11 @@ public class Post {
 
     private Date updatedTime;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

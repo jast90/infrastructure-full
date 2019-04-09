@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.jastz.post.mapper.PostMapper">
     <resultMap id="BaseResultMap" type="cn.jastz.post.entity.Post">
-        <id column="id" property="id" jdbcType="INTEGER"/>
+        <id column="id" property="id"/>
         <result column="app_id" property="appId" jdbcType="VARCHAR"/>
         <result column="post_author" property="postAuthor" jdbcType="INTEGER"/>
         <result column="post_title" property="postTitle" jdbcType="VARCHAR"/>
@@ -11,15 +11,15 @@
         <result column="created_time" property="createdTime" jdbcType="TIMESTAMP"/>
         <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP"/>
     </resultMap>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <delete id="deleteByPrimaryKey">
     delete from post
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id}
   </delete>
     <insert id="insert" parameterType="cn.jastz.post.entity.Post">
-    insert into post (id, app_id, post_author, 
+    insert into post ( app_id, post_author,
       post_title, post_description, post_content, created_time,
       updated_time)
-    values (#{id,jdbcType=INTEGER}, #{appId,jdbcType=VARCHAR}, #{postAuthor,jdbcType=INTEGER}, 
+    values ( #{appId,jdbcType=VARCHAR}, #{postAuthor,jdbcType=INTEGER},
       #{postTitle,jdbcType=VARCHAR},#{postDescription,jdbcType=VARCHAR}, #{postContent,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP},
       #{updatedTime,jdbcType=TIMESTAMP})
   </insert>
@@ -32,12 +32,12 @@
       post_content = #{postContent,jdbcType=VARCHAR},
       created_time = #{createdTime,jdbcType=TIMESTAMP},
       updated_time = #{updatedTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id}
   </update>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
     select id, app_id, post_author, post_title, post_description, post_content, created_time, updated_time
     from post
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id}
   </select>
     <select id="selectAll" resultMap="BaseResultMap">
     select id, app_id, post_author, post_title, post_description, post_content, created_time, updated_time
@@ -49,12 +49,12 @@
     where app_id = #{appId}
     order by created_time desc
   </select>
-  <select id="selectAllByYear" resultType="cn.jastz.post.entity.Post">
+    <select id="selectAllByYear" resultType="cn.jastz.post.entity.Post">
       select id, app_id, post_author, post_title, post_description, post_content, created_time, updated_time
     from post
     where app_id = #{appId} and year(created_time)=#{year}
   </select>
-  <select id="selectYears" resultType="_int">
+    <select id="selectYears" resultType="int">
     SELECT
       YEAR(created_time) AS `year`
     FROM

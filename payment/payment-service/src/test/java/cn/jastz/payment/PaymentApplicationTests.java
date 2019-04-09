@@ -43,8 +43,6 @@ public class PaymentApplicationTests {
     @Test
     public void createTrade() {
         ThirdPayCreateTradeParam thirdPayCreateTradeParam = new ThirdPayCreateTradeParam();
-        thirdPayCreateTradeParam.setTitle("矿泉水");
-        thirdPayCreateTradeParam.setOutTradeNo("20190122000001");
         thirdPayCreateTradeParam.setSpbillCreateIp("192.168.1.1");
         thirdPayCreateTradeParam.setTotalFee(new BigDecimal(0.01));
         thirdPayCreateTradeParam.setTradeType("JSAPI");
