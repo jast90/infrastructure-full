@@ -10,13 +10,25 @@
                     pattern="%d [%t] %-5level %logger{1.} %l - %msg%n"/>
             <!--pattern="%highlight{%d [%t] %-5level %logger{1.} - %msg%n}{FATAL=white, ERROR=red, WARN=blue, INFO=black, DEBUG=green, TRACE=blue}"/>-->
         </Console>
-        <File name="file" fileName="${logPath}/${fileName}.log">
+        <File name="simple-file" fileName="${logPath}/${fileName}.log">
             <PatternLayout>
                 <Pattern>%highlight{%d [%t] %-5level %logger{1.} - %msg%n}{FATAL=white, ERROR=red, WARN=blue,
                     INFO=black, DEBUG=green, TRACE=blue}
                 </Pattern>
             </PatternLayout>
         </File>
+        <RollingFile name="file" fileName="${logPath}/${fileName}.log"
+                     filePattern="logs/$${date:yyyy-MM}/${fileName}-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%highlight{%d [%t] %-5level %logger{1.} - %msg%n}{FATAL=white, ERROR=red, WARN=blue,
+                    INFO=black, DEBUG=green, TRACE=blue}
+                </Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="250 MB"/>
+            </Policies>
+        </RollingFile>
     </Appenders>
     <Loggers>
         <Logger name="cn.jastz" level="debug" additivity="false">
