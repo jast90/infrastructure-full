@@ -1,6 +1,10 @@
 //index.js
+//请求模块
+var http = require("../../utils/http.js")
 //获取应用实例
 const app = getApp()
+
+var host = app.globalData.host;
 
 Page({
   data: {
@@ -51,31 +55,47 @@ Page({
         wx.hideToast()
       }, 2000)
     } else {
-      wx.request({
-        url: app.globalData.host + "/account/express",
-        method: "POST",
-        data: {
-          toAddress: e.detail.value.toAddress,
-          fromAddress: e.detail.value.fromAddress,
-          longitude: e.detail.value.longitude,
-          latitude: e.detail.value.latitude
-        },
+      http.post(host,"", {
+        toAddress: e.detail.value.toAddress,
+        fromAddress: e.detail.value.fromAddress,
+        longitude: e.detail.value.longitude,
+        latitude: e.detail.value.latitude
+      }, {
         success: function(res) {
-          if (res.data.resultCode != 0) {
-            wx.showToast({
-              title: res.data.resultMsg,
-              icon: 'loading',
-              duration: 1500
-            })
-          } else {
-            wx.showToast({
-              title: res.data.resultMsg, //这里打印出登录成功
-              icon: 'success',
-              duration: 1000
-            })
+          if (res) {
+            if (res.data.resultCode != 0) {
+              wx.showToast({
+                title: res.data.resultMsg,
+                icon: 'loading',
+                duration: 1500
+              })
+            } else {
+              wx.showToast({
+                title: res.data.resultMsg, //这里打印出登录成功
+                icon: 'success',
+                duration: 1000
+              })
+            }
+          }
+        },
+        complete: function(res) {
+          if (res) {
+            if (res.data.resultCode != 0) {
+              wx.showToast({
+                title: res.data.resultMsg,
+                icon: 'loading',
+                duration: 1500
+              })
+            } else {
+              wx.showToast({
+                title: res.data.resultMsg, //这里打印出登录成功
+                icon: 'success',
+                duration: 1000
+              })
+            }
           }
         }
-      })
+      });
     }
   }
 })
