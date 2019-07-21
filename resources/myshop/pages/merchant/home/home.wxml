@@ -1,0 +1,8 @@
+<!--pages/home/home.wxml-->
+<view class="menus">
+  <view wx:for="{{menus}}">
+    <view class="menus-item" bindtap="navigate" data-url="{{item.url}}">
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+</view>

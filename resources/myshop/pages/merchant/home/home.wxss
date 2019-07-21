@@ -1,0 +1,7 @@
+/* pages/home/home.wxss */
+
+.menus-item {
+  border: 1px solid #dedede;
+  height: 30px;
+  line-height: 30px;
+}

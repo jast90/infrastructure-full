@@ -1,0 +1,38 @@
+/* pages/goods/goods.wxss */
+
+.main {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.category {
+  width: 20%;
+}
+.category-item{
+  border-bottom: 1px solid #dedede;
+  /* border-right: 1px solid #dedede; */
+  padding: 6px 0;
+  height: 30px;
+  /*垂直居中*/
+  line-height: 30px;
+}
+
+.product {
+  width: 80%;
+  /* display: flex; */
+  /* flex-direction: column; */
+}
+
+.product-item{
+  float: left;
+  text-align: center;
+  margin: 10px 0 10px 0;
+  width: 50%;
+  
+}
+
+.product-item-img{
+  width: 100px;
+  height: 100px;
+}

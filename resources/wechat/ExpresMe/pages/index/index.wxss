@@ -159,3 +159,7 @@ input {
   width: 152rpx;
   height: 23rpx;
 }
+
+.full{
+  height: 100%
+}

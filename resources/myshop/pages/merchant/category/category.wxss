@@ -1,0 +1,7 @@
+/* pages/category/category.wxss */
+
+.category-item {
+  border: 1px solid #dedede;
+  height: 30px;
+  line-height: 30px;
+}

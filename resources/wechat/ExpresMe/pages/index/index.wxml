@@ -23,7 +23,12 @@
         </view>
       </form>
     </view>
-    <view class="{{current === 'mall'? 'show' :'hide'}}">商城</view>
+    <view class="{{current === 'mall'? 'show' :'hide'}}">
+      <i-row i-class="full">
+        <i-col span="6" i-class="demo-col">类型导航</i-col>
+        <i-col span="18" i-class="demo-col">具体商品</i-col>
+      </i-row>
+    </view>
     <view class="{{current === 'remind'? 'show' :'hide'}}">通知</view>
     <view class="{{current === 'mine'? 'show' :'hide'}}">我的</view>
   </view>

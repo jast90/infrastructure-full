@@ -9,12 +9,13 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"autoAudits": false,
+		"coverView": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.0",
+	"libVersion": "2.7.7",
 	"appid": "wx45a98e4bd1acc3b9",
-	"projectname": "ExpresMe",
+	"projectname": "myshop",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

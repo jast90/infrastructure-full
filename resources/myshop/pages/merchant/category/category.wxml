@@ -1,0 +1,12 @@
+<!--pages/category/category.wxml-->
+<view>
+  <input placeholder="分类名称" />
+  <view class="category">
+    <view wx:for="{{categories}}">
+      <view class="category-item">
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+  <button>新增分类</button>
+</view>
