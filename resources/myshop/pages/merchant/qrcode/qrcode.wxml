@@ -1,0 +1,4 @@
+<view  class="center">
+<image  src="{{qrcode}}" bindlongtap="updateQRCode"></image>
+<view class="view-center" >长按更改收款码</view>
+</view>

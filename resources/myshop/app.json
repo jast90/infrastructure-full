@@ -6,7 +6,8 @@
     "pages/user/goodsInfo/goodsInfo",
     "pages/merchant/home/home",
     "pages/merchant/category/category",
-    "pages/merchant/goods/goods"
+    "pages/merchant/goods/goods",
+    "pages/merchant/qrcode/qrcode"
   ],
   "window": {
     "backgroundTextStyle": "light",

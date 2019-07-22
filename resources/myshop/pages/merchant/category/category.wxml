@@ -8,5 +8,5 @@
       </view>
     </view>
   </view>
-  <button>新增分类</button>
+  <button bindtap="">新增分类</button>
 </view>

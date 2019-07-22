@@ -135,11 +135,29 @@ function getProductDetail(data, callback) {
 }
 
 /**
+ * 更新用户收款码
+ */
+function updateUserQRCode(data,callback){
+  return true;
+}
+
+/**
+ * 获取用户收款码
+ */
+function getUserQRCode(data,callback){
+  console.log(getUserQRCode);
+  var qrcode = "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132";
+  callback(qrcode);
+}
+
+/**
  * API
  * @type {{post: post, get: get}}
  */
 module.exports = {
   getCategoryList: getCategoryList,
   getProductList: getProductList,
-  getProductDetail: getProductDetail
+  getProductDetail: getProductDetail,
+  getUserQRCode: getUserQRCode,
+  updateUserQRCode: updateUserQRCode
 }

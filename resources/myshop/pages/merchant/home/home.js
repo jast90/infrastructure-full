@@ -15,6 +15,11 @@ Page({
         id: 2,
         name: "商品管理",
         url: "/pages/merchant/goods/goods"
+      },
+      {
+        id: 3,
+        name: "收款码",
+        url: "/pages/merchant/qrcode/qrcode"
       }
     ]
   },

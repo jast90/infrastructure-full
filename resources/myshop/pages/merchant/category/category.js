@@ -1,4 +1,4 @@
-// var api = require("/utils/api.js")
+// var api = require("../../../utils/api.js")
 var api = require("../../../utils/mock.js")
 
 Page({
