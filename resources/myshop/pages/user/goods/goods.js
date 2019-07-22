@@ -1,99 +1,28 @@
-// pages/goods/goods.js
+// var api = require("/utils/api.js")
+var api = require("../../../utils/mock.js")
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    allData: [{
-        categoryId: 1,
-        goods: [{
-          productId: 1,
-          productName: "白菜",
-          productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"
-        }, {
-          productId: 1,
-          productName: "包菜",
-          productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"
-        }]
-      },
-      {
-        categoryId: 2,
-        goods: [{
-          productId: 1,
-          productName: "烧鸭",
-          productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"
-        }, {
-          productId: 1,
-          productName: "白切鸡",
-          productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"
-        }]
-      },
-      {
-        categoryId: 3,
-        goods: [{
-          productId: 1,
-          productName: "香蕉",
-          productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"
-        }, {
-          productId: 1,
-          productName: "苹果",
-          productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"
-        }]
-      },
-      {
-        categoryId: 4,
-        goods: [{
-          productId: 1,
-          productName: "农夫山泉",
-          productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"
-        }, {
-          productId: 1,
-          productName: "怡宝",
-          productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"
-        }]
-      }
-    ],
-    category: [{
-      id: 1,
-      name: "蔬菜"
-    }, {
-      id: 2,
-      name: "熟食"
-    }, {
-      id: 3,
-      name: "水果"
-    }, {
-      id: 4,
-      name: "饮用水"
-    }],
-    product: [{
-      productId: 1,
-      productName: "商品名称",
-      productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"
-    }]
+    categories: [],
+    products: []
   },
   /**
    * 更改商品
    */
   changeProduct: function(e) {
-    let id = e.target.dataset.id;
-    console.log(id);
-    let categoryGoods = this.data.allData;
-    for (var i = 0; i < categoryGoods.length; i++) {
-      var item = categoryGoods[i];
-      if (item.categoryId === id) {
-        this.setData({
-          product: item.goods
-        })
-      }
-
-    }
+    let categoryId = e.target.dataset.id;
+    let that = this;
+    api.getProductList({ categoryId: categoryId }, function (data) {
+      that.setData({ products: data });
+    });
   },
   productInfo:function(e){
-    let id = e.currentTarget.dataset.id;
-    let goodInfoUrl = "/pages/user/goodsInfo/goodsInfo?id="+id;
-    console.log(id);
+    let productId = e.currentTarget.dataset.id;
+    let goodInfoUrl = "/pages/user/goodsInfo/goodsInfo?id=" + productId;
     wx.navigateTo({
       url: goodInfoUrl
     })
@@ -103,21 +32,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    var that = this;
+    api.getCategoryList(function (data) {
+      that.setData({ categories: data });
+    });
+    var categoryId = this.data.categories[0].id;
+    api.getProductList({ categoryId: categoryId }, function (data) {
+      that.setData({ products: data });
+    });
+    console.log(this.data)
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    
   },
 
   /**

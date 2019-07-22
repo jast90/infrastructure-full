@@ -62,6 +62,7 @@ Page({
         latitude: e.detail.value.latitude
       }, {
         success: function(res) {
+          console.log(res);
           if (res) {
             if (res.data.resultCode != 0) {
               wx.showToast({
@@ -79,6 +80,7 @@ Page({
           }
         },
         complete: function(res) {
+          console.log(res);
           if (res) {
             if (res.data.resultCode != 0) {
               wx.showToast({
@@ -99,3 +101,5 @@ Page({
     }
   }
 })
+
+wx.hideShareMenu()

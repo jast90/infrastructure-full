@@ -1,34 +1,20 @@
-// pages/category/category.js
+// var api = require("/utils/api.js")
+var api = require("../../../utils/mock.js")
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    categories: [{
-      id: 1,
-      name: "蔬菜",
-      subList: []
-    }, {
-      id: 2,
-      name: "熟食",
-      subList: []
-    }, {
-      id: 1,
-      name: "水果",
-      subList: []
-    }, {
-      id: 1,
-      name: "饮用水",
-      subList: []
-    }]
+    categories: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    api.getCategoryList(data => this.setData({ categories:data}))
   },
 
   /**

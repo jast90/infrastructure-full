@@ -1,4 +1,5 @@
-// pages/goodsInfo/goodsInfo.js
+// var api = require("/utils/api.js")
+var api = require("../../../utils/mock.js")
 Page({
 
   /**
@@ -10,10 +11,6 @@ Page({
     interval: 5000,
     duration: 1000,
     product: {
-      productId: 1,
-      productName: "白菜",
-      productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132",
-      productImages: ["https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132", "https://avatars3.githubusercontent.com/u/17826333?s=400&v=4", "https://avatars3.githubusercontent.com/u/501740?s=400&v=4"]
     }
   },
 
@@ -21,21 +18,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.id)
+    let productId = options.id;
+    api.getProductDetail({productId:productId},data=>this.setData({product:data}));
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**
