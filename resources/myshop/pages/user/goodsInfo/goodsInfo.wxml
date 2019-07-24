@@ -1,11 +1,18 @@
 <!--pages/goodsInfo/goodsInfo.wxml-->
-<view>
+
+<view class="product-content">
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
     <block wx:for="{{product.productImages}}">
       <swiper-item>
-        <image src="{{item}}" class="slide-image" width="355" height="150" />
+        <image src="{{item}}" class="image" />
       </swiper-item>
     </block>
   </swiper>
-  <view>{{product.productName}}</view>
+  <view class="product-name">{{product.productName}}</view>
+  <view class="product-name">{{product.productDesc}}</view>
+</view>
+<view class="buy-bar">
+  <view class='cart-btn' style='color:rgba(7,17,27,0.6)' bindtap='cart'>购物车({{cartQty}})</view>
+  <view class='cart-btn' style='color:rgba(7,17,27,0.6)' bindtap='addCart'>加入购物车</view>
+  <view class='buy-btn' style='color:#13b5f5' bindtap='order'>立即购买</view>
 </view>

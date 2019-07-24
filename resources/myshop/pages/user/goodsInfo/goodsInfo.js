@@ -11,15 +11,47 @@ Page({
     interval: 5000,
     duration: 1000,
     product: {
-    }
+    },
+    cart:[],
+    cartQty:0
   },
-
+  cart:function(){
+    wx.navigateTo({
+      url: "/pages/user/cart/cart"
+    })
+  },
+  order:function(){
+    wx.navigateTo({
+      url: "/pages/user/order/order"
+    })
+  },
+  addCart:function(){
+    api.cartAdd({
+      productId: this.data.product.productId,
+      qty:1
+    },data=>{
+      if(data.resultCode==0){
+        wx.showToast({
+          title: '操作成功',
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let productId = options.id;
     api.getProductDetail({productId:productId},data=>this.setData({product:data}));
+    api.getCart(data => { 
+        this.setData({ cart: data }) 
+        let qty = 0;
+        let index;
+        for(index in data ){
+          qty +=data[index].qty;
+        }
+      this.setData({ cartQty: qty }) 
+      });
   },
 
   /**

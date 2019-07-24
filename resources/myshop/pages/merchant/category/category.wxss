@@ -2,8 +2,8 @@
 
 .category-item {
   border: 1px solid #dedede;
-  height: 60rpx;
-  line-height: 60rpx;
+  height: 80rpx;
+  line-height: 80rpx;
 }
 
 .section{

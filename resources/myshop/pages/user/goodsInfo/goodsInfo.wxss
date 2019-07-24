@@ -1,1 +1,41 @@
-/* pages/goodsInfo/goodsInfo.wxss */
+
+.product-content {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  /* height: 80%; */
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+
+.image{
+  width:750rpx; 
+  height:100%;
+}
+
+.buy-bar {
+  display: flex;
+  flex-direction: row;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-top: 2rpx solid rgba(7, 17, 27, 0.1);
+  position:fixed; 
+  bottom:0;
+  width: 750rpx;
+}
+
+.buy-btn, .cart-btn {
+  flex: 1;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 32rpx;
+}
+
+.cart-btn {
+  border-right: 2rpx solid rgba(7, 17, 27, 0.1);
+}
+
+.product-name{
+  margin: 20rpx 10rpx;
+}

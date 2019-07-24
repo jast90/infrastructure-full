@@ -7,7 +7,9 @@
     "pages/merchant/home/home",
     "pages/merchant/category/category",
     "pages/merchant/goods/goods",
-    "pages/merchant/qrcode/qrcode"
+    "pages/merchant/qrcode/qrcode",
+    "pages/user/cart/cart",
+    "pages/user/order/order"
   ],
   "window": {
     "backgroundTextStyle": "light",

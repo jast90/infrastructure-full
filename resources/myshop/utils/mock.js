@@ -31,11 +31,13 @@ function getProductList(data, callback) {
       goods: [{
         productId: 1,
         productName: "白菜",
-        productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"
+        productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132",
+        productDesc: "有机白菜，无污染"
       }, {
         productId: 2,
         productName: "包菜",
-        productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"
+        productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132",
+        productDesc: "有机白菜，无污染"
       }]
     },
     {
@@ -43,11 +45,13 @@ function getProductList(data, callback) {
       goods: [{
         productId: 3,
         productName: "烧鸭",
-        productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"
+        productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132",
+        productDesc: "有机白菜，无污染"
       }, {
         productId: 4,
         productName: "白切鸡",
-        productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"
+        productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132",
+        productDesc: "有机白菜，无污染"
       }]
     },
     {
@@ -55,11 +59,13 @@ function getProductList(data, callback) {
       goods: [{
         productId: 5,
         productName: "香蕉",
-        productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"
+        productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132",
+        productDesc: "有机白菜，无污染"
       }, {
         productId: 6,
         productName: "苹果",
-        productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"
+        productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132",
+        productDesc: "有机白菜，无污染"
       }]
     },
     {
@@ -67,11 +73,13 @@ function getProductList(data, callback) {
       goods: [{
         productId: 7,
         productName: "农夫山泉",
-        productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"
+        productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132",
+        productDesc: "有机白菜，无污染"
       }, {
         productId: 8,
         productName: "怡宝",
-        productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"
+        productImage: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132",
+        productDesc: "有机白菜，无污染"
       }]
     }
   ];
@@ -93,35 +101,43 @@ function getProductDetail(data, callback) {
   var products = [{
     productId: 1,
     productName: "白菜",
-    productImages: ["https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"]
+    productImages: ["https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"],
+    productDesc: "有机白菜，无污染"
   }, {
     productId: 2,
     productName: "包菜",
-    productImages: ["https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"]
+    productImages: ["https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"],
+    productDesc: "有机白菜，无污染"
   }, {
     productId: 3,
     productName: "烧鸭",
-    productImages: ["https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"]
+    productImages: ["https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"],
+    productDesc: "有机白菜，无污染"
   }, {
     productId: 4,
     productName: "白切鸡",
-    productImages: ["https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"]
+    productImages: ["https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"],
+    productDesc: "有机白菜，无污染"
   }, {
     productId: 5,
     productName: "香蕉",
-    productImages: ["https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"]
+    productImages: ["https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"],
+    productDesc: "有机白菜，无污染"
   }, {
     productId: 6,
     productName: "苹果",
-    productImages: ["https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"]
+    productImages: ["https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"],
+    productDesc: "有机白菜，无污染"
   }, {
     productId: 7,
     productName: "农夫山泉",
-    productImages: ["https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"]
+    productImages: ["https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"],
+    productDesc: "有机白菜，无污染"
   }, {
     productId: 8,
     productName: "怡宝",
-    productImages: ["https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"]
+    productImages: ["https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132"],
+    productDesc: "有机白菜，无污染"
   }];
   var product;
   for (var index in products) {
@@ -137,7 +153,7 @@ function getProductDetail(data, callback) {
 /**
  * 更新用户收款码
  */
-function updateUserQRCode(data,callback){
+function updateUserQRCode(data, callback) {
   console.log(data)
   var result = {
     resultCode: 0,
@@ -149,7 +165,7 @@ function updateUserQRCode(data,callback){
 /**
  * 获取用户收款码
  */
-function getUserQRCode(data,callback){
+function getUserQRCode(data, callback) {
   console.log(getUserQRCode);
   var qrcode = "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epiadUN7FMBBlymlW9QEWJzNbPN04lgkFh1P9J91L7kWPcNyJHF7rfyPqMFa1Qpqb9yxZzFZia12oDw/132";
   callback(qrcode);
@@ -158,12 +174,28 @@ function getUserQRCode(data,callback){
 /**
  * 添加分类
  */
-function categoryAdd(data,callback){
+function categoryAdd(data, callback) {
   console.log(data)
-  var result={
-    resultCode:0,
-    resultMsg:"操作成功"
+  var result = {
+    resultCode: 0,
+    resultMsg: "操作成功"
   }
+  callback(result);
+}
+
+function cartAdd(data,callback){
+  console.log(data)
+  var result = {
+    resultCode: 0,
+    resultMsg: "操作成功"
+  }
+  callback(result);
+}
+
+function getCart(callback){
+  var result = [
+    { productId: 2, qty: 1 }
+  ]
   callback(result);
 }
 
@@ -177,5 +209,7 @@ module.exports = {
   getProductDetail: getProductDetail,
   getUserQRCode: getUserQRCode,
   updateUserQRCode: updateUserQRCode,
-  categoryAdd: categoryAdd
+  categoryAdd: categoryAdd,
+  cartAdd: cartAdd,
+  getCart: getCart
 }
