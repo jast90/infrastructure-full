@@ -13,9 +13,9 @@
   border-bottom: 1px solid #dedede;
   /* border-right: 1px solid #dedede; */
   padding: 6px 0;
-  height: 30px;
+  height: 60rpx;
   /*垂直居中*/
-  line-height: 30px;
+  line-height: 60rpx;
 }
 
 .product {
@@ -27,7 +27,7 @@
 .product-item{
   float: left;
   text-align: center;
-  margin: 10px 0 10px 0;
+  margin: 30rpx 0 30rpx 0;
   width: 50%;
   
 }

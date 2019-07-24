@@ -8,5 +8,17 @@
       </view>
     </view>
   </view>
-  <button bindtap="">新增分类</button>
+  <button bindtap="showAddModal">新增分类</button>
 </view>
+
+
+<modal show="{{showAddModal}}" height="40%" bindcancel="" bindconfirm="">
+  <form bindsubmit="categroyAdd">
+    <view class="section" >
+      <input name="name" placeholder="请输入分类名称" bindblur="changeCategoryName" />
+    </view>
+    <view class="section">
+      <input name="desc" placeholder="请输入分类描述" bindblur="changeCategoryDesc" />
+    </view>
+  </form>
+</modal>

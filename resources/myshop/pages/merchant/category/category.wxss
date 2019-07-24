@@ -1,7 +1,11 @@
-/* pages/category/category.wxss */
+@import "../../../css/weui.wxss";
 
 .category-item {
   border: 1px solid #dedede;
-  height: 30px;
-  line-height: 30px;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.section{
+  margin: 10rpx 60rpx;
 }

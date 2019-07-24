@@ -7,7 +7,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-    categories: []
+    categories: [],
+    showAddModal:false,
+    newCagory:{
+      name:"",
+      desc:""
+    }
+  },
+
+/**
+ * 显示添加类型Modal
+ */
+  showAddModal:function(){
+    this.setData({showAddModal:true})
+  },
+
+  categroyAdd:function(e){
+    console.log(e.detail.value);
   },
 
   /**
