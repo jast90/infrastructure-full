@@ -12,13 +12,11 @@
 </view>
 
 
-<modal show="{{showAddModal}}" height="40%" bindcancel="" bindconfirm="">
-  <form bindsubmit="categroyAdd">
+<modal show="{{showAddModal}}" height="40%" bindcancel="" bindconfirm="categroyAdd">
     <view class="section" >
-      <input name="name" placeholder="请输入分类名称" bindblur="changeCategoryName" />
+      <input name="name" placeholder="请输入分类名称"  bindinput="changeName" value="{{newCagoryName}}"/>
     </view>
     <view class="section">
-      <input name="desc" placeholder="请输入分类描述" bindblur="changeCategoryDesc" />
+      <input name="desc" placeholder="请输入分类描述" bindinput="changeDesc" value="{{newCagoryDesc}}"/>
     </view>
-  </form>
 </modal>

@@ -138,7 +138,12 @@ function getProductDetail(data, callback) {
  * 更新用户收款码
  */
 function updateUserQRCode(data,callback){
-  return true;
+  console.log(data)
+  var result = {
+    resultCode: 0,
+    resultMsg: "操作成功"
+  }
+  callback(result);
 }
 
 /**
@@ -151,6 +156,18 @@ function getUserQRCode(data,callback){
 }
 
 /**
+ * 添加分类
+ */
+function categoryAdd(data,callback){
+  console.log(data)
+  var result={
+    resultCode:0,
+    resultMsg:"操作成功"
+  }
+  callback(result);
+}
+
+/**
  * API
  * @type {{post: post, get: get}}
  */
@@ -159,5 +176,6 @@ module.exports = {
   getProductList: getProductList,
   getProductDetail: getProductDetail,
   getUserQRCode: getUserQRCode,
-  updateUserQRCode: updateUserQRCode
+  updateUserQRCode: updateUserQRCode,
+  categoryAdd: categoryAdd
 }

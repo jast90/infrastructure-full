@@ -28,8 +28,14 @@ Page({
           success: function(res) {
             var data = res.data;
             console.log(data)
-            //TODO 文件上传成功，更新用户收款码
-            that.onLoad();
+            // 文件上传成功，更新用户收款码
+            api.updateUserQRCode({
+              "imgUrl":""
+            },result=>{
+              if(result.resultCode==0){
+                that.onLoad();
+              }
+            })
           }
         })
       },

@@ -1,2 +1,19 @@
-<!--pages/merchant/goods/goods.wxml-->
-<text>pages/merchant/goods/goods.wxml</text>
+<!--pages/goods/goods.wxml-->
+<view class="main">
+  <scroll-view class="category" scroll-y="true" style="height:1000rpx;">
+    <view wx:for="{{categories}}">
+      <view class="category-item" bindtap="changeProduct" data-id="{{item.id}}">{{item.name}}</view>
+    </view>
+  </scroll-view>
+  <view class="product">
+    <view wx:for="{{products}}">
+      <view class="product-item" bindtap="productInfo" data-id="{{item.productId}}">
+        <image class="product-item-img" src="{{item.productImage}}"></image>
+        <view>{{item.productName}}</view>
+      </view>
+    </view>
+    <view class="product-item" bindtap="">
+      <view>添加</view>
+    </view>
+  </view>
+</view>
