@@ -1,8 +1,11 @@
 package cn.jastz.open.mapper;
 
 import cn.jastz.open.entity.AppPayConfig;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
+@Repository
 public interface AppPayConfigMapper {
     int deleteByPrimaryKey(Long appPayConfigId);
 
