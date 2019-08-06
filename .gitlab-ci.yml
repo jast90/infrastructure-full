@@ -1,0 +1,14 @@
+image: docker:latest
+services:
+  - docker:dind
+stages:
+  - build
+  - docker
+
+maven-build:
+  image: maven:3-jdk-8
+  stage: build
+  script: "mvn package -B"
+  artifacts:
+    paths:
+      - target/*.jar
