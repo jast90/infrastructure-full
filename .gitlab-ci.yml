@@ -11,4 +11,4 @@ maven-build:
   script: "mvn package -B -Dmaven.test.skip=true"
   artifacts:
     paths:
-      - target/*.jar
+      - */target/*.jar
