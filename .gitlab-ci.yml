@@ -11,4 +11,5 @@ maven-build:
   script: "mvn package -B -Dmaven.test.skip=true"
   artifacts:
     paths:
-      - */target/*.jar
+      - account/account-service/*.jar
+      - open/open-service/*.jar
