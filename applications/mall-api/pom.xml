@@ -37,7 +37,7 @@
             <artifactId>spring-cloud-starter-oauth2</artifactId>
         </dependency>-->
         <dependency>
-            <groupId>me.jastz</groupId>
+            <groupId>cn.jastz</groupId>
             <artifactId>common-utils</artifactId>
         </dependency>
         <dependency>

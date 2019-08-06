@@ -37,6 +37,9 @@
         <module>express</module>
         <module>aliyun</module>
         <module>mq</module>
+        <module>common-page</module>
+        <module>common-utils</module>
+        <module>mybatis-page</module>
     </modules>
     <dependencies>
         <dependency>
@@ -92,7 +95,7 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>me.jastz</groupId>
+                <groupId>cn.jastz</groupId>
                 <artifactId>common-utils</artifactId>
                 <version>1.0-SNAPSHOT</version>
                 <exclusions>
