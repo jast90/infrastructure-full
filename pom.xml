@@ -40,6 +40,7 @@
         <module>common-page</module>
         <module>common-utils</module>
         <module>mybatis-page</module>
+        <module>swagger-spring-boot</module>
     </modules>
     <dependencies>
         <dependency>

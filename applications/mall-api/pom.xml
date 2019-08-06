@@ -41,7 +41,7 @@
             <artifactId>common-utils</artifactId>
         </dependency>
         <dependency>
-            <groupId>me.jastz.swagger.spring.boot</groupId>
+            <groupId>cn.jastz</groupId>
             <artifactId>swagger-spring-boot-starter</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>

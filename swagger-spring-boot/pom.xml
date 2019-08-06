@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>infrastructure</artifactId>
+        <groupId>cn.jastz</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>swagger-spring-boot</artifactId>
+
+    <modules>
+        <module>swagger-spring-boot-autoconfigure</module>
+        <module>swagger-spring-boot-starter</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <name>swagger-spring-boot</name>
+    <description>Spring Boot Support for Swagger</description>
+
+    <properties>
+        <springfox-swagger2.version>2.7.0</springfox-swagger2.version>
+        <swagger-ui.version>3.2.0</swagger-ui.version>
+        <spring-boot.version>1.5.6.RELEASE</spring-boot.version>
+        <swagger-spring-boot-autoconfigure.version>1.0-SNAPSHOT</swagger-spring-boot-autoconfigure.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>cn.jastz</groupId>
+                <artifactId>swagger-spring-boot-autoconfigure</artifactId>
+                <version>${swagger-spring-boot-autoconfigure.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox-swagger2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox-swagger2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>swagger-ui</artifactId>
+                <version>${swagger-ui.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
