@@ -17,7 +17,7 @@ maven-build:
 docker-image-push:
   stage: docker
   script:
-    - - ls
+    - ls
     - docker login -u $docker_hub_username -p $docker_hub_password
     - pwd
     - docker build  open/open-service
