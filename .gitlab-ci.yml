@@ -20,5 +20,7 @@ docker-image-push:
     - ls
     - docker login -u $docker_hub_username -p $docker_hub_password
     - pwd
-    - docker build  open/open-service
+    - docker build -t hub.docker.com/jast90/infrastructure/open-service open/open-service
     - docker push hub.docker.com/jast90/infrastructure/open-service
+    - ls
+
