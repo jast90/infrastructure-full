@@ -5,20 +5,19 @@ stages:
   - build
   - docker
 
-#maven-build:
-#  image: maven:3-jdk-8
-#  stage: build
-#  script: "mvn package -B -Dmaven.test.skip=true"
-#  artifacts:
-#    paths:
-#      - account/account-service/target/*.jar
-#      - open/open-service/target/*.jar
+maven-build:
+  image: maven:3-jdk-8
+  stage: build
+  script: "mvn package -B -Dmaven.test.skip=true"
+  artifacts:
+    paths:
+      - account/account-service/target/*.jar
+      - open/open-service/target/*.jar
 
 docker-image-push:
-  image: maven:3-jdk-8
   stage: docker
   script:
-    - "mvn package -B -Dmaven.test.skip=true"
+    - - ls
     - docker login -u $docker_hub_username -p $docker_hub_password
     - pwd
     - docker build  open/open-service
