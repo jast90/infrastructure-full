@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service
+  spec:
+    replicas: 1
+    template:
+      metadata:
+        name: service
+        labels: service
+      spec:
+        containers:
+          - image: jast90/open-service
+            name: open
+          - image: jast90/account-service
+              name: account
+          - image: jast90/post-service
+              name: post
+          - image: jast90/payment-service
+              name: payment
+          - image: jast90/product-service
+              name: product
+          - image: jast90/store-service
+              name: store
+          - image: jast90/mq-service
+              name: mq

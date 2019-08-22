@@ -4,6 +4,7 @@ services:
 stages:
   - build
   - docker
+  - deploy
 
 maven-build:
   image: maven:3-jdk-8
@@ -37,4 +38,6 @@ docker-image-push:
     - docker push jast90/store-service
     - docker build -t jast90/mq-service mq/mq-service
     - docker push jast90/mq-service
+
+
 
