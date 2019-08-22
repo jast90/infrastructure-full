@@ -17,6 +17,6 @@ maven-build:
 docker-image-push:
   stage: docker
   script:
-    - docker login -u $docker_hub_username -p $docker_hub_password hub.docker.com
+    - docker login -u $docker_hub_username -p $docker_hub_password
     - docker build -t gitlab.com/jast90/infrastructure/tree/master/open/open-service .
     - docker push hub.docker.com/jast90/infrastructure/open-service
