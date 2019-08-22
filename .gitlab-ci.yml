@@ -13,3 +13,9 @@ maven-build:
     paths:
       - account/account-service/target/*.jar
       - open/open-service/target/*.jar
+
+docker-image-push:
+  stage: docker
+  script:
+    - echo $docker_hub_username
+    - echo $docker_hub_password
