@@ -24,23 +24,25 @@
     </properties>
 
     <modules>
-        <module>payment</module>
-        <module>account</module>
-        <module>spring-social</module>
         <module>open</module>
-        <module>applications</module>
-        <module>common</module>
+        <module>account</module>
         <module>post</module>
+        <module>payment</module>
         <module>product</module>
         <module>store</module>
-        <module>oss</module>
-        <module>express</module>
-        <module>aliyun</module>
         <module>mq</module>
+        <module>oss</module>
+        <module>aliyun</module>
+
+        <module>spring-social</module>
+        <module>common</module>
         <module>common-page</module>
         <module>common-utils</module>
         <module>mybatis-page</module>
         <module>swagger-spring-boot</module>
+
+        <module>applications</module>
+        <module>express</module>
     </modules>
     <dependencies>
         <dependency>
