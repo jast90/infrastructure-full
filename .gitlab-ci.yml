@@ -5,18 +5,18 @@ stages:
   - build
   - docker
 
-maven-build:
-  image: maven:3-jdk-8
-  stage: build
-  script: "mvn package -B -Dmaven.test.skip=true"
-  artifacts:
-    paths:
-      - account/account-service/target/*.jar
-      - open/open-service/target/*.jar
+#maven-build:
+#  image: maven:3-jdk-8
+#  stage: build
+#  script: "mvn package -B -Dmaven.test.skip=true"
+#  artifacts:
+#    paths:
+#      - account/account-service/target/*.jar
+#      - open/open-service/target/*.jar
 
 docker-image-push:
   stage: docker
   script:
     - docker login -u $docker_hub_username -p $docker_hub_password
-    - docker build -t gitlab.com/jast90/infrastructure/tree/master/open/open-service .
+    - docker build -t gitlab.com/jast90/infrastructure/open/open-service .
     - docker push hub.docker.com/jast90/infrastructure/open-service
