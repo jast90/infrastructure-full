@@ -11,8 +11,13 @@ maven-build:
   script: "mvn package -B -Dmaven.test.skip=true"
   artifacts:
     paths:
-      - account/account-service/target/*.jar
       - open/open-service/target/*.jar
+      - account/account-service/target/*.jar
+      - post/post-service/target/*.jar
+      - payment/payment-service/target/*.jar
+      - product/product-service/target/*.jar
+      - store/store-service/target/*.jar
+      - mq/mq-service/target/*.jar
 
 docker-image-push:
   stage: docker
