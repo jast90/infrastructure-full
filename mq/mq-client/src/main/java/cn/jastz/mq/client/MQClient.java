@@ -2,7 +2,7 @@ package cn.jastz.mq.client;
 
 import cn.jastz.mq.entity.Message;
 import me.jastz.common.json.result.BaseResult;
-import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 

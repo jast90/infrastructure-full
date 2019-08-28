@@ -4,7 +4,7 @@ import cn.jastz.product.form.SkuAddForm;
 import cn.jastz.product.form.SkuAttrRefBatchAddForm;
 import cn.jastz.product.vo.SkuProductVo;
 import me.jastz.common.json.result.BaseResult;
-import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 

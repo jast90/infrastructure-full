@@ -16,10 +16,10 @@
     <url>http://www.example.com</url>
 
     <dependencies>
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-social-linkedin</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>cn.jastz</groupId>
             <artifactId>spring-social-github</artifactId>

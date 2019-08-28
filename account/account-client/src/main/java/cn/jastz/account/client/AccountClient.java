@@ -3,7 +3,7 @@ package cn.jastz.account.client;
 import cn.jastz.account.entity.Account;
 import cn.jastz.account.form.AccountAddForm;
 import me.jastz.common.json.result.BaseResult;
-import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
