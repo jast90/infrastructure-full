@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: open
+  labels:
+    app: open
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            backend:
+              serviceName: open
+              servicePort: 8888
