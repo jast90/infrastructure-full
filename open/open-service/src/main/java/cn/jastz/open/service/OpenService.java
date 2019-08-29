@@ -1,13 +1,10 @@
 package cn.jastz.open.service;
 
 import cn.jastz.open.entity.App;
-import cn.jastz.open.entity.AppSocialRef;
 import cn.jastz.open.mapper.AppMapper;
-import cn.jastz.open.mapper.AppSocialRefMapper;
 import cn.jastz.page.domain.Page;
 import cn.jastz.page.domain.PageList;
 import cn.jastz.page.domain.PageRequest;
-import com.netflix.discovery.converters.Auto;
 import me.jastz.common.json.result.IResult;
 import me.jastz.common.json.result.SampleResult;
 import org.springframework.beans.factory.annotation.Autowired;
