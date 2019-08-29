@@ -18,12 +18,19 @@
 
     <properties>
         <sharding-sphere.version>3.0.0</sharding-sphere.version>
+        <fmp.version>4.2.0</fmp.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -73,7 +80,7 @@
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>1.1.14</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>io.shardingsphere</groupId>
             <artifactId>sharding-jdbc-core</artifactId>
             <version>3.1.0</version>
@@ -82,7 +89,7 @@
             <groupId>io.shardingsphere</groupId>
             <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
             <version>3.1.0</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
     <build>
@@ -98,6 +105,53 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>fabric8-maven-plugin</artifactId>
+                <version>${fmp.version}</version>
+                <executions>
+                    <execution>
+                        <id>fmp</id>
+                        <goals>
+                            <goal>resource</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>kubernetes</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.fabric8</groupId>
+                        <artifactId>fabric8-maven-plugin</artifactId>
+                        <version>${fmp.version}</version>
+                        <executions>
+                            <execution>
+                                <id>fmp</id>
+                                <goals>
+                                    <goal>resource</goal>
+                                    <goal>build</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <enricher>
+                                <config>
+                                    <fmp-service>
+                                        <type>NodePort</type>
+                                    </fmp-service>
+                                </config>
+                            </enricher>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
 </project>
