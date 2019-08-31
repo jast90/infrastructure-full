@@ -19,6 +19,7 @@ maven-build:
       - product/product-service/target/*.jar
       - store/store-service/target/*.jar
       - mq/mq-service/target/*.jar
+      - applications/mall-api/target/*.jar
 
 docker-image-push:
   stage: docker
@@ -38,6 +39,8 @@ docker-image-push:
     - docker push jast90/store-service
     - docker build -t jast90/mq-service mq/mq-service
     - docker push jast90/mq-service
+    - docker build -t jast90/mall-api application/mall-api
+    - docker push jast90/mall-api
 
 
 
