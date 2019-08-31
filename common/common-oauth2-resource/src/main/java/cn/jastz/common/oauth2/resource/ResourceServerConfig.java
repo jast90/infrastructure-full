@@ -24,7 +24,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         tokenServices.setClientId("service");
         tokenServices.setClientSecret("service123");
         //TODO 将该地址放到配置文件
-        tokenServices.setCheckTokenEndpointUrl(String.format("http://%s:8888/oauth/check_token",host));
+        tokenServices.setCheckTokenEndpointUrl(String.format("%s/oauth/check_token",host));
         return tokenServices;
     }
 
