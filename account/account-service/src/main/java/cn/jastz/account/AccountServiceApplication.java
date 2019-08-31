@@ -4,6 +4,7 @@ package cn.jastz.account;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -21,7 +22,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * @author jast
  */
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@SpringBootApplication
+@SpringBootApplication(exclude = {RedisAutoConfiguration.class})
 @MapperScan(basePackages = "cn.jastz.*.mapper")
 @EnableDiscoveryClient
 @Configuration
