@@ -32,7 +32,7 @@ docker-image-push:
     - docker build -t jast90/post-service post/post-service
     - docker push jast90/post-service
     - docker build -t jast90/payment-service payment/payment-service
-    - docker push jast90/post-service
+    - docker push jast90/payment-service
     - docker build -t jast90/product-service product/product-service
     - docker push jast90/product-service
     - docker build -t jast90/store-service store/store-service
