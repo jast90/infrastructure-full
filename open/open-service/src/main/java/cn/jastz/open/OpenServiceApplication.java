@@ -23,7 +23,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  */
 @EnableFeignClients(basePackages = "cn.jastz.*.client")
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@SpringBootApplication(exclude = {RedisAutoConfiguration.class})
+@SpringBootApplication
 @EnableDiscoveryClient
 @Configuration
 @ComponentScan(basePackages = {"cn.jastz.open", "cn.jastz.common"})
