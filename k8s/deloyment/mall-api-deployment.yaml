@@ -35,7 +35,7 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: 8081
+    - port: 9090
       protocol: TCP
   selector:
     app: mall-api
