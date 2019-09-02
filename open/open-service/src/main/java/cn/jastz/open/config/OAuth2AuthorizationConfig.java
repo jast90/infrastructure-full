@@ -51,7 +51,11 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        security./*tokenKeyAccess("isAnonymous() || hasAuthority('ROLE_CLIENT')").*/checkTokenAccess("permitAll()");
+        security
+                .tokenKeyAccess("permitAll()")
+                .checkTokenAccess("permitAll()")
+                .allowFormAuthenticationForClients();
+//        security./*tokenKeyAccess("isAnonymous() || hasAuthority('ROLE_CLIENT')").*/checkTokenAccess("permitAll()");
     }
 
     @Override

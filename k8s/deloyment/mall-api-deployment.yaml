@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mall-api
+  labels:
+    app: mall-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mall-api
+  template:
+    metadata:
+      labels:
+        app: mall-api
+    spec:
+      containers:
+        - name: account
+          image: jast90/mall-api
+          ports:
+            - containerPort: 9090
+          env:
+            - name: oauth2-url
+              valueFrom:
+                configMapKeyRef:
+                  name: oauth2
+                  key: oauth2-url
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mall-api
+  labels:
+    app: mall-api
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8081
+      protocol: TCP
+  selector:
+    app: mall-api
