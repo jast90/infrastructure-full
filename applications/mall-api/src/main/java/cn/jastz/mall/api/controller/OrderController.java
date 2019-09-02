@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class OrderController {
-    @Autowired
+   /* @Autowired
     private PaymentClient paymentClient;
 
     @PostMapping("order")
     public ThirdPayCreateTradeResult createOrder(ThirdPayCreateTradeParam thirdPayCreateTradeParam) {
         return paymentClient.createThirdTrade(ThirdPayMethod.WECHAT_PAY.name(), thirdPayCreateTradeParam);
-    }
+    }*/
 }

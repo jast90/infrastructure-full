@@ -103,10 +103,10 @@
             <artifactId>common-entity</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>cn.jastz</groupId>
             <artifactId>payment-client</artifactId>
             <version>${project.parent.version}</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
 </project>
