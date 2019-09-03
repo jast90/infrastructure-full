@@ -3,4 +3,5 @@ kind: ConfigMap
 metadata:
   name: oauth2
 data:
-  oauth2-url: 192.168.99.100:32711
+  application.properties: |-
+  oauth2-url=192.168.99.100:32711

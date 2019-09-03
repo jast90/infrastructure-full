@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: reload-example
+  cloud:
+    kubernetes:
+      reload:
+        enabled: true
+        mode: polling
+        period: 5000
