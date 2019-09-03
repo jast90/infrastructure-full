@@ -1,9 +1,9 @@
 spring:
   application:
-    name: reload-example
+    name: account
   cloud:
     kubernetes:
       reload:
         enabled: true
         mode: polling
-        period: 5000
+        period: 15s
