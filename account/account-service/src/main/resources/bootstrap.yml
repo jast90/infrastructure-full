@@ -6,4 +6,4 @@ spring:
       reload:
         enabled: true
         mode: polling
-        period: 15s
+        period: 5000
