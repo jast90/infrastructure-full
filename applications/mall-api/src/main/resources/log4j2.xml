@@ -2,7 +2,7 @@
 <Configuration>
     <Properties>
         <Property name="logPath">${sys:logPath:-/logDefault}</Property>
-        <Property name="fileName">${sys:logFileName:-storeDefault}</Property>
+        <Property name="fileName">${sys:logFileName:-mall-api}</Property>
     </Properties>
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
@@ -39,7 +39,7 @@
             <AppenderRef ref="Console"></AppenderRef>
         </Logger>
         <Root level="debug">
-            <AppenderRef ref="file"></AppenderRef>
+            <!--<AppenderRef ref="file"></AppenderRef>-->
             <AppenderRef ref="Console"></AppenderRef>
         </Root>
     </Loggers>
