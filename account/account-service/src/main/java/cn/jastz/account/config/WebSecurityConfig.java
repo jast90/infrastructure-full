@@ -1,8 +1,6 @@
-package cn.jastz.mall.api.config;
+package cn.jastz.account.config;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -13,10 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  */
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-
-
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -24,16 +19,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    @Bean
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
-
-    @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-                .antMatchers(("/token,/swagger-ui.html,/swagger-ui.html,/swagger-resources/configuration/ui" +
-                        ", /swagger-resources, /swagger-resources/configuration/security,/webjars/**,/v2/api-docs,/api,/ignore/**").split(","));
+                .antMatchers("/**");
 
     }
 }
