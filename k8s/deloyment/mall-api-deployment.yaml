@@ -19,12 +19,6 @@ spec:
           image: jast90/mall-api
           ports:
             - containerPort: 9090
-          env:
-            - name: oauth2-url
-              valueFrom:
-                configMapKeyRef:
-                  name: oauth2
-                  key: oauth2-url
 ---
 apiVersion: v1
 kind: Service
