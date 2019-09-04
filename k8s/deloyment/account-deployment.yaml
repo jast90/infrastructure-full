@@ -19,12 +19,6 @@ spec:
           image: jast90/account-service
           ports:
             - containerPort: 8081
-          env:
-            - name: oauth2-url
-              valueFrom:
-                configMapKeyRef:
-                  name: oauth2
-                  key: oauth2-url
 ---
 apiVersion: v1
 kind: Service

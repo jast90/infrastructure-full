@@ -2,6 +2,7 @@ package cn.jastz.common.oauth2.resource;
 
 import cn.jastz.common.oauth2.Oauth2ServerConfig;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -20,6 +21,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Primary
     @Bean
+    @RefreshScope
     public ResourceServerTokenServices tokenServices() {
         RemoteTokenServices tokenServices = new RemoteTokenServices();
         tokenServices.setClientId("service");
