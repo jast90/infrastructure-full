@@ -1,6 +1,3 @@
-image: docker:latest
-services:
-  - docker:dind
 stages:
   - build
   - docker
@@ -22,6 +19,7 @@ maven-build:
       - applications/mall-api/target/*.jar
 
 docker-image-push:
+  image: docker:latest
   stage: docker
   script:
     - docker login -u $docker_hub_username -p $docker_hub_password
