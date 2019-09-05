@@ -10,3 +10,4 @@ spring:
       config:
         sources:
           - name: oauth2
+          - name: open

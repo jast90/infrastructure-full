@@ -1,3 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mall-api
+data:
+  application.properties: |-
+    security.oauth2.resource.token-info-uri=open/oauth/token
+    security.oauth2.resource.prefer-token-info=true
+    security.oauth2.resource.user-info-uri=open/user
+    security.oauth2.client.client-id=mall-api
+    security.oauth2.client.client-secret=mall-api-123
+    security.oauth2.client.scope=all
+    security.oauth2.client.access-token-uri=open/oauth/token
+    security.oauth2.client.feign.client-id=mall-api
+    security.oauth2.client.feign.client-secret=mall-api-123
+    security.oauth2.client.feign.grant-type=client_credentials
+    security.oauth2.client.feign.scope=all
+    security.oauth2.client.feign.access-token-uri=open/oauth/token
+    security.oauth2.client.feign.user-authorization-uri=open/oauth/authorize
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
