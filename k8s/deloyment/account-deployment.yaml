@@ -7,7 +7,7 @@ data:
     spring.datasource.username=root
     spring.datasource.password=123456
     spring.datasource.driver-class-name=com.mysql.jdbc.Driver
-    spring.datasource.url=jdbc:mysql://192.168.36.34:3306/account?useUnicode=yes&characterEncoding=UTF-8
+    spring.datasource.url=jdbc:mysql://mysql/account?useUnicode=yes&characterEncoding=UTF-8
     security.oauth2.resource.token-info-uri=http://${oauth2.server.host}/oauth/token
     security.oauth2.resource.prefer-token-info=true
 ---
