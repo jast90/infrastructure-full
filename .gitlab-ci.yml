@@ -43,7 +43,7 @@ docker-image-push:
     - docker push jast90/mall-api
 
 k8s-deploy:
-  image: k3integrations/kubectl
+  image: lachlanevenson/k8s-kubectl:latest
   only:
     - branches
   stage: deploy
