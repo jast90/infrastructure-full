@@ -43,8 +43,12 @@ docker-image-push:
     - docker push jast90/mall-api
 
 k8s-deploy:
+  image: k3integrations/kubectl
+  only:
+    - branches
   stage: deploy
   script:
+    - kubectl version
     - kubectl apply -f k8s/account-service-role.yaml
     - kubectl apply -f k8s/mysql-deployment.yml
     - kubectl apply -f k8s/oauth2-server-configMap.yaml
