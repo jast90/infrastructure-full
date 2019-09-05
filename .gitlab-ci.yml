@@ -20,6 +20,8 @@ maven-build:
 
 docker-image-push:
   image: docker:latest
+  services:
+    - docker:dind
   stage: docker
   script:
     - docker login -u $docker_hub_username -p $docker_hub_password
