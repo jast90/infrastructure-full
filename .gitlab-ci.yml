@@ -42,17 +42,17 @@ docker-image-push:
     - docker build -t jast90/mall-api applications/mall-api
     - docker push jast90/mall-api
 
-k8s-deploy:
-  image: roffe/kubectl
-  only:
-    - branches
-  stage: deploy
-  script:
-    - kubectl version
-    - kubectl apply -f k8s/mysql-deployment.yml
-    - kubectl apply -f k8s/oauth2-server-configMap.yaml
-    - kubectl apply -f k8s/deloyment/account-deployment.yaml
-    - kubectl apply -f k8s/deloyment/open-deployment.yaml
-    - kubectl apply -f k8s/deloyment/mall-api-deployment.yaml
+#k8s-deploy:
+#  image: roffe/kubectl
+#  only:
+#    - branches
+#  stage: deploy
+#  script:
+#    - kubectl version
+#    - kubectl apply -f k8s/mysql-deployment.yml
+#    - kubectl apply -f k8s/oauth2-server-configMap.yaml
+#    - kubectl apply -f k8s/deloyment/account-deployment.yaml
+#    - kubectl apply -f k8s/deloyment/open-deployment.yaml
+#    - kubectl apply -f k8s/deloyment/mall-api-deployment.yaml
 
 
