@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
  * @author zhiwen
  */
 @Configuration
-@ConfigurationProperties(prefix = "oauth2.server")
+@ConfigurationProperties(prefix = "oauth2.authorization")
 public class Oauth2ServerConfig {
     private String host = "localhost";
 

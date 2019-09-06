@@ -1,6 +1,7 @@
 package cn.jastz.common.oauth2.resource;
 
 import cn.jastz.common.oauth2.Oauth2ServerConfig;
+import cn.jastz.common.oauth2.ResourceProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
@@ -19,13 +20,16 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Autowired
     private Oauth2ServerConfig oauth2ServerConfig;
 
+    @Autowired
+    private ResourceProperties resourceProperties;
+
     @Primary
     @Bean
     @RefreshScope
     public ResourceServerTokenServices tokenServices() {
         RemoteTokenServices tokenServices = new RemoteTokenServices();
-        tokenServices.setClientId("service");
-        tokenServices.setClientSecret("service123");
+        tokenServices.setClientId(resourceProperties.getClientId());
+        tokenServices.setClientSecret(resourceProperties.getSecret());
         //TODO 将该地址放到配置文件
         tokenServices.setCheckTokenEndpointUrl(String.format("http://%s/oauth/check_token", oauth2ServerConfig.getHost()));
         return tokenServices;

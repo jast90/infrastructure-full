@@ -46,7 +46,9 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.withClientDetails(myClientDetailsService).build();
+//        clients.withClientDetails(myClientDetailsService).build();
+        clients.inMemory().withClient("clientId").secret("123456").and()
+                .withClient("service").secret("123456");
     }
 
     @Override
