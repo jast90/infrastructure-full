@@ -20,8 +20,6 @@ maven-build:
 
 docker-image-push:
   image: docker:latest
-  variables:
-    DOCKER_HOST: tcp://localhost:2375
   services:
     - docker:dind
   stage: docker
