@@ -2,7 +2,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: account
-  namepsace: default
 data:
   application.properties: |-
     spring.datasource.username=root
@@ -16,7 +15,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: account
-  namepsace: default
   labels:
     app: account
 spec:
@@ -39,7 +37,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: account
-  namepsace: default
   labels:
     app: account
 spec:
