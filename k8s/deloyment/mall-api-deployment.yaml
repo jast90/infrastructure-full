@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: mall-api
+  namepsace: default
 data:
   application.properties: |-
     security.oauth2.resource.token-info-uri=open/oauth/token
@@ -22,6 +23,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mall-api
+  namepsace: default
   labels:
     app: mall-api
 spec:
@@ -44,6 +46,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mall-api
+  namepsace: default
   labels:
     app: mall-api
 spec:
