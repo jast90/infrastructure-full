@@ -5,7 +5,7 @@ metadata:
 provisioner: kubernetes.io/gce-pd
 parameters:
   type: pd-ssd
-  zone: europe-westl-b
+  zone: europe-west1-b
 ---
 apiVersion: v1
 kind: Service
