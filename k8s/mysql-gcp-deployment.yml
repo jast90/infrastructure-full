@@ -3,9 +3,9 @@ kind: StorageClass
 metadata:
   name: fast
 provisioner: kubernetes.io/gce-pd
-  parameters:
-    type: pd-ssd
-    zone: europe-westl-b
+parameters:
+  type: pd-ssd
+  zone: europe-westl-b
 ---
 apiVersion: v1
 kind: Service
