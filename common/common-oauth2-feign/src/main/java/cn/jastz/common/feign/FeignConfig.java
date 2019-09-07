@@ -32,7 +32,8 @@ public class FeignConfig {
 
     @Bean
     public RequestInterceptor oauth2FeignRequestInterceptor() {
-        return new OAuth2FeignRequestInterceptor(new DefaultOAuth2ClientContext(), clientCredentialsResourceDetails());
+//        return new OAuth2FeignRequestInterceptor(new DefaultOAuth2ClientContext(), clientCredentialsResourceDetails());
+        return new MyOauth2FeiginRequestInterceptor();
     }
 
     @Bean

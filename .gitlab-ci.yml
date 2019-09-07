@@ -10,7 +10,6 @@ maven-build:
   artifacts:
     paths:
       - open/open-service/target/*.jar
-      - account/account-service/target/*.jar
       - post/post-service/target/*.jar
       - payment/payment-service/target/*.jar
       - product/product-service/target/*.jar
@@ -27,8 +26,6 @@ docker-image-push:
     - docker login -u $docker_hub_username -p $docker_hub_password
     - docker build -t jast90/open-service open/open-service
     - docker push jast90/open-service
-    - docker build -t jast90/account-service account/account-service
-    - docker push jast90/account-service
     - docker build -t jast90/post-service post/post-service
     - docker push jast90/post-service
     - docker build -t jast90/payment-service payment/payment-service
@@ -51,7 +48,6 @@ docker-image-push:
 #    - kubectl version
 #    - kubectl apply -f k8s/mysql-deployment.yml
 #    - kubectl apply -f k8s/oauth2-server-configMap.yaml
-#    - kubectl apply -f k8s/deloyment/account-deployment.yaml
 #    - kubectl apply -f k8s/deloyment/open-deployment.yaml
 #    - kubectl apply -f k8s/deloyment/mall-api-deployment.yaml
 

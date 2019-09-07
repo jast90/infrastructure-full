@@ -38,6 +38,7 @@ public class MyClientDetailsService implements ClientDetailsService {
         myClientDetails.setScope(Sets.newHashSet("all"));
         myClientDetails.setAuthorizedGrantTypes(Sets.newHashSet("client_credentials", "authorization_code", "refresh_token", "password"));
         myClientDetails.setAutoApproveScopes(Sets.newHashSet("all"));
+//        myClientDetails.setAccessTokenValiditySeconds(120);
         return myClientDetails;
     }
 }

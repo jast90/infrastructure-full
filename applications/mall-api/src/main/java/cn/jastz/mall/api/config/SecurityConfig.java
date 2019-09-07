@@ -23,16 +23,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin().and().csrf().disable();
     }
 
-    @Override
-    @Bean
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-                .antMatchers(("/token,/swagger-ui.html,/swagger-ui.html,/swagger-resources/configuration/ui" +
+                .antMatchers(("/favicon.ico,/token,/swagger-ui.html,/swagger-ui.html,/swagger-resources/configuration/ui" +
                         ", /swagger-resources, /swagger-resources/configuration/security,/webjars/**,/v2/api-docs,/api,/ignore/**").split(","));
 
     }

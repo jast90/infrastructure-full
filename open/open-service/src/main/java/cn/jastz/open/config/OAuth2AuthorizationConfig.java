@@ -5,6 +5,7 @@ import cn.jastz.open.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -13,6 +14,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
+import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 /**
  * @author jast
@@ -27,8 +29,8 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
     @Autowired
     private MyUserDetailsService myUserDetailsService;
 
-//    @Autowired
-//    private RedisConnectionFactory connectionFactory;
+    @Autowired
+    private RedisConnectionFactory connectionFactory;
 
     /**
      * 如果要使用password grant type的话需要配置AuthenticationManager
@@ -39,16 +41,18 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
 
     @Bean
     public TokenStore tokenStore() {
-//        RedisTokenStore redis = new RedisTokenStore(connectionFactory);
-        TokenStore tokenStore = new InMemoryTokenStore();
+        RedisTokenStore tokenStore = new RedisTokenStore(connectionFactory);
+//        TokenStore tokenStore = new InMemoryTokenStore();
         return tokenStore;
     }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-//        clients.withClientDetails(myClientDetailsService).build();
-        clients.inMemory().withClient("clientId").secret("123456").and()
-                .withClient("service").secret("123456");
+        clients.withClientDetails(myClientDetailsService).build();
+        /*clients.inMemory().withClient("clientId").secret("123456").and()
+                .withClient("service").secret("123456")
+                .authorizedGrantTypes("client_credentials", "refresh_token") .authorities("ROLE_CLIENT")
+                .scopes("read", "trust");*/
     }
 
     @Override
@@ -62,6 +66,7 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.tokenStore(tokenStore()).userDetailsService(myUserDetailsService).authenticationManager(authenticationManager);
+        endpoints.tokenStore(tokenStore()).userDetailsService(myUserDetailsService)
+                .authenticationManager(authenticationManager);
     }
 }

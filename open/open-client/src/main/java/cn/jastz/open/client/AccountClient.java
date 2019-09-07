@@ -1,7 +1,7 @@
-package cn.jastz.account.client;
+package cn.jastz.open.client;
 
-import cn.jastz.account.entity.Account;
-import cn.jastz.account.form.AccountAddForm;
+import cn.jastz.open.entity.Account;
+import cn.jastz.open.form.AccountAddForm;
 import me.jastz.common.json.result.BaseResult;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 /**
  * @author zhiwen
  */
-@FeignClient("account")
+@FeignClient("open")
 public interface AccountClient {
     @GetMapping("account/{id}")
     Account queryAccountByAccountId(@PathVariable("id") int accountId);

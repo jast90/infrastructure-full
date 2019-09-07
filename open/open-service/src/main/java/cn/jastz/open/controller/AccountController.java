@@ -1,11 +1,11 @@
-package cn.jastz.account.controller;
+package cn.jastz.open.controller;
 
-import cn.jastz.account.entity.Account;
-import cn.jastz.account.entity.AccountSocialRef;
-import cn.jastz.account.form.AccountAddForm;
-import cn.jastz.account.result.AccountResult;
-import cn.jastz.account.service.AccountService;
 import cn.jastz.common.controller.CommonBaseController;
+import cn.jastz.open.entity.Account;
+import cn.jastz.open.entity.AccountSocialRef;
+import cn.jastz.open.form.AccountAddForm;
+import cn.jastz.open.result.OpenResult;
+import cn.jastz.open.service.AccountService;
 import me.jastz.common.json.JsonUtil;
 import me.jastz.common.json.result.IResult;
 import me.jastz.common.json.result.SampleResult;
@@ -53,17 +53,17 @@ public class AccountController extends CommonBaseController {
         accountAddForm.getAccountSocialRef().setAppId(getAppId());
         int count = accountService.saveAccount(accountAddForm.getAccount(), accountAddForm.getAccountSocialRef(), accountAddForm.getPassword());
         if (count > 0) {
-            return AccountResult.SUCCESS;
+            return OpenResult.SUCCESS;
         }
-        return AccountResult.FAIL;
+        return OpenResult.FAIL;
     }
 
     @PostMapping("addAccountSocialRef")
     public IResult addAccountSocialRef(AccountSocialRef accountSocialRef) {
         if (accountService.saveAccountSocialRef(accountSocialRef) > 0) {
-            return AccountResult.SUCCESS;
+            return OpenResult.SUCCESS;
         }
-        return AccountResult.FAIL;
+        return OpenResult.FAIL;
     }
 
 

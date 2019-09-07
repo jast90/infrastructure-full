@@ -1,39 +1,42 @@
 package cn.jastz.common.oauth2.resource;
 
-import cn.jastz.common.oauth2.Oauth2ServerConfig;
-import cn.jastz.common.oauth2.ResourceProperties;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
+import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
+import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 @EnableResourceServer
 @Configuration
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Autowired
-    private Oauth2ServerConfig oauth2ServerConfig;
-
-    @Autowired
-    private ResourceProperties resourceProperties;
+    private RedisConnectionFactory connectionFactory;
 
     @Primary
     @Bean
-    @RefreshScope
     public ResourceServerTokenServices tokenServices() {
-        RemoteTokenServices tokenServices = new RemoteTokenServices();
-        tokenServices.setClientId(resourceProperties.getClientId());
-        tokenServices.setClientSecret(resourceProperties.getSecret());
-        //TODO 将该地址放到配置文件
-        tokenServices.setCheckTokenEndpointUrl(String.format("http://%s/oauth/check_token", oauth2ServerConfig.getHost()));
+        //使用 DefaultTokenServices 减少token的check
+        DefaultTokenServices tokenServices = new DefaultTokenServices();
+        tokenServices.setTokenStore(tokenStore());
         return tokenServices;
     }
+
+
+    @Bean
+    public TokenStore tokenStore() {
+        RedisTokenStore tokenStore = new RedisTokenStore(connectionFactory);
+//        TokenStore tokenStore = new InMemoryTokenStore();
+        return tokenStore;
+    }
+
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {

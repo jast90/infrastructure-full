@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
 <Configuration>
     <Properties>
         <Property name="logPath">${sys:logPath:-/logDefault}</Property>
@@ -32,10 +32,13 @@
     </Appenders>
     <Loggers>
         <Logger name="cn.jastz" level="debug" additivity="false">
-            <AppenderRef ref="file"></AppenderRef>
+            <!--<AppenderRef ref="file"></AppenderRef>-->
             <AppenderRef ref="Console"></AppenderRef>
         </Logger>
-        <Logger name="com.netflix.discovery" level="info">
+        <Logger name="com.netflix.discovery" level="info" additivity="false">
+            <AppenderRef ref="Console"></AppenderRef>
+        </Logger>
+        <Logger name="feign" level="debug" additivity="false">
             <AppenderRef ref="Console"></AppenderRef>
         </Logger>
         <Root level="debug">

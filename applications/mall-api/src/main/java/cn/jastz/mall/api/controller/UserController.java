@@ -1,10 +1,10 @@
 package cn.jastz.mall.api.controller;
 
-import cn.jastz.account.client.AccountClient;
-import cn.jastz.account.entity.Account;
-import cn.jastz.common.entity.MyUser;
+
 import cn.jastz.common.web.controller.CommonBaseController;
 import cn.jastz.mall.api.vo.UserRoleResourceVo;
+import cn.jastz.open.client.AccountClient;
+import cn.jastz.open.entity.Account;
 import com.google.common.collect.Lists;
 import me.jastz.common.json.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +24,11 @@ public class UserController extends CommonBaseController {
     private AccountClient accountClient;
 
     @GetMapping("user")
-    public List<UserRoleResourceVo> user() {
+    public List<Account> user() {
         int accountId = Integer.parseInt(SecurityContextHolder.getContext().getAuthentication().getName());
         Account account = accountClient.queryAccountByAccountId(accountId);
         System.out.println("account:" + JsonUtil.objectToPrettyJson(account));
-        return Lists.newArrayList();
+        return Lists.newArrayList(account);
     }
 
     @GetMapping("/ignore/hello")
