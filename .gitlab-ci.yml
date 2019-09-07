@@ -6,7 +6,7 @@ stages:
 maven-build:
   image: maven:3-jdk-8
   stage: build
-  script: "mvn package -B -Dmaven.test.skip=true"
+  script: "mvn package -B -Dmaven.test.skip=true -P k8s"
   artifacts:
     paths:
       - open/open-service/target/*.jar
