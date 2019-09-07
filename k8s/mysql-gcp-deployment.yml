@@ -1,12 +1,4 @@
-apiVersion: storage.k8s.io/vl
-kind: StorageClass
-metadata:
-  name: fast
-provisioner: kubernetes.io/gce-pd
-parameters:
-  type: pd-ssd
-  zone: europe-west1-b
----
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -26,7 +18,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: fast
+  storageClassName: slow
   resources:
     requests:
       storage: 10Gi
