@@ -59,8 +59,11 @@ public class AccountService {
             password = "123456";
         }
         int count = accountMapper.insert(account);
-        accountSocialRef.setAccountId(account.getAccountId());
-        accountSocialRefMapper.insert(accountSocialRef);
+        if(accountSocialRef!=null){
+            accountSocialRef.setAccountId(account.getAccountId());
+            accountSocialRefMapper.insert(accountSocialRef);
+        }
+
         AccountPassword accountPassword = new AccountPassword();
         accountPassword.setAccountId(account.getAccountId());
         accountPassword.setAccountPassword(passwordEncoder.encode(password));

@@ -11,6 +11,13 @@ public class AccountPassword {
 
     private Date updatedTime;
 
+    public AccountPassword() {
+    }
+
+    public AccountPassword(String accountPassword) {
+        this.accountPassword = accountPassword;
+    }
+
     public Integer getAccountId() {
         return accountId;
     }

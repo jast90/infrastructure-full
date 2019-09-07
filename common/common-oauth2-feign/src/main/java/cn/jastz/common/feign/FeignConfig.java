@@ -22,23 +22,8 @@ import org.springframework.security.oauth2.client.token.grant.client.ClientCrede
 public class FeignConfig {
 
     @Bean
-    @ConfigurationProperties(prefix = "security.oauth2.client.feign")
-    public OAuth2ProtectedResourceDetails clientCredentialsResourceDetails() {
-//        return new AuthorizationCodeResourceDetails();
-        //TODO 能否根据调用方查询相关的appId和secret
-        ClientCredentialsResourceDetails clientCredentialsResourceDetails = new ClientCredentialsResourceDetails();
-        return clientCredentialsResourceDetails;
-    }
-
-    @Bean
     public RequestInterceptor oauth2FeignRequestInterceptor() {
-//        return new OAuth2FeignRequestInterceptor(new DefaultOAuth2ClientContext(), clientCredentialsResourceDetails());
         return new MyOauth2FeiginRequestInterceptor();
-    }
-
-    @Bean
-    public OAuth2RestTemplate clientCredentialsRestTemplate(@Autowired OAuth2ProtectedResourceDetails clientCredentialsResourceDetails) {
-        return new OAuth2RestTemplate(clientCredentialsResourceDetails);
     }
 
 }
