@@ -8,9 +8,8 @@ import cn.jastz.page.domain.PageRequest;
 import me.jastz.common.json.result.IResult;
 import me.jastz.common.json.result.SampleResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.UUID;
 
 @Service
 public class OpenService {
@@ -18,9 +17,11 @@ public class OpenService {
     @Autowired
     private AppMapper appMapper;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public IResult saveApp(App app) {
-        app.setAppId(UUID.randomUUID().toString().replace("-", ""));
-        app.setAppSecret(UUID.randomUUID().toString().replace("-", ""));
+        app.setAppSecret(passwordEncoder.encode(app.getAppSecret()));
         IResult iResult = SampleResult.FAIL;
         if (appMapper.insert(app) == 1) {
             iResult = SampleResult.SUCCESS;
