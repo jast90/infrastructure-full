@@ -28,7 +28,7 @@ public class MyUserDetailsService implements UserDetailsService {
         //查询用户时如何区分各个业务的用户
         User app  = (User) authentication.getPrincipal();
         String appId = app.getUsername();
-        Account account = accountService.selectAccountByUsernameAndAppId(username,appId);
+        Account account = accountService.selectAccountByAccountNameAndAppId(username,appId);
         if (account == null) {
             throw new UsernameNotFoundException(username);
         }

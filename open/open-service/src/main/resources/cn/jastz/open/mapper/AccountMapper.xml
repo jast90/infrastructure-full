@@ -57,4 +57,10 @@
     from account
     where account_name = #{accountName,jdbcType=CHAR}
   </select>
+  <select id="selectByAccountNameAndAppId" resultMap="BaseResultMap">
+    select account_id,app_id, account_name, first_name, last_name, phone, email, account_from,
+    created_time, updated_time
+    from account
+    where account_name = #{accountName,jdbcType=CHAR} and app_id = #{appId}
+  </select>
 </mapper>

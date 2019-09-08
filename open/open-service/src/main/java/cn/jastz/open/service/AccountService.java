@@ -53,6 +53,14 @@ public class AccountService {
         return account;
     }
 
+    public Account selectAccountByAccountNameAndAppId(String accountName, String appId) {
+        Account account = accountMapper.selectByAccountNameAndAppId(accountName,appId);
+        if(account!=null&&account.getAccountId()>0){
+            account.setAccountPassword(accountPasswordMapper.selectByPrimaryKey(account.getAccountId()));
+        }
+        return account;
+    }
+
     @Transactional(rollbackFor = RuntimeException.class)
     public int saveAccount(Account account, AccountSocialRef accountSocialRef, String password) {
         if (StringUtils.isEmpty(password)) {

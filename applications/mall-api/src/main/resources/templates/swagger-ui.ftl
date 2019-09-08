@@ -90,7 +90,7 @@
         ui.initOAuth({
             useBasicAuthenticationWithAccessCodeGrant: true,
             clientId: "mall-api",
-            clientSecret: "mall-api-123"
+            clientSecret: "123456"
         })
 
         window.ui = ui

@@ -1,7 +1,7 @@
 package cn.jastz.social;
 
-import cn.jastz.account.client.AccountClient;
-import cn.jastz.account.entity.Account;
+import cn.jastz.open.client.AccountClient;
+import cn.jastz.open.entity.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.web.SignInAdapter;

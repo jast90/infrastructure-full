@@ -1,10 +1,10 @@
 package cn.jastz.social;
 
-import cn.jastz.account.client.AccountClient;
-import cn.jastz.account.entity.Account;
-import cn.jastz.account.entity.AccountSocialRef;
-import cn.jastz.account.form.AccountAddForm;
-import cn.jastz.account.result.AccountResult;
+import cn.jastz.open.client.AccountClient;
+import cn.jastz.open.entity.Account;
+import cn.jastz.open.entity.AccountSocialRef;
+import cn.jastz.open.form.AccountAddForm;
+import cn.jastz.open.result.OpenResult;
 import me.jastz.common.json.result.BaseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.Connection;
@@ -44,7 +44,7 @@ public class MyConnectionSignUp implements ConnectionSignUp {
             accountAddForm.setAccountSocialRef(accountSocialRef);
             BaseResult result = accountClient.addAccount(accountAddForm);
 
-            if (result.getResultCode() == AccountResult.SUCCESS.getResultCode()) {
+            if (result.getResultCode() == OpenResult.SUCCESS.getResultCode()) {
                 return String.valueOf(account.getAccountId());
             } else {
                 return null;
