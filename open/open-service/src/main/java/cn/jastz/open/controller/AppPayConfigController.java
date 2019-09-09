@@ -15,7 +15,7 @@ import java.util.List;
  * @author zhiwen
  */
 @RestController
-@RequestMapping("/app/pay/config")
+@RequestMapping("/open/app/pay/config")
 public class AppPayConfigController extends BaseController {
 
     @Autowired

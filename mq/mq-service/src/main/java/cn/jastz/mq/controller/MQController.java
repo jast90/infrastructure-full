@@ -36,7 +36,7 @@ public class MQController {
     public IResult send(@RequestBody Message message) {
         logger.info("send mq:{}", JsonUtil.objectToPrettyJson(message));
         IResult result;
-        ListenableFuture<SendResult<String, Message>> future = template.send(message.getTopic(), message.getMessage());
+        ListenableFuture<SendResult<String, Message>> future = template.send(message.getTopic(), message.getKey(), message.getMessage());
         try {
             SendResult<String, Message> sendResult = future.get(5, TimeUnit.SECONDS);
             result = SampleResult.SUCCESS;
