@@ -26,7 +26,6 @@
 
     <modules>
         <module>open</module>
-        <module>account</module>
         <module>post</module>
         <module>payment</module>
         <module>product</module>
