@@ -26,6 +26,7 @@
         <module>common-oauth2-client</module>
         <module>common-oauth2-feign</module>
         <module>common-web</module>
+        <module>common-datasource</module>
     </modules>
 
 </project>
