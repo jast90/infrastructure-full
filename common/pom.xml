@@ -27,6 +27,7 @@
         <module>common-oauth2-feign</module>
         <module>common-web</module>
         <module>common-datasource</module>
+        <module>common-mqtt-client</module>
     </modules>
 
 </project>

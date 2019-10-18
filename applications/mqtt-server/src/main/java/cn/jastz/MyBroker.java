@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Hello world!
  */
-public class App {
+public class MyBroker {
 
     public static void main(String[] args) throws IOException {
         Server server = new Server();
