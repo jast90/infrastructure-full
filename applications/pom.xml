@@ -21,6 +21,7 @@
         <module>freemarker</module>
         <module>mall</module>
         <module>mall-api</module>
+        <module>mqtt-server</module>
     </modules>
     <dependencies>
         <dependency>
