@@ -50,7 +50,7 @@ public class MqttUtilTest {
 
             @Override
             public void onSuccess(ResultMsg result) {
-                logger.info(JsonUtil.objectToJson(result));
+                logger.info("get message:{}",JsonUtil.objectToJson(result));
             }
         });
     }

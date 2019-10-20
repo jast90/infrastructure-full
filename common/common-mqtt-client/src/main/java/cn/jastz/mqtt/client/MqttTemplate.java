@@ -88,6 +88,7 @@ public class MqttTemplate {
                 if (Objects.equals(topic, mqttClient.getClientId())) {
                     Result result = clientIdResultMap.get(mqttClient.getClientId());
                     if (result != null) {
+                        result.setMqttMessage(message);
                         result.getCountDownLatch().countDown();
                     }
                 }
