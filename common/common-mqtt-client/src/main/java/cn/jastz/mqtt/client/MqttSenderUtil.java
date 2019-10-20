@@ -109,7 +109,6 @@ public class MqttSenderUtil {
     public <R> Future<R> send(String topic, MyMessage message, int qos, Class<R> rClass) {
         CompletableFuture completableFuture = new CompletableFuture();
         try {
-            message.setClientId(getClientId());
             MqttMessage mqttMessage = new MqttMessage(JsonUtil.objectToByteArray(message));
             mqttMessage.setQos(qos);
             Result result = new Result();

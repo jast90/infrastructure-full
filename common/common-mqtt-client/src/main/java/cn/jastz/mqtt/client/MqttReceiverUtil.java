@@ -70,7 +70,7 @@ public class MqttReceiverUtil {
                 public void messageArrived(String topic, MqttMessage message) throws Exception {
                     MyMessage myMessage = JsonUtil.byteArrayToObject(message.getPayload(),MyMessage.class);
                     logger.debug("Receive message:{}",JsonUtil.objectToJson(myMessage));
-                    mqttClient.publish(myMessage.getClientId(),new MqttMessage("ok".getBytes()));
+                    mqttClient.publish(mqttClient.getClientId(),new MqttMessage("ok".getBytes()));
                 }
 
                 @Override
