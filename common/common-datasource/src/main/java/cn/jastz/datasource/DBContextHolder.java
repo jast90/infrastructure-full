@@ -19,4 +19,8 @@ public class DBContextHolder {
         // TODO 扩展多个slave
         set(DBTypeEnum.SLAVE);
     }
+
+    public static void stack(){
+        set(DBTypeEnum.STACK);
+    }
 }

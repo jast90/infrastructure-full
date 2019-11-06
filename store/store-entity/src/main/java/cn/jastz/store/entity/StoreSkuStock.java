@@ -13,7 +13,9 @@ public class StoreSkuStock {
 
     private BigDecimal skuPrice;
 
-    private BigDecimal skuStock;
+    private Long skuStock;
+
+    private Long version;
 
     private Date createdTime;
 
@@ -60,12 +62,20 @@ public class StoreSkuStock {
         this.skuPrice = skuPrice;
     }
 
-    public BigDecimal getSkuStock() {
+    public Long getSkuStock() {
         return skuStock;
     }
 
-    public void setSkuStock(BigDecimal skuStock) {
+    public void setSkuStock(Long skuStock) {
         this.skuStock = skuStock;
+    }
+
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
     }
 
     public Date getCreatedTime() {

@@ -1,4 +1,4 @@
-package cn.jastz.product;
+package cn.jastz.product.service;
 
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +11,8 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@ActiveProfiles("localhost")
-public class BaseTest<T> {
-    @Autowired
-    protected T service;
-
+//@ActiveProfiles("localhost")
+public class BaseTest{
     protected String getAppId() {
         return "30b1b99af55f4936a6d03440b77b8cce";
     }

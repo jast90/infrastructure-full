@@ -4,13 +4,15 @@ package cn.jastz.store;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+//import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 
 /**
@@ -18,8 +20,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
  *
  * @author jast
  */
-@EnableResourceServer
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@EnableResourceServer
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 @SpringBootApplication
 @MapperScan(basePackages = "cn.jastz.*.mapper")
 @EnableDiscoveryClient

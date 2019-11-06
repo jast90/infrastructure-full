@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jastz.product.mapper.StackOverFlowUserMapper" >
+  <resultMap id="BaseResultMap" type="me.jastz.common.stackoverflow.vo.UserVo" >
+    <result column="url" property="url" />
+    <result column="name" property="name" />
+    <result column="location" property="location" />
+    <result column="reputation_score" property="reputationScore" />
+    <result column="gold_badges" property="goldBadges" />
+    <result column="silver_badges" property="silverBadges" />
+    <result column="bronze_badges" property="bronzeBadges" />
+    <result column="page" property="page" />
+  </resultMap>
+
+  <insert id="insert" parameterType="me.jastz.common.stackoverflow.vo.UserVo" >
+    insert into user (url, name,location,reputation_score,gold_badges,silver_badges,bronze_badges,page)
+    values (#{url},#{name},#{location},#{reputationScore},#{goldBadges},#{silverBadges},#{bronzeBadges},#{page})
+  </insert>
+
+  <insert id="batchInsert" parameterType="me.jastz.common.stackoverflow.vo.UserVo" >
+    insert into user (url, name,location,reputation_score,gold_badges,silver_badges,bronze_badges,page)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.url},#{item.name},#{item.location},#{item.reputationScore},#{item.goldBadges},#{item.silverBadges},#{item.bronzeBadges},#{item.page})
+    </foreach>
+  </insert>
+
+</mapper>

@@ -1,5 +1,5 @@
 package cn.jastz.datasource;
 
 public enum  DBTypeEnum {
-    MASTER,SLAVE;
+    MASTER,SLAVE,STACK;
 }

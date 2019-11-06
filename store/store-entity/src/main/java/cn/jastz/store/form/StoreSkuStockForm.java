@@ -10,7 +10,11 @@ public class StoreSkuStockForm {
     private int productId;
     private int skuId;
     private BigDecimal skuPrice;
-    private BigDecimal skuStock;
+    private Long skuStock;
+    /**
+     * 库存改变数量：可取正、负数
+     */
+    private BigDecimal stockChangeQty;
 
     public int getStoreId() {
         return storeId;
@@ -44,11 +48,19 @@ public class StoreSkuStockForm {
         this.skuPrice = skuPrice;
     }
 
-    public BigDecimal getSkuStock() {
+    public Long getSkuStock() {
         return skuStock;
     }
 
-    public void setSkuStock(BigDecimal skuStock) {
+    public void setSkuStock(Long skuStock) {
         this.skuStock = skuStock;
+    }
+
+    public BigDecimal getStockChangeQty() {
+        return stockChangeQty;
+    }
+
+    public void setStockChangeQty(BigDecimal stockChangeQty) {
+        this.stockChangeQty = stockChangeQty;
     }
 }

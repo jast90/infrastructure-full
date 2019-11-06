@@ -1,7 +1,5 @@
 package cn.jastz.product.service;
 
-import cn.jastz.product.BaseTest;
-import cn.jastz.product.entity.Sku;
 import cn.jastz.product.form.SkuAddForm;
 import cn.jastz.product.form.SkuAttrRefAddForm;
 import cn.jastz.product.form.SkuAttrRefBatchAddForm;
@@ -10,6 +8,7 @@ import me.jastz.common.json.JsonUtil;
 import org.assertj.core.util.Lists;
 import org.junit.Assert;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -17,7 +16,9 @@ import java.util.List;
 /**
  * @author zhiwen
  */
-public class SkuServiceTest extends BaseTest<SkuService> {
+public class SkuServiceTest extends BaseTest {
+
+    @Autowired private SkuService skuService;
 
     @Test
     public void addSku() {
@@ -26,28 +27,28 @@ public class SkuServiceTest extends BaseTest<SkuService> {
         skuAddForm.setPrice(new BigDecimal(8316));
         skuAddForm.setProductId(1);
         skuAddForm.setSkuCode("iphone-x-space_gray-64GB");
-        Assert.assertTrue(service.addSku(skuAddForm));
+        Assert.assertTrue(skuService.addSku(skuAddForm));
 
         skuAddForm = new SkuAddForm();
         skuAddForm.setAppId(getAppId());
         skuAddForm.setPrice(new BigDecimal(9605));
         skuAddForm.setProductId(1);
         skuAddForm.setSkuCode("iphone-x-space_gray-256GB");
-        Assert.assertTrue(service.addSku(skuAddForm));
+        Assert.assertTrue(skuService.addSku(skuAddForm));
 
         skuAddForm = new SkuAddForm();
         skuAddForm.setAppId(getAppId());
         skuAddForm.setPrice(new BigDecimal(8316));
         skuAddForm.setProductId(1);
         skuAddForm.setSkuCode("iphone-x-silver-64GB");
-        Assert.assertTrue(service.addSku(skuAddForm));
+        Assert.assertTrue(skuService.addSku(skuAddForm));
 
         skuAddForm = new SkuAddForm();
         skuAddForm.setAppId(getAppId());
         skuAddForm.setPrice(new BigDecimal(9605));
         skuAddForm.setProductId(1);
         skuAddForm.setSkuCode("iphone-x-silver-256GB");
-        Assert.assertTrue(service.addSku(skuAddForm));
+        Assert.assertTrue(skuService.addSku(skuAddForm));
     }
 
     @Test
@@ -63,12 +64,12 @@ public class SkuServiceTest extends BaseTest<SkuService> {
         list.add(new SkuAttrRefAddForm(4, 1, "silver", getAppId()));
         list.add(new SkuAttrRefAddForm(4, 3, "256G", getAppId()));
         skuAttrRefBatchAddForm.setList(list);
-        Assert.assertTrue(service.batchAddSkuAttrRef(skuAttrRefBatchAddForm));
+        Assert.assertTrue(skuService.batchAddSkuAttrRef(skuAttrRefBatchAddForm));
     }
 
     @Test
     public void test() {
-        List<SkuProductVo> list = service.queryListByIds(Lists.newArrayList(1, 2, 3));
+        List<SkuProductVo> list = skuService.queryListByIds(Lists.newArrayList(1, 2, 3));
         System.out.println(JsonUtil.objectToJson(list));
     }
 }

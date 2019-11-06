@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author zhiwen
  */
 @RestController
+
 public class StoreController extends CommonBaseController {
     @Autowired
     private StoreService storeService;
@@ -47,3 +48,4 @@ public class StoreController extends CommonBaseController {
         return storeService.queryPage(pageRequest);
     }
 }
+

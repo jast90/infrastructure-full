@@ -25,7 +25,14 @@ public class StoreSkuStockController {
 
     @PutMapping("updateSkuStock")
     public IResult updateSkuStock(@RequestBody StoreSkuStockForm storeSkuStockForm) {
-        return storeSkuStockService.updateStockByStoreIdAndSkuId(storeSkuStockForm.getStoreId(), storeSkuStockForm.getProductId(), storeSkuStockForm.getSkuId(), storeSkuStockForm.getSkuStock());
+        return storeSkuStockService.reduceStockByStoreIdAndSkuId(storeSkuStockForm.getStoreId(), storeSkuStockForm.getProductId(), storeSkuStockForm.getSkuId(), storeSkuStockForm.getSkuStock());
+    }
+
+    @GetMapping("/{storeId}/{productId}/{skuId}")
+    public IResult subStockByOrder(@PathVariable("storeId") int storeId,@PathVariable("productId") int productId,
+                                   @PathVariable("skuId") int skuId){
+        System.out.println(storeSkuStockService);
+        return storeSkuStockService.reduceStockByStoreIdAndSkuId(storeId,productId,skuId,1);
     }
 
     @PutMapping("updateSkuPrice")

@@ -9,6 +9,9 @@ public class MyRoutingDataSource extends AbstractRoutingDataSource {
 
     @Override
     protected Object determineCurrentLookupKey() {
-        return DBContextHolder.get();
+        if(DBContextHolder.get()!=null){
+            return DBContextHolder.get().name();
+        }
+        return null;
     }
 }

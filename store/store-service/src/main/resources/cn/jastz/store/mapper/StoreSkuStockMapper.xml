@@ -52,7 +52,7 @@
         and sku_id = #{skuId,jdbcType=INTEGER}
     </update>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map">
-    select product_id, store_id, sku_id, sku_price, sku_stock, created_time, update_time
+    select product_id, store_id, sku_id, sku_price, sku_stock, version,created_time, update_time
     from store_sku_stock
     where product_id = #{productId,jdbcType=INTEGER}
       and store_id = #{storeId,jdbcType=INTEGER}
