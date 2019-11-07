@@ -10,6 +10,9 @@ public class StoreSkuStockForm {
     private int productId;
     private int skuId;
     private BigDecimal skuPrice;
+    /**
+     * 扣减库存数
+     */
     private Long skuStock;
     /**
      * 库存改变数量：可取正、负数

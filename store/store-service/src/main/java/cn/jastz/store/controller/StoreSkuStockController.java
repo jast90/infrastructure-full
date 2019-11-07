@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author zhiwen
@@ -25,7 +26,14 @@ public class StoreSkuStockController {
 
     @PutMapping("updateSkuStock")
     public IResult updateSkuStock(@RequestBody StoreSkuStockForm storeSkuStockForm) {
-        return storeSkuStockService.reduceStockByStoreIdAndSkuId(storeSkuStockForm.getStoreId(), storeSkuStockForm.getProductId(), storeSkuStockForm.getSkuId(), storeSkuStockForm.getSkuStock());
+        return storeSkuStockService.reduceStockByStoreIdAndSkuId(storeSkuStockForm.getStoreId(),
+                storeSkuStockForm.getProductId(), storeSkuStockForm.getSkuId(), storeSkuStockForm.getSkuStock());
+    }
+
+
+    @PutMapping("orderReduceStocks")
+    public Map<Integer,IResult> orderReduceStocks(@RequestBody List<StoreSkuStockForm> storeSkuStockForms) {
+        return storeSkuStockService.orderReduceStocks(storeSkuStockForms);
     }
 
     @GetMapping("/{storeId}/{productId}/{skuId}")

@@ -1,12 +1,14 @@
 package cn.jastz.store.service;
 
 import cn.jastz.store.entity.StoreSkuStock;
+import cn.jastz.store.form.StoreSkuStockForm;
 import cn.jastz.store.mapper.StoreSkuStockMapper;
 import com.google.common.util.concurrent.Striped;
 import io.lettuce.core.RedisClient;
 import me.jastz.common.json.result.IResult;
 import me.jastz.common.json.result.SampleResult;
 import org.redisson.Redisson;
+import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +20,9 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -70,17 +74,17 @@ public class StoreSkuStockService {
             throw new IllegalArgumentException();
         }*/
 
-//        RLock lock = redisson.getLock(key);
-        ReentrantLock reentrantLock1 = new ReentrantLock(true);
+        RLock lock = redisson.getLock(key);
+        /*ReentrantLock reentrantLock1 = new ReentrantLock(true);
         ReentrantLock existLock = storeSkuStockLock.putIfAbsent(key,reentrantLock1);
         if(existLock!=null){
             reentrantLock1 = existLock;
-        }
+        }*/
         try {
-            reentrantLock1.lock();
-//            lock.lock(3, TimeUnit.SECONDS);
+//            reentrantLock1.lock();
+            lock.lock(3, TimeUnit.SECONDS);
             if (skuStock <= 0) {
-                throw new IllegalArgumentException();
+                return SampleResult.FAIL;
             }
             StoreSkuStock storeSkuStock = storeSkuStockMapper.selectByPrimaryKey(storeId, productId, skuId);
 
@@ -89,7 +93,7 @@ public class StoreSkuStockService {
             //减库存且超出可用库存
             if ((storeSkuStock.getSkuStock()<0)|| storeSkuStock.getSkuStock()<skuStock) {
                 //TODO 改成枚举
-                throw new IllegalArgumentException();
+                return SampleResult.FAIL;
             }
             long stockChangeTo = storeSkuStock.getSkuStock()-skuStock;
             StoreSkuStock changeStock = new StoreSkuStock(productId, storeId, skuId);
@@ -99,8 +103,8 @@ public class StoreSkuStockService {
             }
 
         } finally {
-//            lock.unlock();
-            reentrantLock1.unlock();
+            lock.unlock();
+//            reentrantLock1.unlock();
             log.debug("{}减库存结束", Thread.currentThread().getName());
         }
         return SampleResult.FAIL;
@@ -113,5 +117,15 @@ public class StoreSkuStockService {
             return SampleResult.SUCCESS;
         }
         return SampleResult.FAIL;
+    }
+
+    public Map<Integer,IResult> orderReduceStocks(List<StoreSkuStockForm> storeSkuStockForms) {
+        Map<Integer,IResult> map = new TreeMap<>();
+        storeSkuStockForms.forEach(storeSkuStockForm -> {
+            IResult result = reduceStockByStoreIdAndSkuId(storeSkuStockForm.getStoreId(),storeSkuStockForm.getProductId(),
+                    storeSkuStockForm.getSkuId(),storeSkuStockForm.getSkuStock());
+            map.put(storeSkuStockForm.getSkuId(),result);
+        });
+        return map;
     }
 }
