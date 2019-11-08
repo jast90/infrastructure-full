@@ -43,9 +43,6 @@ public class StoreSkuStockService {
     private static Map<String, ReentrantLock> storeSkuStockLock = new ConcurrentHashMap<>();
 
     @Autowired
-    private RedisLockService redisLockService;
-
-    @Autowired
     private RedisTemplate redisTemplate;
 
     @Autowired
