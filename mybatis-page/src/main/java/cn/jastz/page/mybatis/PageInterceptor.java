@@ -73,9 +73,12 @@ public class PageInterceptor implements Interceptor {
         }
 
         BoundSql pageBoundSql = pageBoundSql(ms.getConfiguration(), boundSql, pageRequest, parameter);
-        List list = executor.query(ms, parameter, rowBounds, resultHandler, cacheKey, pageBoundSql);
         long total = queryTotal(newCountMappedStatement(ms, String.format("%s%s", ms.getId(), "_COUNT")), executor
                 , boundSql, parameter, resultHandler);
+        List list = new ArrayList();
+        if(total>0){
+            list = executor.query(ms, parameter, rowBounds, resultHandler, cacheKey, pageBoundSql);
+        }
         Page page = new Page(list, pageRequest, total);
         PageList pageList = new PageList();
         pageList.setPage(page);

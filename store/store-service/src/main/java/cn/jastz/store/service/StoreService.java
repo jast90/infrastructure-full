@@ -73,7 +73,7 @@ public class StoreService {
     }
 
     public Page<Store> queryPage(PageRequest pageRequest) {
-        PageList pageList = (PageList) storeMapper.selectPage(pageRequest);
+        PageList pageList = storeMapper.selectPage(pageRequest);
         return pageList.getPage();
     }
 }
