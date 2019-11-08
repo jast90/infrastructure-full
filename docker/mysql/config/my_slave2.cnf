@@ -1,0 +1,4 @@
+[mysql]
+server-id=3
+log-bin=mysql-bin
+replicate-do-db=store

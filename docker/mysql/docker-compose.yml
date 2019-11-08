@@ -1,0 +1,18 @@
+master:
+  image: mysql:5.7
+  volumes:
+  - "/Users/zhangzhiwen/IdeaProjects/gitlab/infrastructure/docker/mysql/config/my_master.cnf:/etc/mysql/my.cnf"
+#  - "/Users/zhangzhiwen/docker_path/mysql/mysql-files:/var/lib/mysql-files"
+  environment:
+    MYSQL_ROOT_PASSWORD: 123456
+  ports:
+  - "3316:3306"
+slave1:
+  image: mysql:5.7
+  volumes:
+  - "/Users/zhangzhiwen/IdeaProjects/gitlab/infrastructure/docker/mysql/config/my_slave1.cnf:/etc/mysql/my.cnf"
+#  - "/Users/zhangzhiwen/docker_path/mysql/mysql-files:/var/lib/mysql-files"
+  environment:
+    MYSQL_ROOT_PASSWORD: 123456
+  ports:
+  - "3317:3306"
