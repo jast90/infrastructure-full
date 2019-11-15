@@ -1,0 +1,4 @@
+[mysqld]
+server-id=11
+log-bin=mysql-bin
+binlog-do-db=store

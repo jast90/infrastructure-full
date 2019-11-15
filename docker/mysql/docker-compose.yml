@@ -1,12 +1,23 @@
-master:
+master1:
   image: mysql:5.7
   volumes:
-  - "/Users/zhangzhiwen/IdeaProjects/gitlab/infrastructure/docker/mysql/config/my_master.cnf:/etc/mysql/my.cnf"
+  - "/Users/zhangzhiwen/IdeaProjects/gitlab/infrastructure/docker/mysql/config/my_master1.cnf:/etc/mysql/my.cnf"
 #  - "/Users/zhangzhiwen/docker_path/mysql/mysql-files:/var/lib/mysql-files"
   environment:
     MYSQL_ROOT_PASSWORD: 123456
   ports:
-  - "3316:3306"
+  - "13306:3306"
+
+master2:
+  image: mysql:5.7
+  volumes:
+  - "/Users/zhangzhiwen/IdeaProjects/gitlab/infrastructure/docker/mysql/config/my_master2.cnf:/etc/mysql/my.cnf"
+  #  - "/Users/zhangzhiwen/docker_path/mysql/mysql-files:/var/lib/mysql-files"
+  environment:
+    MYSQL_ROOT_PASSWORD: 123456
+  ports:
+  - "23306:3306"
+
 slave1:
   image: mysql:5.7
   volumes:
@@ -15,4 +26,14 @@ slave1:
   environment:
     MYSQL_ROOT_PASSWORD: 123456
   ports:
-  - "3317:3306"
+  - "13307:3306"
+
+slave2:
+  image: mysql:5.7
+  volumes:
+  - "/Users/zhangzhiwen/IdeaProjects/gitlab/infrastructure/docker/mysql/config/my_slave2.cnf:/etc/mysql/my.cnf"
+  #  - "/Users/zhangzhiwen/docker_path/mysql/mysql-files:/var/lib/mysql-files"
+  environment:
+    MYSQL_ROOT_PASSWORD: 123456
+  ports:
+  - "23307:3306"
