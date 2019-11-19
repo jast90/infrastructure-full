@@ -50,7 +50,7 @@ public class StoreService {
             storeAddSkuItem.setProductId(sku.getProductId());
             storeAddSkuItem.setSkuId(sku.getSkuId());
             storeAddSkuItem.setStorePrice(mallStoreAddSkuItem != null && mallStoreAddSkuItem.getStorePrice() != null ? mallStoreAddSkuItem.getStorePrice() : sku.getPrice());
-            storeAddSkuItem.setStock(mallStoreAddSkuItem != null && mallStoreAddSkuItem.getStock() != null ? mallStoreAddSkuItem.getStock() : BigDecimal.ZERO);
+            storeAddSkuItem.setStock(mallStoreAddSkuItem.getStock());
             storeAddSkuItems.add(storeAddSkuItem);
         }
         storeAddSkuForm.setStoreAddSkuItems(storeAddSkuItems);

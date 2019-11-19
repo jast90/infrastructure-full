@@ -50,7 +50,7 @@ public class MallStoreAddSkuForm {
     public static class MallStoreAddSkuItem {
         private int skuId;
         private BigDecimal storePrice;
-        private BigDecimal stock;
+        private Long stock;
 
         public int getSkuId() {
             return skuId;
@@ -68,11 +68,11 @@ public class MallStoreAddSkuForm {
             this.storePrice = storePrice;
         }
 
-        public BigDecimal getStock() {
+        public Long getStock() {
             return stock;
         }
 
-        public void setStock(BigDecimal stock) {
+        public void setStock(Long stock) {
             this.stock = stock;
         }
     }
