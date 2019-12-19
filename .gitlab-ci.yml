@@ -9,13 +9,14 @@ maven-build:
   script: "mvn package -B -Dmaven.test.skip=true -P k8s"
   artifacts:
     paths:
-      - open/open-service/target/*.jar
-      - post/post-service/target/*.jar
-      - payment/payment-service/target/*.jar
-      - product/product-service/target/*.jar
-      - store/store-service/target/*.jar
-      - mq/mq-service/target/*.jar
-      - applications/mall-api/target/*.jar
+#      - open/open-service/target/*.jar
+#      - post/post-service/target/*.jar
+#      - payment/payment-service/target/*.jar
+#      - product/product-service/target/*.jar
+#      - store/store-service/target/*.jar
+#      - mq/mq-service/target/*.jar
+#      - applications/mall-api/target/*.jar
+      - applications/mqtt-server/target/*.jar
 
 docker-image-push:
   image: docker:latest
@@ -24,20 +25,22 @@ docker-image-push:
   stage: docker
   script:
     - docker login -u $docker_hub_username -p $docker_hub_password
-    - docker build -t jast90/open-service open/open-service
-    - docker push jast90/open-service
-    - docker build -t jast90/post-service post/post-service
-    - docker push jast90/post-service
-    - docker build -t jast90/payment-service payment/payment-service
-    - docker push jast90/payment-service
-    - docker build -t jast90/product-service product/product-service
-    - docker push jast90/product-service
-    - docker build -t jast90/store-service store/store-service
-    - docker push jast90/store-service
-    - docker build -t jast90/mq-service mq/mq-service
-    - docker push jast90/mq-service
-    - docker build -t jast90/mall-api applications/mall-api
-    - docker push jast90/mall-api
+#    - docker build -t jast90/open-service open/open-service
+#    - docker push jast90/open-service
+#    - docker build -t jast90/post-service post/post-service
+#    - docker push jast90/post-service
+#    - docker build -t jast90/payment-service payment/payment-service
+#    - docker push jast90/payment-service
+#    - docker build -t jast90/product-service product/product-service
+#    - docker push jast90/product-service
+#    - docker build -t jast90/store-service store/store-service
+#    - docker push jast90/store-service
+#    - docker build -t jast90/mq-service mq/mq-service
+#    - docker push jast90/mq-service
+#    - docker build -t jast90/mall-api applications/mall-api
+#    - docker push jast90/mall-api
+     - docker build -t jast90/mqtt-server applications/mqtt-server
+     - docker push jast90/mqtt-server
 
 #k8s-deploy:
 #  image: roffe/kubectl

@@ -21,7 +21,7 @@ public class MyBroker {
     public static void main(String[] args) throws IOException {
         Server server = new Server();
         List<InterceptHandler> handlers = new ArrayList<>();
-        handlers.add(new RedisInterceptHandler(new ClientRedisService()));
+//        handlers.add(new RedisInterceptHandler(new ClientRedisService()));
         server.startServer(defaultConfig(),handlers);
         Runtime.getRuntime().addShutdownHook(new Thread(server::stopServer));
     }
