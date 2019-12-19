@@ -1,8 +1,6 @@
 FROM java:8-jre
 MAINTAINER Zhiwen Zhang <zhangzhiwen91@gmail.com>
-ENV PROFILE default
-ENV PORT 8080
 ADD ./target/mqtt-server.jar /app/
-CMD ["java", "-Xmx200m", "-jar","-Dspring.profiles.active=${PROFILE}","-Dserver.port=${PORT}","/app/mqtt-server.jar"]
+CMD ["java", "-Xmx200m", "-jar","/app/mqtt-server.jar"]
 
-EXPOSE 8080
+EXPOSE 1883 8080
