@@ -32,13 +32,20 @@ public class DataSourceConfig {
         return DruidDataSourceBuilder.create().build();
     }
 
+    @Bean("juein")
+    @ConfigurationProperties("juein.write")
+    public DataSource juein(){
+        return DruidDataSourceBuilder.create().build();
+    }
+
     @Autowired
     @Bean("dataSource")
-    public DataSource dataSource(DataSource productWrite, DataSource stackOverFlow){
+    public DataSource dataSource(DataSource productWrite, DataSource stackOverFlow,DataSource juein){
         MyRoutingDataSource myRoutingDataSource = new MyRoutingDataSource();
         Map<Object,Object> dataSources = new HashMap<>(10);
         dataSources.put(DBTypeEnum.MASTER.name(),productWrite);
         dataSources.put(DBTypeEnum.STACK.name(),stackOverFlow);
+        dataSources.put(DBTypeEnum.JUEJIN.name(),juein);
         myRoutingDataSource.setTargetDataSources(dataSources);
         return myRoutingDataSource;
     }

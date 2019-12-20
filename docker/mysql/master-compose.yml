@@ -1,0 +1,9 @@
+master:
+  image: mysql:5.7
+  restart: always
+  volumes:
+  - "/Users/zhangzhiwen/IdeaProjects/gitlab/infrastructure/docker/mysql/config/master.cnf:/etc/mysql/my.cnf"
+  environment:
+    MYSQL_ROOT_PASSWORD: 123456
+  ports:
+  - "3307:3306"
