@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jastz.fatui.mapper.StoreMapper">
+  <resultMap id="BaseResultMap" type="cn.jastz.fatui.entity.Store">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="main_pic" jdbcType="VARCHAR" property="mainPic" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from store
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.jastz.fatui.entity.Store">
+    insert into store (id, name, user_name, 
+      phone_number, address, main_pic, 
+      create_time, update_time)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{phoneNumber,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{mainPic,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.jastz.fatui.entity.Store">
+    update store
+    set name = #{name,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      main_pic = #{mainPic,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, name, user_name, phone_number, address, main_pic, create_time, update_time
+    from store
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, user_name, phone_number, address, main_pic, create_time, update_time
+    from store
+  </select>
+
+  <select id="selectPage" resultMap="BaseResultMap">
+    select id, name, user_name, phone_number, address, main_pic, create_time, update_time
+    from store
+  </select>
+</mapper>

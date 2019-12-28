@@ -10,6 +10,7 @@ maven-build:
   artifacts:
     paths:
       - applications/mqtt-server/target/*.jar
+      - applications/fa-tui/target/*.jar
 #      - open/open-service/target/*.jar
 #      - post/post-service/target/*.jar
 #      - payment/payment-service/target/*.jar
@@ -28,6 +29,8 @@ docker-image-push:
     - docker login -u $docker_hub_username -p $docker_hub_password
     - docker build -t jast90/mqtt-server applications/mqtt-server
     - docker push jast90/mqtt-server
+    - - docker build -t jast90/fa-tui applications/fa-tui
+    - docker push jast90/fa-tui
 #    - docker build -t jast90/open-service open/open-service
 #    - docker push jast90/open-service
 #    - docker build -t jast90/post-service post/post-service
