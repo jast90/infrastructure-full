@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="cn.jastz.fatui.entity.Chat" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="unique_topic" property="uniqueTopic" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -12,29 +13,30 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="cn.jastz.fatui.entity.Chat" >
-    insert into chat (id, name, create_time, 
+    insert into chat (id, name, unique_topic,create_time,
       update_time)
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR},#{uniqueTopic}, #{createTime,jdbcType=TIMESTAMP},
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.jastz.fatui.entity.Chat" >
     update chat
     set name = #{name,jdbcType=VARCHAR},
+    unique_topic = {uniqueTopic},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select id, name, create_time, update_time
+    select id, name,unique_topic, create_time, update_time
     from chat
     where id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select id, name, create_time, update_time
+    select id, name,unique_topic, create_time, update_time
     from chat
   </select>
   <select id="selectPage" resultMap="BaseResultMap" >
-    select id, name, create_time, update_time
+    select id, name,unique_topic, create_time, update_time
     from chat
   </select>
 </mapper>

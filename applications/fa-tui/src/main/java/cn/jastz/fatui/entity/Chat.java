@@ -7,6 +7,8 @@ public class Chat {
 
     private String name;
 
+    private String uniqueTopic;
+
     private Date createTime;
 
     private Date updateTime;
@@ -25,6 +27,14 @@ public class Chat {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public String getUniqueTopic() {
+        return uniqueTopic;
+    }
+
+    public void setUniqueTopic(String uniqueTopic) {
+        this.uniqueTopic = uniqueTopic;
     }
 
     public Date getCreateTime() {

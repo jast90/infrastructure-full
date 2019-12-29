@@ -26,6 +26,12 @@ public class WechatLoginController {
         sessionVo.setSession(wechatMiniTemplate.getSession(codeForm.getCode(),false));
         try {
             WxaSessionValue wxaSessionValue = wechatMiniTemplate.getWechatSessionKey(sessionVo.getSession());
+            //TODO 添加用户到数据库
+//            codeForm.getWxaUserInfo();
+            if(codeForm.getWxaUserInfo()!=null){
+                sessionVo.setAvatarUrl(codeForm.getWxaUserInfo().getAvatarUrl());
+                sessionVo.setNickName(codeForm.getWxaUserInfo().getNickName());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
