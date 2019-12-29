@@ -22,3 +22,14 @@ CREATE TABLE chat (
     update_time DATETIME NULL,
     PRIMARY KEY (id)
 )  ENGINE=INNODB AUTO_INCREMENT=1 CHARSET=UTF8;
+
+drop table if exists post;
+create table post(
+	id bigint not null auto_increment,
+    title varchar(512) not null ,
+    description varchar(512) not null,
+    content varchar(2014) not null,
+    create_time DATETIME DEFAULT now(),
+    update_time DATETIME NULL,
+    PRIMARY KEY (id)
+)engine=InnoDB auto_increment=1 charset=utf8;
