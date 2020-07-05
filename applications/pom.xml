@@ -22,7 +22,7 @@
         <module>mall</module>
         <module>mall-api</module>
         <module>mqtt-server</module>
-        <module>fa-tui</module>
+<!--        <module>fa-tui</module>-->
     </modules>
     <dependencies>
         <dependency>

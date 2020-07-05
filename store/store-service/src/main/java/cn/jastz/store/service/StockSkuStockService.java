@@ -26,11 +26,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- * @author zhiwen
- */
 @Service
-public class StoreSkuStockService {
+public class StockSkuStockService {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
 
@@ -58,6 +55,10 @@ public class StoreSkuStockService {
 
     public List<StoreSkuStock> queryStoreSkuStoreByStoreId(int storeId) {
         return storeSkuStockMapper.selectListByStoreId(storeId);
+    }
+
+    public StoreSkuStock queryStoreSkuStockBySkuId(int storeId, int productId, int skuId){
+        return storeSkuStockMapper.selectByPrimaryKey(storeId,productId,skuId);
     }
 
 

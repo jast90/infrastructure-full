@@ -5,12 +5,10 @@ import me.jastz.common.json.result.IResult;
 import org.junit.Test;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigDecimal;
-
 /**
  * @author zhangzhiwen on 2019/11/2
  **/
-public class StoreSkuStockServiceTest extends BaseTest<StoreSkuStockService> {
+public class StoreSkuStockServiceTest extends BaseTest<StockSkuStockServiceRedis> {
 
     @Test
     @Transactional
